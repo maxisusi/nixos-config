@@ -105,7 +105,6 @@
     shellAliases = { 
     # GENERALS
     ee = "exit";
-    cat = "bat";
     dps = "docker ps";
 
     # GIT
