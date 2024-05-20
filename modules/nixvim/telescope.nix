@@ -1,20 +1,41 @@
 {
   plugins.telescope = {
     enable = true;
+
+    settings.defaults = {
+    mappings = {
+      n = { 
+        "q".__raw = "require('telescope.actions').close"; # Close in normal mode
+        };
+    };
+
+    sorting_strategy = "ascending";
+    layout_config = {
+       prompt_position = "top"; 
+       preview_width = 0.55;
+       vertical = { mirror = false;};
+       width = 0.87;
+       height = 0.80;
+       preview_cutoff = 120;
+    };
+
+    };
+
+
     keymaps = {
       "<leader>fw" = "live_grep";
       "<leader>ff" = "find_files";
       "<leader>fb" = {
       	action = "buffers";
-	options = {
-	   desc = "Find buffers";
-	};
+	    options = {
+	      desc = "Find buffers";
+	      };
       };
       "<leader>fo" = {
       	action = "oldfiles";
-	options = {
-	   desc = "Find buffers";
-	};
+    	options = {
+	     desc = "Find buffers";
+	    };
       };
 
       "<C-p>" = {
