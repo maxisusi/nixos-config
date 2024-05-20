@@ -1,5 +1,12 @@
-{ config, pkgs, user,  ... }:
+{ config, pkgs, user, inputs, system,  ... }:
 
+let
+ neovimConfig = import ../modules/nixvim;
+ nvim = inputs.nixvim.legacyPackages.${system}.makeNixvimWithModule {
+   inherit pkgs;
+   module = neovimConfig;
+ };
+in
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -30,6 +37,8 @@
     slack
     _1password-gui
     vscode
+    # nvim
+    nvim
 
     # TOOLS
     ripgrep
@@ -116,7 +125,6 @@
     mr = "make restart";
     mrb = "make destroy && make up";
     gcb = "git cherry -v develop $(git branch --show-current)"; 
-    vi = "nix run ~/.config/flakes/nixvim --";
     };
   };
 

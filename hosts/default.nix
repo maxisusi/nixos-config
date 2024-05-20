@@ -13,7 +13,7 @@
       home-manager.backupFileExtension = "backup";
       home-manager.useGlobalPkgs = true;
       home-manager.useUserPackages = true;
-      home-manager.extraSpecialArgs = {inherit user;}; # Pass flake as variable
+      home-manager.extraSpecialArgs = {inherit inputs user system;}; # Pass flake as variable
       home-manager.users.${user} = {
         imports = [./home.nix];
       };
@@ -32,7 +32,7 @@
       home-manager.backupFileExtension = "backup";
       home-manager.useGlobalPkgs = true;
       home-manager.useUserPackages = true;
-      home-manager.extraSpecialArgs = {inherit user;}; # Pass flake as variable
+      home-manager.extraSpecialArgs = {inherit inputs user system;}; # Pass flake as variable
       home-manager.users.${user} = {
         imports = [./home.nix];
       };

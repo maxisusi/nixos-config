@@ -122,12 +122,12 @@ programs.bash = {
   };
 
 
-programs.nixvim = {
-  enable = true;
-
-  colorschemes.gruvbox.enable = true;
-  plugins.lightline.enable = true;
-};
+# programs.nixvim = {
+#   enable = true;
+#
+#   colorschemes.gruvbox.enable = true;
+#   plugins.lightline.enable = true;
+# };
 
  fonts.packages = with pkgs; [
   (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
