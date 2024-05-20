@@ -76,12 +76,18 @@
         };
         sources = [
 	  # Provide sources from client LSP
-          { name = "nvim_lsp"; }
+          { name = "nvim_lsp"; priority = 1000; }
+          { name = "buffer"; priority = 500; }
 	  # Provide sources from path
-          { name = "path"; }
+          { name = "path"; priority = 250; }
         ];
 
         mapping = {
+          "<C-Space>" =
+           # lua
+          ''
+           cmp.mapping(cmp.mapping.complete(), { "i", "c" })
+          '';
 	# Go to next element
         "<Tab>" =
             # lua 
