@@ -116,6 +116,7 @@ programs.bash = {
     };
     systemPackages = with pkgs; [
       google-chrome
+      firefox
       docker
       docker-compose
     ];
