@@ -25,6 +25,20 @@
   globals.mapleader = " ";
 
    keymaps = [
+   # Git Signs
+    {
+      key = "<leader>gh";
+      action = ''function() require("gitsigns").reset_hunk() end'';
+      lua = true;
+      options.desc = "Reset Hunk";
+    }
+    {
+      key = "<leader>gr";
+      action = ''function() require("gitsigns").reset_buffer() end'';
+      lua = true;
+      options.desc = "Reset Buffer";
+    }
+   # Neo tree 
    {
       key = "<leader>o";
       action = "<CMD>Neotree toggle<CR>";
