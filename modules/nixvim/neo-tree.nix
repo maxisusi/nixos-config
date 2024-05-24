@@ -3,7 +3,7 @@
     enable = true;
     # sources = ["filesystem" "buffers" "git_status"];
     sourceSelector = {
-      winbar = true; # activate the tabs
+      # winbar = true; # activate the tabs
     };
   };
 }
