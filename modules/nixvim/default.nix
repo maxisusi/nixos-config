@@ -25,6 +25,26 @@
   globals.mapleader = " ";
 
    keymaps = [
+   # Telescope - special commands
+   {
+      key = "<leader>fW";
+      action = 
+      # lua
+      ''
+     function() require("telescope.builtin").live_grep {
+        additional_args = function(args) return vim.list_extend(args, { "--hidden", "--no-ignore" }) end,
+      }
+    end
+    '';
+      lua = true;
+      options.desc = "Find words in all file";
+    }
+   {
+      key = "<leader>fF";
+      action = ''function() require("telescope.builtin").find_files { hidden = true, no_ignore = true } end'';
+      lua = true;
+      options.desc = "Find all files";
+    }
    # Git Signs
     {
       key = "<leader>gh";
