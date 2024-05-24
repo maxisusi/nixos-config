@@ -137,21 +137,26 @@ in
 
   programs.tmux = {
     enable = true;
-    plugins = [
-      pkgs.tmuxPlugins.dracula
+    plugins = with pkgs;[
+      tmuxPlugins.dracula
+      tmuxPlugins.vim-tmux-navigator
     ];
     extraConfig = ''
+      # Unbind default C-b command
       unbind C-b
       set -g prefix C-a
 
-      set -g mode-keys vi
-      bind-key -r C-h select-window -t :-
-      bind-key -r C-l select-window -t :+
-      # Set new panes to open in current directory
+      # Reload config
+      unbind r
+      bind r source-file ~/.config/tmux/tmux.conf \; display-message "tmux.conf reloaded..."
 
+      # Set new panes to open in current directory
       bind c new-window -c "#{pane_current_path}"
       bind '"' split-window -c "#{pane_current_path}"
       bind % split-window -h -c "#{pane_current_path}"
+
+      # Restoring clear screen
+      bind C-l send-keys 'C-l'
 
       # Resize with mouse
       setw -g mouse on
