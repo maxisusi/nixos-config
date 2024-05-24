@@ -7,7 +7,7 @@
   ./treesitter.nix
   ./lsp.nix
   ./cmp.nix
-  ./nvim-tree.nix
+  ./neo-tree.nix
   ./autopair.nix
   ./lightline.nix
   ./telescope.nix
@@ -26,8 +26,8 @@
    keymaps = [
    {
       key = "<leader>o";
-      action = "<CMD>NvimTreeToggle<CR>";
-      options.desc = "Toggle NvimTree";
+      action = "<CMD>Neotree toggle<CR>";
+      options.desc = "Toggle Neo tree";
     }
     {
       key = "<C-s>";
