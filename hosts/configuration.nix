@@ -3,7 +3,6 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { config, pkgs, user, ... }:
-
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -122,13 +121,13 @@ programs.bash = {
     ];
   };
 
-
-# programs.nixvim = {
-#   enable = true;
-#
-#   colorschemes.gruvbox.enable = true;
-#   plugins.lightline.enable = true;
-# };
+  programs._1password.enable = true;
+  programs._1password-gui = {
+    enable = true;
+    # Certain features, including CLI integration and system authentication support,
+    # require enabling PolKit integration on some desktop environments (e.g. Plasma).
+    polkitPolicyOwners = [ "max" ];
+  };
 
  fonts.packages = with pkgs; [
   (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })

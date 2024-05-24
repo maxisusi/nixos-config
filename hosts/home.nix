@@ -6,6 +6,7 @@ let
    inherit pkgs;
    module = neovimConfig;
  };
+   onePassPath = "~/.1password/agent.sock";
 in
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -35,7 +36,6 @@ in
 
     # PROGRAMS
     slack
-    _1password-gui
     vscode
     # nvim
     nvim
@@ -57,10 +57,6 @@ in
     # LANGUAGES
     nodenv
 
-    # TIPEE
-
-    # FONTS
-    # (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
   ];
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
@@ -98,12 +94,21 @@ in
     userName  = "maxisusi";
     userEmail = "maxbalej@proton.me";
     extraConfig = {
-    	push = {autoSetupRemote = true;};
-	pull = {rebase = true;};
-  # TODO: Config 1password
-	# gpg = {format = "ssh";};
-	# commit = {gpgsign = true;};
+      push = {autoSetupRemote = true;};
+      pull = {rebase = true;};
+      gpg = {format = "ssh";};
+      gpg."ssh".program = "${pkgs._1password-gui}/bin/op-ssh-sign";
+      commit = {gpgsign = true;};
+      user = {signingkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJJJ6b/1CdEAgUkkOFUBkvcsxd6Dj50S8jNJfTDQ/Vt2";};
     };
+  };
+
+    programs.ssh = {
+    enable = true;
+    extraConfig = ''
+      Host *
+          IdentityAgent ${onePassPath}
+    '';
   };
 
   programs.fish = {
@@ -131,25 +136,25 @@ in
   };
 
 programs.tmux = {
-  enable = true;
-  plugins = [
-  	 pkgs.tmuxPlugins.dracula
-  ];
+    enable = true;
+    plugins = [
+       pkgs.tmuxPlugins.dracula
+    ];
     extraConfig = ''
-    unbind C-b
-    set -g prefix C-a
+      unbind C-b
+      set -g prefix C-a
 
-    set -g mode-keys vi
-    bind-key -r C-h select-window -t :-
-    bind-key -r C-l select-window -t :+
-    # Set new panes to open in current directory
+      set -g mode-keys vi
+      bind-key -r C-h select-window -t :-
+      bind-key -r C-l select-window -t :+
+      # Set new panes to open in current directory
 
-    bind c new-window -c "#{pane_current_path}"
-    bind '"' split-window -c "#{pane_current_path}"
-    bind % split-window -h -c "#{pane_current_path}"
+      bind c new-window -c "#{pane_current_path}"
+      bind '"' split-window -c "#{pane_current_path}"
+      bind % split-window -h -c "#{pane_current_path}"
 
-    # Resize with mouse
-    setw -g mouse on
+      # Resize with mouse
+      setw -g mouse on
 
   '';
 };
@@ -159,17 +164,17 @@ programs.tmux = {
     theme = "Dracula";
     font = {
     	name = "JetBrainsMonoNL Nerd Font";
-	size = 10.0;
+      size = 10.0;
     };
     shellIntegration = {
-	enableFishIntegration = true;
+      enableFishIntegration = true;
     };
     settings = {
     	adjust_line_height = 2;
-	initial_window_width = 920;
-	initial_window_height = 1080;
-	hide_window_decorations = "yes";
-	window_border_width = 0;
+      initial_window_width = 920;
+      initial_window_height = 1080;
+      hide_window_decorations = "yes";
+      window_border_width = 0;
     };
   };
 
