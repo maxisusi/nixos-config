@@ -25,9 +25,14 @@
   ];
 
 
-  colorschemes.dracula.enable = pkgs.stdenv.isLinux;
+  colorschemes.dracula.enable = true;
 
   keymaps = [
+    {
+      key = "<C-s>";
+      action = "<cmd>w!<cr>";
+      options.desc = "Force write";
+    }
     # Leap 
     {
       key = "Q";
@@ -77,11 +82,6 @@
       key = "<leader>o";
       action = "<CMD>Neotree toggle<CR>";
       options.desc = "Toggle Neo tree";
-    }
-    {
-      key = "<C-s>";
-      action = "<CMD>lua vim.lsp.buf.format()<CR>";
-      options.desc = "Format the current buffer";
     }
     {
       key = "<leader>la";
