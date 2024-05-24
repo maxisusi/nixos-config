@@ -19,6 +19,7 @@
     ./lazygit.nix
     ./gitsign.nix
     ./indent-blankline.nix
+    ./tmux-navigator.nix
   ];
 
 
