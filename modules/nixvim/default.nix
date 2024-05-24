@@ -17,6 +17,7 @@
   ./options.nix
   ./colorizer.nix
   ./lazygit.nix
+  ./gitsign.nix
   ];
 
  
