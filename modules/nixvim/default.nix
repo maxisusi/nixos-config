@@ -27,6 +27,17 @@
   colorschemes.dracula.enable = pkgs.stdenv.isLinux;
 
   keymaps = [
+    # Leap 
+    {
+      key = "Q";
+      action = "<Plug>(leap-backward)";
+      options.desc = "Leap backward";
+    }
+    {
+      key = "q";
+      action = "<Plug>(leap-forward)";
+      options.desc = "Leap forward";
+    }
     # Telescope - special commands
     {
       key = "<leader>fW";
