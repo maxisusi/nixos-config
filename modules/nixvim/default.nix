@@ -22,7 +22,6 @@
 
  
   colorschemes.dracula.enable = pkgs.stdenv.isLinux;
-  globals.mapleader = " ";
 
    keymaps = [
    # Telescope - special commands
