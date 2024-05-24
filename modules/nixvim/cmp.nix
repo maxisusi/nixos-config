@@ -60,6 +60,7 @@
           };
         window = {
           completion = {
+
             winhighlight =
             "Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None";
             scrollbar = false;
@@ -67,11 +68,12 @@
             border = [ "╭" "─" "╮" "│" "╯" "─" "╰" "│" ];
           };
 
-          settings.documentation = {
-            border = [ "╭" "─" "╮" "│" "╯" "─" "╰" "│" ];
-                        sidePadding = 0;
-         winhighlight =
+          documentation = {
+            winhighlight =
             "Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None";
+            scrollbar = false;
+            sidePadding = 0;
+            border = [ "╭" "─" "╮" "│" "╯" "─" "╰" "│" ];
           };
         };
         sources = [
