@@ -125,6 +125,8 @@ in
     mr = "make restart";
     mrb = "make destroy && make up";
     gcb = "git cherry -v develop $(git branch --show-current)"; 
+
+    vi = "nvim";
     };
   };
 
