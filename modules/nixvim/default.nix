@@ -21,6 +21,7 @@
     ./indent-blankline.nix
     ./tmux-navigator.nix
     ./leap.nix
+    ./better-escape.nix
   ];
 
 
