@@ -5,6 +5,10 @@
       servers = {
         tsserver.enable = true;
         nixd.enable = true;
+        eslint.enable = true;
+        zls.enable = true;
+        cmake.enable = true;
+        phpactor.enable = true;
       };
       keymaps.lspBuf = {
         "gd" = "definition";
