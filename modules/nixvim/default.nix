@@ -22,6 +22,8 @@
     ./tmux-navigator.nix
     ./leap.nix
     ./better-escape.nix
+    ./notify.nix
+    ./surround.nix
   ];
 
 
