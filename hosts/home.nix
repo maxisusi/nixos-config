@@ -1,12 +1,12 @@
-{ config, pkgs, user, inputs, system,  ... }:
+{ pkgs, user, inputs, system, ... }:
 
 let
- neovimConfig = import ../modules/nixvim;
- nvim = inputs.nixvim.legacyPackages.${system}.makeNixvimWithModule {
-   inherit pkgs;
-   module = neovimConfig;
- };
-   onePassPath = "~/.1password/agent.sock";
+  neovimConfig = import ../modules/nixvim;
+  nvim = inputs.nixvim.legacyPackages.${system}.makeNixvimWithModule {
+    inherit pkgs;
+    module = neovimConfig;
+  };
+  onePassPath = "~/.1password/agent.sock";
 in
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -25,7 +25,7 @@ in
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
 
-  nixpkgs.config.allowUnfree = true; 
+  nixpkgs.config.allowUnfree = true;
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
@@ -53,7 +53,7 @@ in
     tmux
     tmuxifier
     tokei
-    
+
     # LANGUAGES
     nodenv
 
@@ -85,25 +85,25 @@ in
   #  /etc/profiles/per-user/max/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-  #  EDITOR = "nvim";
+    EDITOR = "nvim";
   };
 
-   # CONFIGUTATIONS
-   programs.git = {
+  # CONFIGUTATIONS
+  programs.git = {
     enable = true;
-    userName  = "maxisusi";
+    userName = "maxisusi";
     userEmail = "maxbalej@proton.me";
     extraConfig = {
-      push = {autoSetupRemote = true;};
-      pull = {rebase = true;};
-      gpg = {format = "ssh";};
+      push = { autoSetupRemote = true; };
+      pull = { rebase = true; };
+      gpg = { format = "ssh"; };
       gpg."ssh".program = "${pkgs._1password-gui}/bin/op-ssh-sign";
-      commit = {gpgsign = true;};
-      user = {signingkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJJJ6b/1CdEAgUkkOFUBkvcsxd6Dj50S8jNJfTDQ/Vt2";};
+      commit = { gpgsign = true; };
+      user = { signingkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJJJ6b/1CdEAgUkkOFUBkvcsxd6Dj50S8jNJfTDQ/Vt2"; };
     };
   };
 
-    programs.ssh = {
+  programs.ssh = {
     enable = true;
     extraConfig = ''
       Host *
@@ -116,29 +116,29 @@ in
     interactiveShellInit = ''
       set fish_greeting # Disable greeting
     '';
-    shellAliases = { 
-    # GENERALS
-    ee = "exit";
-    dps = "docker ps";
+    shellAliases = {
+      # GENERALS
+      ee = "exit";
+      dps = "docker ps";
 
-    # GIT
-    gp = "git push";
+      # GIT
+      gp = "git push";
 
-    # TIPEE
-    mu = "make up";
-    md = "made down";
-    mr = "make restart";
-    mrb = "make destroy && make up";
-    gcb = "git cherry -v develop $(git branch --show-current)"; 
+      # TIPEE
+      mu = "make up";
+      md = "made down";
+      mr = "make restart";
+      mrb = "make destroy && make up";
+      gcb = "git cherry -v develop $(git branch --show-current)";
 
-    vi = "nvim";
+      vi = "nvim";
     };
   };
 
-programs.tmux = {
+  programs.tmux = {
     enable = true;
     plugins = [
-       pkgs.tmuxPlugins.dracula
+      pkgs.tmuxPlugins.dracula
     ];
     extraConfig = ''
       unbind C-b
@@ -156,21 +156,21 @@ programs.tmux = {
       # Resize with mouse
       setw -g mouse on
 
-  '';
-};
+    '';
+  };
 
   programs.kitty = {
     enable = true;
     theme = "Dracula";
     font = {
-    	name = "JetBrainsMonoNL Nerd Font";
+      name = "JetBrainsMonoNL Nerd Font";
       size = 10.0;
     };
     shellIntegration = {
       enableFishIntegration = true;
     };
     settings = {
-    	adjust_line_height = 2;
+      adjust_line_height = 2;
       initial_window_width = 920;
       initial_window_height = 1080;
       hide_window_decorations = "yes";

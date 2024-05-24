@@ -14,8 +14,9 @@
     };
   };
 
-  outputs =  { self, nixpkgs, home-manager, nixvim, ... } @inputs: 
-    let 
+  outputs = { self, nixpkgs, home-manager, nixvim, ... } @inputs:
+    let
+
       system = "x86_64-linux";
       pkgs = import nixpkgs {
         inherit system;
@@ -23,12 +24,14 @@
       };
       lib = nixpkgs.lib;
       user = "max";
-      in {
-        nixosConfigurations = (
-          import ./hosts {
-            inherit (nixpkgs) lib;
-            inherit inputs user system home-manager nixvim;
-          }
-        );
-      };
+    in
+    {
+      formatter.x86_64-linux = nixpkgs.legacyPackages.${system}.nixpkgs-fmt;
+      nixosConfigurations = (
+        import ./hosts {
+          inherit (nixpkgs) lib;
+          inherit inputs user system home-manager nixvim;
+        }
+      );
+    };
 }

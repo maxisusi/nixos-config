@@ -1,11 +1,11 @@
 {
-  plugins= {
-   cmp = {
+  plugins = {
+    cmp = {
       enable = true;
-       settings = {
-          formatting = {
+      settings = {
+        formatting = {
           fields = [ "kind" "abbr" "menu" ];
-           format =
+          format =
             # lua
             ''
               function(_, item)
@@ -57,12 +57,12 @@
                 return item
               end
             '';
-          };
+        };
         window = {
           completion = {
 
             winhighlight =
-            "Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None";
+              "Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None";
             scrollbar = false;
             sidePadding = 0;
             border = [ "╭" "─" "╮" "│" "╯" "─" "╰" "│" ];
@@ -70,28 +70,28 @@
 
           documentation = {
             winhighlight =
-            "Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None";
+              "Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None";
             scrollbar = false;
             sidePadding = 0;
             border = [ "╭" "─" "╮" "│" "╯" "─" "╰" "│" ];
           };
         };
         sources = [
-	  # Provide sources from client LSP
+          # Provide sources from client LSP
           { name = "nvim_lsp"; priority = 1000; }
           { name = "buffer"; priority = 500; }
-	  # Provide sources from path
+          # Provide sources from path
           { name = "path"; priority = 250; }
         ];
 
         mapping = {
           "<C-Space>" =
-           # lua
-          ''
-           cmp.mapping(cmp.mapping.complete(), { "i", "c" })
-          '';
-	# Go to next element
-        "<Tab>" =
+            # lua
+            ''
+              cmp.mapping(cmp.mapping.complete(), { "i", "c" })
+            '';
+          # Go to next element
+          "<Tab>" =
             # lua 
             ''
               function(fallback)
@@ -103,8 +103,8 @@
               end
             '';
 
-	# Go to previous element
-	 "<S-Tab>" =
+          # Go to previous element
+          "<S-Tab>" =
             # lua
             ''
               function(fallback)
@@ -115,9 +115,9 @@
                 end
               end
             '';
-	};
-       };
+        };
+      };
 
- };
-};
+    };
+  };
 }

@@ -31,5 +31,5 @@
     globals = {
       mapleader = " "; # set the leader key
     };
- };
+  };
 }

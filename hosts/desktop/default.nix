@@ -1,16 +1,16 @@
-
 { config, pkgs, ... }:
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
 
   # Configure keymap in X11
   services.xserver = {
     xkb = {
-      layout = "us"; 
+      layout = "us";
       variant = "altgr-intl";
     };
   };

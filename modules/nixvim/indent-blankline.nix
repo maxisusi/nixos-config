@@ -1,6 +1,6 @@
-{ 
-  plugins.indent-blankline = { 
-    enable = true; 
+{
+  plugins.indent-blankline = {
+    enable = true;
     settings = {
       indent = {
         char = "│";
@@ -28,5 +28,5 @@
       };
     };
 
-  }; 
+  };
 }
