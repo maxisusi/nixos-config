@@ -29,6 +29,14 @@
 
   colorschemes.dracula.enable = true;
 
+  autoCmd = [
+    {
+      event = [ "BufWritePre" ];
+      callback = { __raw = "function() vim.lsp.buf.format { async = false } end"; };
+      desc = "Format on save";
+    }
+  ];
+
   keymaps = [
     {
       key = "<C-s>";
@@ -101,9 +109,7 @@
       options.desc = "Open Lazygit";
     }
 
-
     # Navigation
-
     # -- Split Navigation
     {
       key = "|";
