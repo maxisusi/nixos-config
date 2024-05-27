@@ -119,7 +119,13 @@
       firefox
       docker
       docker-compose
+      sloth
     ];
+  };
+
+
+  nixpkgs.config.packageOverrides = pkgs: {
+    sloth = pkgs.callPackage ../packages/sloth/default.nix { };
   };
 
   programs._1password.enable = true;

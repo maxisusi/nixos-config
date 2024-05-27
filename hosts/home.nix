@@ -6,6 +6,9 @@ let
     inherit pkgs;
     module = neovimConfig;
   };
+  gdk = pkgs.google-cloud-sdk.withExtraComponents (with pkgs.google-cloud-sdk.components; [
+    gke-gcloud-auth-plugin
+  ]);
   onePassPath = "~/.1password/agent.sock";
 in
 {
@@ -53,10 +56,16 @@ in
     tmux
     tmuxifier
     tokei
+    python3
 
     # LANGUAGES
     nodenv
 
+    # Tipee
+    zsh
+    gnumake
+    rsync
+    gdk
   ];
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
@@ -87,6 +96,7 @@ in
   home.sessionVariables = {
     EDITOR = "nvim";
   };
+
 
   # CONFIGUTATIONS
   programs.git = {
@@ -126,7 +136,7 @@ in
 
       # TIPEE
       mu = "make up";
-      md = "made down";
+      md = "make down";
       mr = "make restart";
       mrb = "make destroy && make up";
       gcb = "git cherry -v develop $(git branch --show-current)";
