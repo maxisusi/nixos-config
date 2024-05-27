@@ -1,4 +1,4 @@
-{stdenv, lib, fetchurl}:
+{ stdenv, lib, fetchurl }:
 
 stdenv.mkDerivation rec {
   pname = "sloth";
@@ -7,8 +7,8 @@ stdenv.mkDerivation rec {
   src = fetchurl {
     url = "https://storage.googleapis.com/sloth-builds/latest/sloth-linux-amd64";
     sha256 = "sha256-DBPRS6xTE+OrKSPWCWLaO0vDiN4b2gButoTn77E/rjU=";
-  }; 
-  
+  };
+
   dontBuild = true;
 
   unpackPhase = ''

@@ -37,6 +37,18 @@
             key = "<leader>ls";
             action = "<CMD>LspStart<Enter>";
           }
+          {
+            key = "<leader>gr";
+            action = "<cmd>Telescope lsp_references<cr>";
+          }
+          {
+            key = "<leader>gd";
+            action = "<cmd>Telescope lsp_definitions<cr>";
+          }
+          {
+            key = "<leader>gi";
+            action = "<cmd>Telescope lsp_implementations<cr>";
+          }
         ];
       };
     };
