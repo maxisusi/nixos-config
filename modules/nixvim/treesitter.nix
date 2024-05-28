@@ -4,10 +4,11 @@
       enable = true;
       nixGrammars = true;
       indent = true;
-      ensureInstalled = [ "typescript" ];
+      ensureInstalled = "all";
     };
 
     treesitter-context.enable = true;
     rainbow-delimiters.enable = true;
+    ts-autotag.enable = true;
   };
 }
