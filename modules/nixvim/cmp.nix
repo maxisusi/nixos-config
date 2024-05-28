@@ -59,8 +59,16 @@
             '';
         };
         window = {
-          completion = { border = "solid"; };
-          documentation = { border = "solid"; };
+          completion = {
+            border = "rounded";
+            winhighlight =
+              "Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None";
+          };
+          documentation = {
+            border = "rounded";
+            winhighlight =
+              "Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None";
+          };
         };
         sources = [
           {
