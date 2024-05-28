@@ -17,28 +17,22 @@
         };
       };
       keymaps = {
-        lspBuf = {
-          "gd" = "definition";
-          "gD" = "references";
-          "gt" = "type_definition";
-          "gi" = "implementation";
-          "K" = "hover";
-        };
+        lspBuf = { "K" = "hover"; };
         extra = [
           {
             key = "<leader>lr";
             action.__raw = "function() vim.lsp.buf.rename() end";
           }
           {
-            key = "<leader>gr";
+            key = "gr";
             action = "<cmd>Telescope lsp_references<cr>";
           }
           {
-            key = "<leader>gd";
+            key = "gd";
             action = "<cmd>Telescope lsp_definitions<cr>";
           }
           {
-            key = "<leader>gi";
+            key = "gi";
             action = "<cmd>Telescope lsp_implementations<cr>";
           }
         ];

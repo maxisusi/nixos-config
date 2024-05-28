@@ -130,13 +130,13 @@
     }
     # Git Signs
     {
-      key = "gh";
+      key = "<leader>gh";
       action = ''function() require("gitsigns").reset_hunk() end'';
       lua = true;
       options.desc = "Reset Hunk";
     }
     {
-      key = "gr";
+      key = "<leader>gr";
       action = ''function() require("gitsigns").reset_buffer() end'';
       lua = true;
       options.desc = "Reset Buffer";
