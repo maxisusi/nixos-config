@@ -9,7 +9,7 @@
     ./cmp.nix
     ./neo-tree.nix
     ./autopair.nix
-    ./lightline.nix
+    ./lualine.nix
     ./telescope.nix
     ./wich_key.nix
     ./comment.nix
