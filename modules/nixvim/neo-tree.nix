@@ -11,6 +11,9 @@
       batchDelay = 10;
       maxLines = 10000;
     };
-    filesystem.followCurrentFile = { enabled = true; };
+    filesystem = {
+      hijackNetrwBehavior = "open_current";
+      followCurrentFile = { enabled = true; };
+    };
   };
 }
