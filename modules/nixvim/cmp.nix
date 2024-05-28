@@ -59,62 +59,34 @@
             '';
         };
         window = {
-          completion = {
-
-            winhighlight =
-              "Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None";
-            scrollbar = false;
-            sidePadding = 0;
-            border = [ "╭" "─" "╮" "│" "╯" "─" "╰" "│" ];
-          };
-
-          documentation = {
-            winhighlight =
-              "Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None";
-            scrollbar = false;
-            sidePadding = 0;
-            border = [ "╭" "─" "╮" "│" "╯" "─" "╰" "│" ];
-          };
+          completion = { border = "solid"; };
+          documentation = { border = "solid"; };
         };
         sources = [
-          # Provide sources from client LSP
-          { name = "nvim_lsp"; priority = 1000; }
-          { name = "buffer"; priority = 500; }
-          # Provide sources from path
-          { name = "path"; priority = 250; }
+          {
+            name = "nvim_lsp";
+            priority = 1000;
+          }
+          {
+            name = "luasnip";
+            priority = 800;
+          }
+          {
+            name = "buffer";
+            priority = 500;
+          }
+          {
+            name = "path";
+            priority = 250;
+          }
         ];
-
         mapping = {
-          "<C-Space>" =
-            # lua
-            ''
-              cmp.mapping(cmp.mapping.complete(), { "i", "c" })
-            '';
-          # Go to next element
-          "<Tab>" =
-            # lua 
-            ''
-              function(fallback)
-                if cmp.visible() then
-                  cmp.select_next_item()
-                else
-                  fallback()
-                end
-              end
-            '';
-
-          # Go to previous element
-          "<S-Tab>" =
-            # lua
-            ''
-              function(fallback)
-                if cmp.visible() then
-                  cmp.select_prev_item()
-                else
-                  fallback()
-                end
-              end
-            '';
+          "<C-Space>" = ''cmp.mapping(cmp.mapping.complete(), { "i", "c" }) '';
+          "<CR>" = "cmp.mapping.confirm({ select = true })";
+          "<C-j>" = "cmp.mapping.select_next_item()";
+          "<C-k>" = "cmp.mapping.select_prev_item()";
+          "<S-CR>" =
+            "cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true })";
         };
       };
 

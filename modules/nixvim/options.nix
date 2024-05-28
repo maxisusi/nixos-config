@@ -5,6 +5,7 @@
 
       number = true;
       relativenumber = true;
+      completeopt = "menuone,noselect";
 
       autoindent = true;
       clipboard = "unnamedplus";
@@ -21,7 +22,8 @@
       smartcase = true;
       wildmode = "list:longest";
       mouse = "a"; # enable mouse support
-      showmode = false; # disable showing modes on command line in favor of Lualine
+      showmode =
+        false; # disable showing modes on command line in favor of Lualine
 
       undofile = true; # Build-in persistent undo
       termguicolors = true; # enable 24-bit RGB color in the TUI

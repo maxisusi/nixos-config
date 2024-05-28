@@ -24,12 +24,11 @@
     ./notify.nix
     ./surround.nix
     ./none-ls.nix
+    ./friendly-snippets.nix
+    ./luasnip.nix
   ];
 
-
-  extraPlugins = with pkgs.vimPlugins; [
-    { plugin = indent-blankline-nvim; }
-  ];
+  extraPlugins = with pkgs.vimPlugins; [{ plugin = indent-blankline-nvim; }];
   extraConfigLua =
     #lua
     ''
@@ -59,16 +58,15 @@
       hooks.register(hooks.type.SCOPE_HIGHLIGHT, hooks.builtin.scope_highlight_from_extmark)
     '';
 
-
   colorschemes.dracula.enable = true;
 
-  autoCmd = [
-    {
-      event = [ "BufWritePre" ];
-      callback = { __raw = "function() vim.lsp.buf.format { async = false } end"; };
-      desc = "Format on save";
-    }
-  ];
+  autoCmd = [{
+    event = [ "BufWritePre" ];
+    callback = {
+      __raw = "function() vim.lsp.buf.format { async = false } end";
+    };
+    desc = "Format on save";
+  }];
 
   keymaps = [
     {
@@ -103,7 +101,8 @@
     }
     {
       key = "<leader>fF";
-      action = ''function() require("telescope.builtin").find_files { hidden = true, no_ignore = true } end'';
+      action = ''
+        function() require("telescope.builtin").find_files { hidden = true, no_ignore = true } end'';
       lua = true;
       options.desc = "Find all files";
     }
@@ -200,5 +199,3 @@
     }
   ];
 }
-
-
