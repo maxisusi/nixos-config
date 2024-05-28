@@ -20,7 +20,6 @@
       ignorecase = true; # case insensitive searching
       incsearch = true;
       smartcase = true;
-      wildmode = "list:longest";
       mouse = "a"; # enable mouse support
       showmode =
         false; # disable showing modes on command line in favor of Lualine

@@ -26,6 +26,7 @@
     ./none-ls.nix
     ./friendly-snippets.nix
     ./luasnip.nix
+    ./dressing.nix
   ];
 
   extraPlugins = with pkgs.vimPlugins; [{ plugin = indent-blankline-nvim; }];
