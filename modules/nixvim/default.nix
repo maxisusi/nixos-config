@@ -23,6 +23,7 @@
     ./better-escape.nix
     ./notify.nix
     ./surround.nix
+    ./none-ls.nix
   ];
 
 
@@ -108,13 +109,13 @@
     }
     # Git Signs
     {
-      key = "<leader>gh";
+      key = "gh";
       action = ''function() require("gitsigns").reset_hunk() end'';
       lua = true;
       options.desc = "Reset Hunk";
     }
     {
-      key = "<leader>gr";
+      key = "gr";
       action = ''function() require("gitsigns").reset_buffer() end'';
       lua = true;
       options.desc = "Reset Buffer";

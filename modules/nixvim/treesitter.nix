@@ -4,6 +4,7 @@
       enable = true;
       nixGrammars = true;
       indent = true;
+      ensureInstalled = [ "typescript" ];
     };
 
     treesitter-context.enable = true;

@@ -27,15 +27,7 @@
         extra = [
           {
             key = "<leader>lr";
-            action = "<CMD>LspRestart<Enter>";
-          }
-          {
-            key = "<leader>lx";
-            action = "<CMD>LspStop<Enter>";
-          }
-          {
-            key = "<leader>ls";
-            action = "<CMD>LspStart<Enter>";
+            action.__raw = "function() vim.lsp.buf.rename() end";
           }
           {
             key = "<leader>gr";
