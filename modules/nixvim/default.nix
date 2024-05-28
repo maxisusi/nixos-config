@@ -29,7 +29,10 @@
     ./dressing.nix
   ];
 
-  extraPlugins = with pkgs.vimPlugins; [{ plugin = indent-blankline-nvim; }];
+  extraPlugins = with pkgs.vimPlugins; [
+    { plugin = indent-blankline-nvim; }
+    { plugin = nvim-window-picker; }
+  ];
   extraConfigLua =
     #lua
     ''
