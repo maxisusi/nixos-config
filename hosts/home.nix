@@ -6,17 +6,14 @@ let
     inherit pkgs;
     module = neovimConfig;
   };
-  gdk = pkgs.google-cloud-sdk.withExtraComponents (with pkgs.google-cloud-sdk.components; [
-    gke-gcloud-auth-plugin
-  ]);
+  gdk = pkgs.google-cloud-sdk.withExtraComponents
+    (with pkgs.google-cloud-sdk.components; [ gke-gcloud-auth-plugin ]);
   onePassPath = "~/.1password/agent.sock";
-in
-{
+in {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = user;
   home.homeDirectory = "/home/${user}";
-
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -26,7 +23,6 @@ in
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
   home.stateVersion = "23.11"; # Please read the comment before changing.
-
 
   nixpkgs.config.allowUnfree = true;
   # The home.packages option allows you to install Nix packages into your
@@ -93,10 +89,7 @@ in
   #
   #  /etc/profiles/per-user/max/etc/profile.d/hm-session-vars.sh
   #
-  home.sessionVariables = {
-    EDITOR = "nvim";
-  };
-
+  home.sessionVariables = { EDITOR = "nvim"; };
 
   # CONFIGUTATIONS
   programs.git = {
@@ -109,7 +102,10 @@ in
       gpg = { format = "ssh"; };
       gpg."ssh".program = "${pkgs._1password-gui}/bin/op-ssh-sign";
       commit = { gpgsign = true; };
-      user = { signingkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJJJ6b/1CdEAgUkkOFUBkvcsxd6Dj50S8jNJfTDQ/Vt2"; };
+      user = {
+        signingkey =
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJJJ6b/1CdEAgUkkOFUBkvcsxd6Dj50S8jNJfTDQ/Vt2";
+      };
     };
   };
 
@@ -147,10 +143,7 @@ in
 
   programs.tmux = {
     enable = true;
-    plugins = with pkgs;[
-      tmuxPlugins.dracula
-      tmuxPlugins.vim-tmux-navigator
-    ];
+    plugins = with pkgs; [ tmuxPlugins.dracula tmuxPlugins.vim-tmux-navigator ];
     extraConfig = ''
       # Unbind default C-b command
       unbind C-b
@@ -178,21 +171,17 @@ in
     enable = true;
     theme = "Dracula";
     font = {
-      name = "JetBrainsMonoNL Nerd Font";
+      name = "JetBrainsMono Nerd Font";
       size = 10.0;
     };
-    shellIntegration = {
-      enableFishIntegration = true;
-    };
+    shellIntegration = { enableFishIntegration = true; };
     settings = {
       adjust_line_height = 2;
       initial_window_width = 920;
       initial_window_height = 1080;
       hide_window_decorations = "yes";
-      window_border_width = 0;
     };
   };
-
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
