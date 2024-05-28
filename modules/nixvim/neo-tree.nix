@@ -4,14 +4,13 @@
     enableRefreshOnWrite = true;
     enableGitStatus = true;
     enableDiagnostics = true;
+    closeIfLastWindow = true;
     gitStatusAsync = true;
     gitStatusAsyncOptions = {
       batchSize = 1000;
       batchDelay = 10;
       maxLines = 10000;
     };
-    filesystem.followCurrentFile = {
-      enabled = true;
-    };
+    filesystem.followCurrentFile = { enabled = true; };
   };
 }
