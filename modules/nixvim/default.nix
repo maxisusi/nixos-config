@@ -80,7 +80,18 @@
            }
     '';
 
-  colorschemes.dracula.enable = true;
+  colorschemes = {
+    dracula = {
+      enable = true;
+      bold = true;
+      italic = true;
+      underline = true;
+      fullSpecialAttrsSupport = true;
+      highContrastDiff = true;
+      inverse = true;
+      colorterm = true;
+    };
+  };
 
   autoCmd = [{
     event = [ "BufWritePre" ];
