@@ -53,6 +53,7 @@ in {
     tmuxifier
     tokei
     python3
+    insomnia
 
     # LANGUAGES
     nodenv
