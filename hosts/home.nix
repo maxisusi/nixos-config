@@ -173,7 +173,6 @@ in {
 
       # Resize with mouse
       setw -g mouse on
-
     '';
   };
 
