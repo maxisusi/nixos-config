@@ -144,11 +144,20 @@ in {
 
   programs.tmux = {
     enable = true;
-    plugins = with pkgs; [ tmuxPlugins.dracula tmuxPlugins.vim-tmux-navigator ];
+    plugins = with pkgs; [
+      tmuxPlugins.dracula
+      tmuxPlugins.vim-tmux-navigator
+      tmuxPlugins.sensible
+    ];
     extraConfig = ''
       # Unbind default C-b command
       unbind C-b
       set -g prefix C-a
+
+      # Fixing strikethrough not appearing on tmux with neovim
+      set -g default-terminal "xterm-kitty"
+      set -ga terminal-overrides ",xterm-256color:Tc,alacritty:RGB"
+      set -as terminal-overrides ',*:Setulc=\E[58::2::%p1%{65536}%/%d::%p1%{256}%/%{255}%&%d::%p1%{255}%&%d%;m'  # underscore colours - needs tmux-3.0
 
       # Reload config
       unbind r
