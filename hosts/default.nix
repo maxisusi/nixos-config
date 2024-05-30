@@ -1,5 +1,4 @@
-{ lib, inputs, system, home-manager, user, nixvim, ... } @attr:
-{
+{ lib, inputs, system, home-manager, user, nixvim, ... }@attr: {
   # Desktop Environment
   desktop = lib.nixosSystem {
     inherit system;
@@ -14,10 +13,10 @@
         home-manager.backupFileExtension = "backup";
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
-        home-manager.extraSpecialArgs = { inherit inputs user system; }; # Pass flake as variable
-        home-manager.users.${user} = {
-          imports = [ ./home.nix ];
-        };
+        home-manager.extraSpecialArgs = {
+          inherit inputs user system;
+        }; # Pass flake as variable
+        home-manager.users.${user} = { imports = [ ./home.nix ]; };
       }
     ];
   };
@@ -29,18 +28,19 @@
     modules = [
       ./laptop
       ./configuration.nix
+      nixvim.nixosModules.nixvim
+
       home-manager.nixosModules.home-manager
       {
         home-manager.backupFileExtension = "backup";
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
-        home-manager.extraSpecialArgs = { inherit inputs user system; }; # Pass flake as variable
-        home-manager.users.${user} = {
-          imports = [ ./home.nix ];
-        };
+        home-manager.extraSpecialArgs = {
+          inherit inputs user system;
+        }; # Pass flake as variable
+        home-manager.users.${user} = { imports = [ ./home.nix ]; };
       }
     ];
   };
 
 }
-
