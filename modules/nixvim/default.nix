@@ -28,6 +28,7 @@
     ./luasnip.nix
     ./dressing.nix
     ./indent-blankline.nix
+    ./vim-visual-multi.nix
   ];
 
   extraPlugins = with pkgs.vimPlugins; [{ plugin = nvim-window-picker; }];
