@@ -4,7 +4,7 @@
       enable = true;
       servers = {
         # Javascript
-        tsserver.enable = true;
+        # tsserver.enable = true;
         eslint.enable = true;
         nixd.enable = true;
         zls.enable = true;

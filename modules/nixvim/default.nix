@@ -29,6 +29,7 @@
     ./dressing.nix
     ./indent-blankline.nix
     ./vim-visual-multi.nix
+    ./typescript-tools.nix
   ];
 
   extraPlugins = with pkgs.vimPlugins; [{ plugin = nvim-window-picker; }];
@@ -104,6 +105,22 @@
   ];
 
   keymaps = [
+    # Typescript tools
+    {
+      key = "<leader>ru";
+      action = "<cmd>TSToolsRemoveUnusedImports<cr>";
+      options.desc = "Remove unused imports";
+    }
+    {
+      key = "<leader>ai";
+      action = "<cmd>TSToolsAddMissingImports<cr>";
+      options.desc = "Add missing imports";
+    }
+    {
+      key = "<leader>pp";
+      action = "<cmd>TSToolsOrganizeImports<cr>";
+      options.desc = "Organize imports";
+    }
     {
       key = "<C-s>";
       action = "<cmd>w!<cr>";

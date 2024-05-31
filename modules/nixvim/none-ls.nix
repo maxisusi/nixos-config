@@ -3,10 +3,7 @@
     enable = true;
     sources = {
       formatting = {
-        prettier = {
-          enable = true;
-          disableTsServerFormatter = true;
-        };
+        prettier = { enable = true; };
         nixfmt = { enable = true; };
       };
     };
