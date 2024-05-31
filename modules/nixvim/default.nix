@@ -66,10 +66,6 @@
       bold = true;
       italic = true;
       underline = true;
-      fullSpecialAttrsSupport = true;
-      highContrastDiff = true;
-      inverse = true;
-      colorterm = true;
     };
   };
 
