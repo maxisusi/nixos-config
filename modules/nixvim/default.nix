@@ -71,13 +71,36 @@
     };
   };
 
-  autoCmd = [{
-    event = [ "BufWritePre" ];
-    callback = {
-      __raw = "function() vim.lsp.buf.format { async = false } end";
-    };
-    desc = "Format on save";
-  }];
+  autoCmd = [
+    {
+      event = [ "BufWritePre" ];
+      callback = {
+        __raw = "function() vim.lsp.buf.format { async = false } end";
+      };
+      desc = "Format on save";
+    }
+    {
+      event = [ "CursorMoved" ];
+      callback = {
+        __raw =
+          #lua
+          ''
+            function()
+                if vim.v.hlsearch == 1 and vim.fn.searchcount().exact_match == 0 then
+                    vim.schedule(
+                        function()
+                            vim.cmd.nohlsearch()
+                        end
+                    )
+                end
+            end
+          '';
+        desc = "remove search highlight when done";
+
+      };
+    }
+
+  ];
 
   keymaps = [
     {
