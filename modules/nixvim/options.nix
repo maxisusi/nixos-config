@@ -12,7 +12,6 @@
       expandtab = true;
       shiftwidth = 2;
       smartindent = true;
-      cursorline = true; # highlight the text line of the cursor
       history = 100; # number of commands to remember in a history table
       tabstop = 2;
       wrap = false; # disable line wrapping
