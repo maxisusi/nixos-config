@@ -61,11 +61,15 @@
     '';
 
   colorschemes = {
-    dracula = {
+    catppuccin = {
       enable = true;
-      bold = true;
-      italic = true;
-      underline = true;
+      settings.integrations = {
+        cmp = true;
+        gitsigns = true;
+        nvimtree = true;
+        treesitter = true;
+        notify = true;
+      };
     };
   };
 

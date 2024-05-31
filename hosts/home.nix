@@ -145,7 +145,7 @@ in {
   programs.tmux = {
     enable = true;
     plugins = with pkgs; [
-      tmuxPlugins.dracula
+      tmuxPlugins.catppuccin
       tmuxPlugins.vim-tmux-navigator
       tmuxPlugins.sensible
     ];
@@ -173,12 +173,15 @@ in {
 
       # Resize with mouse
       setw -g mouse on
+
+      # Set catppuccin flavor
+      set -g @catppuccin_flavour 'mocha'
     '';
   };
 
   programs.kitty = {
     enable = true;
-    theme = "Dracula";
+    theme = "Catppuccin-Mocha";
     font = {
       name = "JetBrainsMono Nerd Font";
       size = 10.0;
