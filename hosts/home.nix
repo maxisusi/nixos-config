@@ -54,6 +54,7 @@ in {
     tokei
     python3
     insomnia
+    zoxide
 
     # Tipee
     # gdk
@@ -116,12 +117,14 @@ in {
     enable = true;
     interactiveShellInit = ''
       set fish_greeting # Disable greeting
+      zoxide init fish | source
     '';
     shellAliases = {
       # GENERALS
       ee = "exit";
       dps = "docker ps";
       vi = "nvim";
+      ns = "nix-shell --command fish";
     };
   };
 
