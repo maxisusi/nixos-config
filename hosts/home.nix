@@ -1,6 +1,11 @@
 { pkgs, user, inputs, system, ... }:
-
 let
+  catppuccin-fish = pkgs.fetchFromGitHub {
+    owner = "catppuccin";
+    repo = "fish";
+    rev = "a3b9eb5eaf2171ba1359fe98f20d226c016568cf";
+    hash = "sha256-Dc/zdxfzAUM5NX8PxzfljRbYvO9f9syuLO8yBr+R3qg=";
+  };
   neovimConfig = import ../modules/nixvim;
   nvim = inputs.nixvim.legacyPackages.${system}.makeNixvimWithModule {
     inherit pkgs;
@@ -10,6 +15,9 @@ let
   #   (with pkgs.google-cloud-sdk.components; [ gke-gcloud-auth-plugin ]);
   onePassPath = "~/.1password/agent.sock";
 in {
+  xdg.configFile."fish/themes/Catppuccin Mocha.theme".source =
+    "${catppuccin-fish}/themes/Catppuccin Mocha.theme";
+
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = user;
