@@ -139,6 +139,66 @@
     }
     # Telescope - special commands
     {
+      key = "<leader>ls";
+      action =
+        # lua
+        ''
+          function() require("telescope.builtin").lsp_document_symbols() end
+        '';
+      lua = true;
+      options.desc = "Search symbols";
+    }
+    {
+      key = "<leader>gC";
+      action =
+        # lua
+        ''
+          function() require("telescope.builtin").git_bcommits { use_file_path = true } end
+        '';
+      lua = true;
+      options.desc = "Git commits (current file)";
+    }
+    {
+      key = "<leader>gc";
+      action =
+        # lua
+        ''
+          function() require("telescope.builtin").git_commits { use_file_path = true } end         
+        '';
+      lua = true;
+      options.desc = "Git commits (repository)";
+    }
+    {
+      key = "<leader>f<CR>";
+      action =
+        # lua
+        ''
+          function() require("telescope.builtin").resume() end        
+        '';
+      lua = true;
+      options.desc = "Resume previous search";
+    }
+    {
+      key = "<leader>f/";
+      action =
+        # lua
+        ''
+          function() require("telescope.builtin").current_buffer_fuzzy_find() end 
+        '';
+      lua = true;
+      options.desc = "Find words in the current buffer";
+    }
+    {
+      key = "<leader>gt";
+      action =
+        # lua
+        ''
+          function() require("telescope.builtin").git_status { use_file_path = true } end
+        '';
+      lua = true;
+      options.desc = "Git status";
+    }
+    {
       key = "<leader>fW";
       action =
         # lua
