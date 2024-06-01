@@ -135,10 +135,17 @@ in {
 
   programs.tmux = {
     enable = true;
-    catppuccin.enable = true;
+    catppuccin = {
+      enable = true;
+      extraConfig = ''
+        set -g @catppuccin_status_modules_right "application session cpu"
+      '';
+
+    };
     plugins = with pkgs; [
       tmuxPlugins.vim-tmux-navigator
       tmuxPlugins.sensible
+      tmuxPlugins.cpu
     ];
     extraConfig = ''
       # Unbind default C-b command
@@ -164,6 +171,8 @@ in {
 
       # Resize with mouse
       setw -g mouse on
+
+
     '';
   };
 
