@@ -8,7 +8,6 @@
       ./configuration.nix
       nixvim.nixosModules.nixvim
       catppuccin.nixosModules.catppuccin
-
       home-manager.nixosModules.home-manager
       {
         home-manager.backupFileExtension = "backup";
@@ -33,7 +32,6 @@
       ./configuration.nix
       nixvim.nixosModules.nixvim
       catppuccin.nixosModules.catppuccin
-
       home-manager.nixosModules.home-manager
       {
         home-manager.backupFileExtension = "backup";
@@ -42,7 +40,9 @@
         home-manager.extraSpecialArgs = {
           inherit inputs user system;
         }; # Pass flake as variable
-        imports = [ ./home.nix catppuccin.homeManagerModules.catppuccin ];
+        home-manager.users.${user} = {
+          imports = [ ./home.nix catppuccin.homeManagerModules.catppuccin ];
+        };
       }
     ];
   };
