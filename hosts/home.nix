@@ -9,7 +9,8 @@ let
   gdk = pkgs.google-cloud-sdk.withExtraComponents
     (with pkgs.google-cloud-sdk.components; [ gke-gcloud-auth-plugin ]);
   onePassPath = "~/.1password/agent.sock";
-in {
+in
+{
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = user;
