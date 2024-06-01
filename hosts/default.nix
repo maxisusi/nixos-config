@@ -1,4 +1,4 @@
-{ lib, inputs, system, home-manager, user, nixvim, ... }@attr: {
+{ lib, inputs, system, home-manager, user, nixvim, catppuccin, ... }@attr: {
   # Desktop Environment
   desktop = lib.nixosSystem {
     inherit system;
@@ -7,6 +7,7 @@
       ./desktop
       ./configuration.nix
       nixvim.nixosModules.nixvim
+      catppuccin.nixosModules.catppuccin
 
       home-manager.nixosModules.home-manager
       {
@@ -16,7 +17,9 @@
         home-manager.extraSpecialArgs = {
           inherit inputs user system;
         }; # Pass flake as variable
-        home-manager.users.${user} = { imports = [ ./home.nix ]; };
+        home-manager.users.${user} = {
+          imports = [ ./home.nix catppuccin.homeManagerModules.catppuccin ];
+        };
       }
     ];
   };
@@ -29,6 +32,7 @@
       ./laptop
       ./configuration.nix
       nixvim.nixosModules.nixvim
+      catppuccin.nixosModules.catppuccin
 
       home-manager.nixosModules.home-manager
       {
@@ -38,7 +42,7 @@
         home-manager.extraSpecialArgs = {
           inherit inputs user system;
         }; # Pass flake as variable
-        home-manager.users.${user} = { imports = [ ./home.nix ]; };
+        imports = [ ./home.nix catppuccin.homeManagerModules.catppuccin ];
       }
     ];
   };

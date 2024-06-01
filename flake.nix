@@ -4,6 +4,8 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
 
+    catppuccin.url = "github:catppuccin/nix";
+
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -14,7 +16,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, nixvim, ... } @inputs:
+  outputs = { self, nixpkgs, home-manager, nixvim, catppuccin, ... }@inputs:
     let
 
       system = "x86_64-linux";
@@ -24,14 +26,11 @@
       };
       lib = nixpkgs.lib;
       user = "max";
-    in
-    {
+    in {
       formatter.x86_64-linux = nixpkgs.legacyPackages.${system}.nixpkgs-fmt;
-      nixosConfigurations = (
-        import ./hosts {
-          inherit (nixpkgs) lib;
-          inherit inputs user system home-manager nixvim;
-        }
-      );
+      nixosConfigurations = (import ./hosts {
+        inherit (nixpkgs) lib;
+        inherit inputs user system home-manager nixvim catppuccin;
+      });
     };
 }

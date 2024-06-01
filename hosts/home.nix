@@ -1,11 +1,5 @@
 { pkgs, user, inputs, system, ... }:
 let
-  catppuccin-fish = pkgs.fetchFromGitHub {
-    owner = "catppuccin";
-    repo = "fish";
-    rev = "a3b9eb5eaf2171ba1359fe98f20d226c016568cf";
-    hash = "sha256-shQxlyoauXJACoZWtRUbRMxmm10R8vOigXwjxBhG8ng=";
-  };
   neovimConfig = import ../modules/nixvim;
   nvim = inputs.nixvim.legacyPackages.${system}.makeNixvimWithModule {
     inherit pkgs;
@@ -15,14 +9,11 @@ let
   #   (with pkgs.google-cloud-sdk.components; [ gke-gcloud-auth-plugin ]);
   onePassPath = "~/.1password/agent.sock";
 in {
-  xdg.configFile."fish/themes/Catppuccin Mocha.theme".source =
-    "${catppuccin-fish}/themes/Catppuccin Mocha.theme";
-
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = user;
   home.homeDirectory = "/home/${user}";
-
+  catppuccin.flavor = "mocha";
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
   # introduces backwards incompatible changes.
@@ -95,6 +86,11 @@ in {
   #
   home.sessionVariables = { EDITOR = "nvim"; };
 
+  programs.lazygit = {
+    enable = true;
+    catppuccin.enable = true;
+  };
+
   # CONFIGUTATIONS
   programs.git = {
     enable = true;
@@ -122,6 +118,7 @@ in {
   };
 
   programs.fish = {
+    catppuccin.enable = true;
     enable = true;
     interactiveShellInit = ''
       set fish_greeting # Disable greeting
@@ -138,8 +135,8 @@ in {
 
   programs.tmux = {
     enable = true;
+    catppuccin.enable = true;
     plugins = with pkgs; [
-      tmuxPlugins.catppuccin
       tmuxPlugins.vim-tmux-navigator
       tmuxPlugins.sensible
     ];
@@ -167,15 +164,12 @@ in {
 
       # Resize with mouse
       setw -g mouse on
-
-      # Set catppuccin flavor
-      set -g @catppuccin_flavour 'mocha'
     '';
   };
 
   programs.kitty = {
     enable = true;
-    theme = "Catppuccin-Mocha";
+    catppuccin.enable = true;
     font = {
       name = "JetBrainsMono Nerd Font";
       size = 10.0;
