@@ -4,7 +4,7 @@ let
     owner = "catppuccin";
     repo = "fish";
     rev = "a3b9eb5eaf2171ba1359fe98f20d226c016568cf";
-    hash = "sha256-Dc/zdxfzAUM5NX8PxzfljRbYvO9f9syuLO8yBr+R3qg=";
+    hash = "sha256-shQxlyoauXJACoZWtRUbRMxmm10R8vOigXwjxBhG8ng=";
   };
   neovimConfig = import ../modules/nixvim;
   nvim = inputs.nixvim.legacyPackages.${system}.makeNixvimWithModule {
