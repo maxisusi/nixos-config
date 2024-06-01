@@ -2,8 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, user, ... }:
-{
+{ pkgs, user, ... }: {
 
   # Bootloader.
   boot.loader.grub.enable = true;
@@ -50,7 +49,6 @@
       options = "--delete-older-than 7d";
     };
 
-
   };
 
   # Enable sound with pipewire.
@@ -59,7 +57,8 @@
 
   security = {
     rtkit.enable = true;
-    sudo.wheelNeedsPassword = false; # Removes the need to type the password when typing sudo 
+    sudo.wheelNeedsPassword =
+      false; # Removes the need to type the password when typing sudo
   };
 
   services.pipewire = {
@@ -85,8 +84,6 @@
     extraGroups = [ "networkmanager" "wheel" "docker" ];
   };
 
-
-
   # Start fish shell
   programs.bash = {
     interactiveShellInit = ''
@@ -109,18 +106,7 @@
       EDITOR = "nvim";
       VISUAL = "vim";
     };
-    systemPackages = with pkgs; [
-      google-chrome
-      firefox
-      docker
-      docker-compose
-      sloth
-    ];
-  };
-
-
-  nixpkgs.config.packageOverrides = pkgs: {
-    sloth = pkgs.callPackage ../packages/sloth/default.nix { };
+    systemPackages = with pkgs; [ google-chrome firefox docker docker-compose ];
   };
 
   programs._1password.enable = true;
@@ -131,11 +117,8 @@
     polkitPolicyOwners = [ "max" ];
   };
 
-  fonts.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
-  ];
-
-
+  fonts.packages = with pkgs;
+    [ (nerdfonts.override { fonts = [ "JetBrainsMono" ]; }) ];
 
   virtualisation.docker.enable = true;
 

@@ -6,11 +6,10 @@ let
     inherit pkgs;
     module = neovimConfig;
   };
-  gdk = pkgs.google-cloud-sdk.withExtraComponents
-    (with pkgs.google-cloud-sdk.components; [ gke-gcloud-auth-plugin ]);
+  # gdk = pkgs.google-cloud-sdk.withExtraComponents
+  #   (with pkgs.google-cloud-sdk.components; [ gke-gcloud-auth-plugin ]);
   onePassPath = "~/.1password/agent.sock";
-in
-{
+in {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = user;
@@ -56,14 +55,8 @@ in
     python3
     insomnia
 
-    # LANGUAGES
-    nodenv
-
     # Tipee
-    zsh
-    gnumake
-    rsync
-    gdk
+    # gdk
   ];
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
@@ -128,17 +121,6 @@ in
       # GENERALS
       ee = "exit";
       dps = "docker ps";
-
-      # GIT
-      gp = "git push";
-
-      # TIPEE
-      mu = "make up";
-      md = "make down";
-      mr = "make restart";
-      mrb = "make destroy && make up";
-      gcb = "git cherry -v develop $(git branch --show-current)";
-
       vi = "nvim";
     };
   };
