@@ -4,11 +4,6 @@
 
 { pkgs, user, ... }: {
 
-  # Bootloader.
-  boot.loader.grub.enable = true;
-  boot.loader.grub.device = "/dev/vda";
-  boot.loader.grub.useOSProber = true;
-
   networking.hostName = user; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -34,6 +29,10 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
+  services.libinput = {
+    touchpad.naturalScrolling = true;
+    mouse.naturalScrolling = true;
+  };
   services.xserver.desktopManager.plasma5.enable = true;
   services.displayManager.sddm.enable = true;
 
