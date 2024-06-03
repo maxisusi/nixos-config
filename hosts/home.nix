@@ -54,6 +54,7 @@ in {
     python3
     insomnia
     zoxide
+    starship
 
     # Tipee
     # gdk
@@ -92,6 +93,12 @@ in {
   };
 
   # CONFIGUTATIONS
+
+  programs.starship = {
+    enable = true;
+    catppuccin.enable = true;
+  };
+
   programs.git = {
     enable = true;
     userName = "maxisusi";
