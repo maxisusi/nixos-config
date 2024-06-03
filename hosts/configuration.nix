@@ -4,7 +4,6 @@
 
 { pkgs, user, ... }: {
 
-  networking.hostName = user; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -100,12 +99,19 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment = {
+    sessionVariables = { FLAKE = "/home/max/.config/flakes/nixos-config"; };
     variables = {
       TERMINAL = "kitty";
       EDITOR = "nvim";
       VISUAL = "vim";
     };
-    systemPackages = with pkgs; [ google-chrome firefox docker docker-compose ];
+    systemPackages = with pkgs; [
+      google-chrome
+      firefox
+      docker
+      docker-compose
+      nh
+    ];
   };
 
   programs._1password.enable = true;

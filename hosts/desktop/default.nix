@@ -6,9 +6,12 @@
     ./hardware-configuration.nix
   ];
 
+  # Currently used for VM on desktop
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "/dev/vda";
   boot.loader.grub.useOSProber = true;
+
+  networking.hostName = "desktop"; # Define your hostname.
 
   # Configure keymap in X11
   services.xserver = {
