@@ -12,6 +12,7 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
+  programs.hyprland.enable = true;
 
   # Set your time zone.
   time.timeZone = "Europe/Zurich";

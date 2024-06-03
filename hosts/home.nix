@@ -93,6 +93,20 @@ in {
   };
 
   # CONFIGUTATIONS
+  wayland.windowManager.hyprland = {
+    enable = true;
+    settings = {
+      "$mod" = "SUPER";
+      "$terminal" = "kitty";
+      general = {
+        gaps_in = 5;
+        gaps_out = 20;
+        border_size = 2;
+      };
+      bind =
+        [ "$mod, Q, exec, $terminal" "$mod, M, exit" "$mod, J, togglesplit" ];
+    };
+  };
 
   programs.starship = {
     enable = true;
