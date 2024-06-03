@@ -9,9 +9,10 @@ let
   #   (with pkgs.google-cloud-sdk.components; [ gke-gcloud-auth-plugin ]);
   onePassPath = "~/.1password/agent.sock";
   startupScript = pkgs.writeShellScriptBin "start" ''
-    ${pkgs.waybar}/bin/waybar 
-    nm-applet &&
-    blueman-applet &
+    lxqt-policykit-agent &
+    waybar &
+    nm-applet &
+    wl-clip-persist --clipboard both &
   '';
 in {
   # Home Manager needs a bit of information about you and the paths it should
@@ -67,7 +68,8 @@ in {
     networkmanagerapplet
     blueman
     brightnessctl
-
+    wl-clip-persist
+    lxqt.lxqt-policykit
     # Tipee
     # gdk
   ];
@@ -113,15 +115,20 @@ in {
       "$terminal" = "kitty";
       "$fileManager" = "dolphin";
       "$menu" = "rofi -show drun";
+
       general = {
-        gaps_in = 5;
+        gaps_in = 0;
         gaps_out = 10;
         border_size = 1;
         layout = "dwindle";
         resize_on_border = true;
+        "col.active_border" = "rgb(cba6f7) rgb(94e2d5) 45deg";
+        "col.inactive_border" = "0x00000000";
+        border_part_of_window = false;
+        no_border_on_floating = false;
       };
       decoration = {
-        rounding = 10;
+        rounding = 3;
         drop_shadow = true;
         shadow_range = 4;
         blur = {
@@ -139,6 +146,16 @@ in {
         pseudotile = true;
         preserve_split = true;
       };
+      misc = {
+        disable_autoreload = true;
+        disable_hyprland_logo = true;
+        always_follow_on_dnd = true;
+        layers_hog_keyboard_focus = true;
+        animate_manual_resizes = false;
+        enable_swallow = true;
+        focus_on_activate = true;
+      };
+
       bindm = [ "$mod, mouse:272, movewindow" "$mod, mouse:273, resizewindow" ];
       bind = [
         "$mod, Q, exec, $terminal"
@@ -211,7 +228,6 @@ in {
           "easeOutCubic, 0.33, 1, 0.68, 1"
           "easeinoutsine, 0.37, 0, 0.63, 1"
         ];
-
         animation = [
           # Windows
           "windowsIn, 1, 3, easeOutCubic, popin 30%" # window open
@@ -425,13 +441,17 @@ in {
         "scroll-step" = 1;
         "format" = "{icon} {volume}% {format_source}";
         "format-muted" = "󰖁 Muted {format_source}";
-        "format-source" = "Mic ON";
-        "format-source-muted" = "Mic OFF";
+        "format-source" = "";
+        "format-source-muted" = "";
         "format-icons" = { "default" = [ "" "" "" ]; };
         "on-click" = "pamixer -t";
         "tooltip" = false;
       };
-      "battery" = { "interval" = 1; };
+      "battery" = {
+        "interval" = 60;
+        "format" = "{icon} {capacity}%";
+        "format-icons" = [ "" "" "" "" ];
+      };
       "clock" = {
         "interval" = 1;
         "format" = "{:%I:%M %p  %A %b %d}";
