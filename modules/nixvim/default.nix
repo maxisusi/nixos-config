@@ -30,6 +30,7 @@
     ./indent-blankline.nix
     ./vim-visual-multi.nix
     ./typescript-tools.nix
+    ./copilot.nix
   ];
 
   extraPlugins = with pkgs.vimPlugins; [{ plugin = nvim-window-picker; }];
