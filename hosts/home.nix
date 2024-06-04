@@ -135,13 +135,16 @@ in {
           enabled = true;
           size = 3;
           passes = 1;
-
           vibrancy = 0.1696;
         };
 
       };
       exec-once = "${startupScript}/bin/start";
-      monitor = "eDP-1,1920x1200@60,0x0,1";
+      monitor = [
+        "desc:Chimei Innolux Corporation 0x143F,highrr,0x0,1"
+        "desc:LG Electronics LG HDR WQHD+ 307NTYTE5938,preferred,0x-1600,1" # Home monitor
+        ",preferred,auto,1" # Random monitor
+      ];
       dwindle = {
         pseudotile = true;
         preserve_split = true;
