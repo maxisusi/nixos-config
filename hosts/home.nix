@@ -69,7 +69,6 @@ in {
     blueman
     brightnessctl
     wl-clip-persist
-    lxqt.lxqt-policykit
     # Tipee
     # gdk
   ];
@@ -220,7 +219,11 @@ in {
       input = {
         kb_layout = "ch";
         kb_variant = "fr";
-        touchpad = { natural_scroll = true; };
+        touchpad = {
+          natural_scroll = true;
+          middle_button_emulation = false;
+          "tap-to-click" = false;
+        };
         follow_mouse = 1;
       };
       animations = {
