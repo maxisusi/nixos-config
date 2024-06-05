@@ -13,6 +13,10 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
+  hardware.bluetooth.enable = true; # enables support for Bluetooth
+  hardware.bluetooth.powerOnBoot =
+    true; # powers up the default Bluetooth controller on boot
+
   # Set your time zone.
   time.timeZone = "Europe/Zurich";
 
@@ -32,7 +36,10 @@
     touchpad.naturalScrolling = true;
     mouse.naturalScrolling = true;
   };
-  services.xserver.desktopManager.plasma5.enable = true;
+  services.xserver.desktopManager.plasma5 = {
+    enable = true;
+    excludePackages = with pkgs.libsForQt5; [ spectacle ];
+  };
   services.displayManager.sddm.enable = true;
 
   # Enable CUPS to print documents.

@@ -55,6 +55,7 @@ in {
     insomnia
     zoxide
     starship
+    flameshot
 
     # Tipee
     # gdk
