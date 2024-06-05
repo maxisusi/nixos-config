@@ -10,11 +10,17 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # Enable OpenGL
-  hardware.opengl = {
-    enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
+  # Steam and optimisations
+  programs.steam.enable = true;
+  programs.steam.gamescopeSession.enable = true;
+  programs.gamemode.enable = true;
+
+  environment = {
+    sessionVariables = {
+      STEAM_EXTRA_COMPAT_TOOLS_PATH =
+        "\${HOME}/.steam/root/compatibilitytools.d";
+    };
+    systemPackages = with pkgs; [ protonup ];
   };
 
   # Load nvidia driver for Xorg and Wayland

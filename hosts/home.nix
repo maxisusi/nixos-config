@@ -56,6 +56,7 @@ in {
     zoxide
     starship
     flameshot
+    neofetch
 
     # Tipee
     # gdk

@@ -17,6 +17,13 @@
   hardware.bluetooth.powerOnBoot =
     true; # powers up the default Bluetooth controller on boot
 
+  # Enable OpenGL
+  hardware.opengl = {
+    enable = true;
+    driSupport = true;
+    driSupport32Bit = true;
+  };
+
   # Set your time zone.
   time.timeZone = "Europe/Zurich";
 
