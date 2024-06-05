@@ -4,7 +4,6 @@
       enable = true;
       servers = {
         # Javascript
-        # tsserver.enable = true;
         eslint.enable = true;
         nixd.enable = true;
         zls.enable = true;
@@ -37,6 +36,10 @@
           }
         ];
       };
+    };
+    lsp-format = {
+      enable = true;
+      setup = { options = { exclude = [ "(typescript-tools)" ]; }; };
     };
   };
 }
