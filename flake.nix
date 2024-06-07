@@ -6,6 +6,14 @@
 
     catppuccin.url = "github:catppuccin/nix";
 
+    hypr-contrib.url = "github:hyprwm/contrib";
+    hyprpicker.url = "github:hyprwm/hyprpicker";
+
+    hyprland = {
+      url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -16,7 +24,8 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, nixvim, catppuccin, ... }@inputs:
+  outputs =
+    { self, nixpkgs, home-manager, nixvim, catppuccin, hyprland, ... }@inputs:
     let
 
       system = "x86_64-linux";
@@ -30,7 +39,7 @@
       formatter.x86_64-linux = nixpkgs.legacyPackages.${system}.nixpkgs-fmt;
       nixosConfigurations = (import ./hosts {
         inherit (nixpkgs) lib;
-        inherit inputs user system home-manager nixvim catppuccin;
+        inherit inputs user system home-manager nixvim catppuccin hyprland;
       });
     };
 }

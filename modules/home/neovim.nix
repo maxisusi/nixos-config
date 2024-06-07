@@ -5,4 +5,5 @@ let
     inherit pkgs;
     module = neovimConfig;
   };
-in { home.packages = [ nvim ]; }
+in
+{ home.packages = [ nvim ]; }

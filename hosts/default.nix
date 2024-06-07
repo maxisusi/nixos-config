@@ -1,4 +1,5 @@
-{ lib, inputs, system, home-manager, user, nixvim, catppuccin, ... }@attr: {
+{ lib, inputs, system, home-manager, user, nixvim, catppuccin, hyprland, ...
+}@attr: {
   # Desktop Environment
   desktop = lib.nixosSystem {
     inherit system;
@@ -17,8 +18,11 @@
           inherit inputs user system;
         }; # Pass flake as variable
         home-manager.users.${user} = {
-          imports =
-            [ ../modules/home catppuccin.homeManagerModules.catppuccin ];
+          imports = [
+            ../modules/home
+            catppuccin.homeManagerModules.catppuccin
+            # hyprland.homeManagerModules.default
+          ];
         };
       }
     ];
