@@ -17,7 +17,8 @@
           inherit inputs user system;
         }; # Pass flake as variable
         home-manager.users.${user} = {
-          imports = [ ./home.nix catppuccin.homeManagerModules.catppuccin ];
+          imports =
+            [ ../modules/home catppuccin.homeManagerModules.catppuccin ];
         };
       }
     ];
@@ -41,7 +42,8 @@
           inherit inputs user system;
         }; # Pass flake as variable
         home-manager.users.${user} = {
-          imports = [ ./home.nix catppuccin.homeManagerModules.catppuccin ];
+          imports =
+            [ ../modules/home catppuccin.homeManagerModules.catppuccin ];
         };
       }
     ];

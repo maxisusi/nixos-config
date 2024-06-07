@@ -31,6 +31,7 @@
     ./vim-visual-multi.nix
     ./typescript-tools.nix
     ./copilot.nix
+    ./mini.nix
   ];
 
   extraPlugins = with pkgs.vimPlugins; [{ plugin = nvim-window-picker; }];
