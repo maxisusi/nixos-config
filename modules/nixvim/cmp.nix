@@ -1,8 +1,18 @@
 {
   plugins = {
+    cmp_luasnip = { enable = true; };
+    cmp-nvim-lsp = { enable = true; };
+    cmp-buffer = { enable = true; };
+    cmp-path = { enable = true; }; # file system paths
+    cmp-cmdline = { enable = false; }; # autocomplete for cmdline
+
     cmp = {
       enable = true;
       settings = {
+        snippet = {
+          expand =
+            "function(args) require('luasnip').lsp_expand(args.body) end";
+        };
         formatting = {
           fields = [ "kind" "abbr" "menu" ];
           format =

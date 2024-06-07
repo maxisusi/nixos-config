@@ -42,8 +42,6 @@ in {
     ripgrep
     jq
     git
-    cargo
-    rustc
     bat
     gnumake
     rsync
@@ -57,6 +55,9 @@ in {
     starship
     flameshot
     neofetch
+    # Rust related
+    rustfmt
+    cargo
 
     # Tipee
     # gdk
