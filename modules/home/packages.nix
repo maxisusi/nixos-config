@@ -5,7 +5,6 @@
     vscode
     ripgrep
     jq
-    bat
     gnumake
     rsync
     tokei
