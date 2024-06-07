@@ -5,7 +5,7 @@
     specialArgs = attr;
     modules = [
       ./desktop
-      ./configuration.nix
+      ../modules/core
       nixvim.nixosModules.nixvim
       catppuccin.nixosModules.catppuccin
       home-manager.nixosModules.home-manager
@@ -30,7 +30,7 @@
     specialArgs = attr;
     modules = [
       ./laptop
-      ./configuration.nix
+      ../modules/core
       nixvim.nixosModules.nixvim
       catppuccin.nixosModules.catppuccin
       home-manager.nixosModules.home-manager

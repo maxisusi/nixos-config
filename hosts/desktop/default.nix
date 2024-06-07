@@ -6,9 +6,15 @@
     ./hardware-configuration.nix
   ];
 
-  # Boot options
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  networking.hostName = "desktop"; # Define your hostname.
+
+  # Configure keymap in X11
+  services.xserver = {
+    xkb = {
+      layout = "us";
+      variant = "altgr-intl";
+    };
+  };
 
   # Steam and optimisations
   programs.steam.enable = true;
@@ -55,16 +61,6 @@
 
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
     package = config.boot.kernelPackages.nvidiaPackages.stable;
-  };
-
-  networking.hostName = "desktop"; # Define your hostname.
-
-  # Configure keymap in X11
-  services.xserver = {
-    xkb = {
-      layout = "us";
-      variant = "altgr-intl";
-    };
   };
 
 }
