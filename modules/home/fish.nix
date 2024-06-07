@@ -1,7 +1,7 @@
 {
   programs.fish = {
-    catppuccin.enable = true;
     enable = true;
+    catppuccin.enable = true;
     interactiveShellInit = ''
       set fish_greeting # Disable greeting
       zoxide init fish | source
