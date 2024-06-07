@@ -5,7 +5,7 @@
     ++ [ (import ./core.nix) ] ++ [ (import ./packages.nix) ]
     ++ [ (import ./neovim.nix) ] ++ [ (import ./kitty.nix) ]
     ++ [ (import ./gtk.nix) ] ++ [ (import ./bat.nix) ]
-    ++ [ (import ./btop.nix) ];
+    ++ [ (import ./btop.nix) ] ++ [ (import ./wofi.nix) ];
 
   catppuccin.flavor = "mocha";
 }
