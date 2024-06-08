@@ -10,7 +10,7 @@
       catppuccin.nixosModules.catppuccin
       home-manager.nixosModules.home-manager
       {
-        home-manager.backupFileExtension = "backup";
+        home-manager.backupFileExtension = "hm_backup";
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
         home-manager.extraSpecialArgs = {
@@ -35,7 +35,7 @@
       catppuccin.nixosModules.catppuccin
       home-manager.nixosModules.home-manager
       {
-        home-manager.backupFileExtension = "backup";
+        home-manager.backupFileExtension = "hm_backup";
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
         home-manager.extraSpecialArgs = {
