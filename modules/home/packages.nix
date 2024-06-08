@@ -16,5 +16,17 @@
     rustfmt
     cargo
     discord
+    cinnamon.nemo-with-extensions
+    imv
+    mpv
+    wl-clipboard
+    poweralertd
+    qalculate-gtk
+    unzip
+    wget
+    xdg-utils
+    xxd
+    ncdu # disk space
+    libnotify
   ];
 }

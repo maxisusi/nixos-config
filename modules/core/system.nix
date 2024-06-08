@@ -24,8 +24,6 @@
     };
   };
 
-  programs.hyprland.enable = true;
-
   nixpkgs.config.allowUnfree = true;
   system.stateVersion = "23.11"; # Did you read the comment?
 
@@ -39,10 +37,14 @@
       VISUAL = "vim";
     };
     systemPackages = with pkgs; [
-      google-chrome
+      (google-chrome.override {
+        commandLineArgs =
+          [ "--enable-features=UseOzonePlatform" "--ozone-platform=wayland" ];
+      })
       firefox
       docker
       docker-compose
+      networkmanagerapplet
       nh
     ];
   };

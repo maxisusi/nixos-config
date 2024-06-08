@@ -11,6 +11,7 @@
     glib
     wayland
     direnv
+    cliphist
   ];
   systemd.user.targets.hyprland-session.Unit.Wants =
     [ "xdg-desktop-autostart.target" ];
@@ -20,7 +21,6 @@
       enable = true;
       # hidpi = true;
     };
-    # enableNvidiaPatches = false;
     systemd.enable = true;
   };
 }
