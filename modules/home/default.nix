@@ -8,7 +8,8 @@
     ++ [ (import ./btop.nix) ] ++ [ (import ./wofi.nix) ]
     ++ [ (import ./audacious/audacious.nix) ] ++ [ (import ./hyprland) ]
     ++ [ (import ./waybar) ] ++ [ (import ./scripts/scripts.nix) ]
-    ++ [ (import ./swaylock.nix) ] ++ [ (import ./mako.nix) ];
+    ++ [ (import ./swaylock.nix) ] ++ [ (import ./mako.nix) ]
+    ++ [ (import ./wlogout.nix) ];
 
   catppuccin.flavor = "mocha";
 }
