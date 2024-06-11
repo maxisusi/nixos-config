@@ -26,6 +26,18 @@
       });
     })
   ];
-  # nixpkgs.config.allowAliases = false;
 
+  # Disable packages from gnome
+  environment.gnome.excludePackages = with pkgs.gnome; [
+    cheese # webcam tool
+    gnome-music
+    gnome-terminal
+    epiphany # web browser
+    geary # email reader
+    totem # video player
+    tali # poker game
+    iagno # go game
+    hitori # sudoku game
+    atomix # puzzle game
+  ];
 }

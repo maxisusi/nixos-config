@@ -16,5 +16,6 @@
     rustfmt
     cargo
     discord
+    vlc
   ];
 }
