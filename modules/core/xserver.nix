@@ -2,8 +2,14 @@
   services.xserver = {
     enable = true;
     displayManager.gdm.enable = true;
-    desktopManager.gnome.enable = true;
-
+    desktopManager.gnome = {
+      enable = true;
+      extraGSettingsOverrides = ''
+        # Change default background
+        [org.gnome.desktop.background]
+        picture-uri='file://${../../wallpapers/purplesky.png}' 
+      '';
+    };
     # KDE
     # desktopManager.plasma5.enable = true;
     # excludePackages = with pkgs.libsForQt5; [ spectacle ];

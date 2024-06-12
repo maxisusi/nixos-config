@@ -8,4 +8,12 @@
     ++ [ (import ./btop.nix) ];
 
   catppuccin.flavor = "mocha";
+
+  dconf.settings = {
+    "org/gnome/desktop/input-sources" = {
+      xkb-options = [ "caps:none" ];
+    }; # Disable caps lock
+
+  };
+
 }
