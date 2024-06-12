@@ -13,6 +13,7 @@
         signingkey =
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJJJ6b/1CdEAgUkkOFUBkvcsxd6Dj50S8jNJfTDQ/Vt2";
       };
+      rerere = { enabled = true; };
     };
   };
 }
