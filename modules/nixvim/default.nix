@@ -32,6 +32,8 @@
     ./typescript-tools.nix
     ./copilot.nix
     ./mini.nix
+    ./dap.nix
+    ./rust-tools.nix
   ];
 
   extraPlugins = with pkgs.vimPlugins; [{ plugin = nvim-window-picker; }];
@@ -96,6 +98,38 @@
   }];
 
   keymaps = [
+    {
+      key = "<leader>dB";
+      action =
+        #lua
+        ''
+          function() require("dap").clear_breakpoints() end
+        '';
+      lua = true;
+      options.desc = "Clear breakpoint";
+    }
+    {
+      key = "<leader>db";
+      action =
+        #lua
+        ''
+          function() require("dap").toggle_breakpoint() end
+        '';
+
+      lua = true;
+      options.desc = "Toggle breakpoint";
+    }
+    {
+      key = "<leader>do";
+      action =
+        #lua
+        ''
+          function() require("dapui").toggle() end
+        '';
+
+      lua = true;
+      options.desc = "Toggle debugger";
+    }
     # Typescript tools
     {
       key = "<leader>ru";
