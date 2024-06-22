@@ -1,7 +1,10 @@
 {
   plugins = {
     lsp = {
+
+      inlayHints = true;
       enable = true;
+
       servers = {
         # Javascript
         eslint.enable = true;
@@ -9,11 +12,6 @@
         zls.enable = true;
         cmake.enable = true;
         phpactor.enable = true;
-        rust-analyzer = {
-          installCargo = true;
-          installRustc = true;
-          enable = true;
-        };
       };
       keymaps = {
         lspBuf = { "K" = "hover"; };
