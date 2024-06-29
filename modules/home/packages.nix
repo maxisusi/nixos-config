@@ -19,6 +19,7 @@
     vlc
     libreoffice
     catppuccin-kde
+    kdeconnect
     vscode-extensions.vadimcn.vscode-lldb.adapter
   ];
 }

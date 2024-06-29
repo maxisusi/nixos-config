@@ -24,6 +24,21 @@
 
   networking.networkmanager.enable = true;
 
+  # Opening ports for KDE Connect
+  networking.firewall = {
+    enable = true;
+    allowedTCPPortRanges = [{
+      from = 1714;
+      to = 1764;
+    } # KDE Connect
+      ];
+    allowedUDPPortRanges = [{
+      from = 1714;
+      to = 1764;
+    } # KDE Connect
+      ];
+  };
+
   environment = {
     sessionVariables = { FLAKE = "/home/max/.config/flakes/nixos-config"; };
     variables = {
