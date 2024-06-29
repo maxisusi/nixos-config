@@ -13,26 +13,13 @@
       name = "JetBrainsMono Nerd Font";
       size = 11;
     };
+    catppuccin.enable = true;
     iconTheme = {
       name = "Papirus-Dark";
       package = pkgs.catppuccin-papirus-folders.override {
         flavor = "mocha";
         accent = "lavender";
       };
-    };
-    theme = {
-      name = "Catppuccin-Mocha-Compact-Lavender-Dark";
-      package = pkgs.catppuccin-gtk.override {
-        accents = [ "lavender" ];
-        size = "compact";
-        # tweaks = [ "rimless" ];
-        variant = "mocha";
-      };
-    };
-    cursorTheme = {
-      name = "Nordzy-cursors";
-      package = pkgs.nordzy-cursor-theme;
-      size = 22;
     };
   };
 
