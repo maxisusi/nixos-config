@@ -17,6 +17,7 @@
     cargo
     discord
     vlc
+    libreoffice
     vscode-extensions.vadimcn.vscode-lldb.adapter
   ];
 }
