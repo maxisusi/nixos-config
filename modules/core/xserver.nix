@@ -6,6 +6,8 @@
     desktopManager.plasma6.enable = true;
     displayManager.sddm.enable = true;
 
+    xkb = { options = "ctrl:nocaps"; };
+
     # -- GNOME SETTINGS --
     # displayManager.gdm.enable = true;
     # desktopManager.gnome = {
