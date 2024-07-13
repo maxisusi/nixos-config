@@ -11,7 +11,7 @@
         nixd.enable = true;
         zls.enable = true;
         cmake.enable = true;
-        phpactor.enable = true;
+        # phpactor.enable = true;
       };
       keymaps = {
         lspBuf = { "K" = "hover"; };

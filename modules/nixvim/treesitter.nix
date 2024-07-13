@@ -4,7 +4,7 @@
       enable = true;
       nixGrammars = true;
       indent = true;
-      ensureInstalled = "all";
+      # ensureInstalled = "all";
     };
 
     treesitter-context.enable = true;
