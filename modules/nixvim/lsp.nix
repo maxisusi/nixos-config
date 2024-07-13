@@ -11,6 +11,8 @@
         nixd.enable = true;
         zls.enable = true;
         cmake.enable = true;
+        pylsp.enable = true;
+        pylyzer.enable = true;
         # phpactor.enable = true;
       };
       keymaps = {

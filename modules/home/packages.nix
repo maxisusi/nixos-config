@@ -22,5 +22,6 @@
     kdeconnect
     vscode-extensions.vadimcn.vscode-lldb.adapter
     direnv
+    obsidian
   ];
 }

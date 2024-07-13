@@ -5,6 +5,7 @@
       formatting = {
         prettier = { enable = true; };
         nixfmt = { enable = true; };
+        black = { enable = true; };
       };
     };
   };
