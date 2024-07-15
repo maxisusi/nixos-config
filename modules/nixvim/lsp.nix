@@ -6,14 +6,13 @@
       enable = true;
 
       servers = {
-        # Javascript
         eslint.enable = true;
         nixd.enable = true;
         zls.enable = true;
         cmake.enable = true;
         pylsp.enable = true;
         pylyzer.enable = true;
-        # phpactor.enable = true;
+        intelephense.enable = true;
       };
       keymaps = {
         lspBuf = { "K" = "hover"; };
@@ -39,7 +38,9 @@
     };
     lsp-format = {
       enable = true;
-      setup = { options = { exclude = [ "(typescript-tools)" ]; }; };
+      setup = {
+        options = { exclude = [ "(typescript-tools)" "(intelephense)" ]; };
+      };
     };
   };
 }
