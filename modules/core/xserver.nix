@@ -2,14 +2,18 @@
   services.xserver = {
     enable = true;
 
+    # Currently I have to seperate the config
+    # for each host since KDE plasma6 is unstable on my desktop
+
     #  -- KDE SETTINGS --
-    desktopManager.plasma5.enable = true;
-    displayManager.sddm = {
-      enable = true;
-      wayland.enable = true;
-    };
+    # desktopManager.plasma5.enable = true;
+    # displayManager.sddm = {
+    #   enable = true;
+    #   wayland.enable = true;
+    # };
 
     xkb = { options = "ctrl:nocaps"; };
+    # environment.plasma5.excludePackages = with pkgs.kdePackages; [ spectacle ];
 
     # -- GNOME SETTINGS --
     # displayManager.gdm.enable = true;
@@ -23,7 +27,6 @@
     # };
   };
 
-  environment.plasma6.excludePackages = with pkgs.kdePackages; [ spectacle ];
   # nixpkgs.overlays = [
   #   # GNOME 46: triple-buffering-v4-46
   #   (final: prev: {
