@@ -245,6 +245,11 @@
     }
     # Git Signs
     {
+      key = "<leader>to";
+      action = "<CMD>Gitsigns blame<CR>";
+      options.desc = "Stage Hunk";
+    }
+    {
       key = "<leader>gh";
       action = ''function() require("gitsigns").reset_hunk() end'';
       lua = true;
