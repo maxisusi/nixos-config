@@ -7,7 +7,7 @@ stdenv.mkDerivation rec {
   src = fetchurl {
     url =
       "https://storage.googleapis.com/sloth-builds/latest/sloth-linux-amd64";
-    sha256 = "sha256-/xXrvrWfzAgHttmsNPP2BPJqUthKzdLsfsZz/jTwlHs=";
+    sha256 = "sha256-IAHb47Q2pKTq53oOdP+MELRYgtFhYvsVGFo8pqUwcrk=";
   };
 
   dontBuild = true;
