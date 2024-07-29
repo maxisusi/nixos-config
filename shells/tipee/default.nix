@@ -11,7 +11,6 @@ in pkgs.mkShell {
     rsync
     nodenv
     gdk
-    (callPackage ../../packages/sloth { })
     nodejs
   ];
 

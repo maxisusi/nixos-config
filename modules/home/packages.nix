@@ -24,5 +24,6 @@
     direnv
     obsidian
     atuin
+    (callPackage ../../packages/sloth { })
   ];
 }
