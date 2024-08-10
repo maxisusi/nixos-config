@@ -52,7 +52,10 @@
       firefox
       docker
       docker-compose
+      wally-cli
       nh
+      keymapp
+
     ];
   };
 

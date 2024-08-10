@@ -5,6 +5,8 @@
     enable = true;
     driSupport32Bit = true;
   };
+
+  hardware.keyboard.zsa.enable = true;
   hardware.pulseaudio.enable = false;
 
 }
