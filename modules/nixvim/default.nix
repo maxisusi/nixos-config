@@ -100,34 +100,29 @@
   keymaps = [
     {
       key = "<leader>dB";
-      action =
+      action.__raw =
         #lua
         ''
           function() require("dap").clear_breakpoints() end
         '';
-      lua = true;
       options.desc = "Clear breakpoint";
     }
     {
       key = "<leader>db";
-      action =
+      action.__raw =
         #lua
         ''
           function() require("dap").toggle_breakpoint() end
         '';
-
-      lua = true;
       options.desc = "Toggle breakpoint";
     }
     {
       key = "<leader>do";
-      action =
+      action.__raw =
         #lua
         ''
           function() require("dapui").toggle() end
         '';
-
-      lua = true;
       options.desc = "Toggle debugger";
     }
     # Typescript tools
@@ -165,67 +160,61 @@
     # Telescope - special commands
     {
       key = "<leader>ls";
-      action =
+      action.__raw =
         # lua
         ''
           function() require("telescope.builtin").lsp_document_symbols() end
         '';
-      lua = true;
       options.desc = "Search symbols";
     }
     {
       key = "<leader>gC";
-      action =
+      action.__raw =
         # lua
         ''
           function() require("telescope.builtin").git_bcommits { use_file_path = true } end
         '';
-      lua = true;
       options.desc = "Git commits (current file)";
     }
     {
       key = "<leader>gc";
-      action =
+      action.__raw =
         # lua
         ''
           function() require("telescope.builtin").git_commits { use_file_path = true } end         
         '';
-      lua = true;
       options.desc = "Git commits (repository)";
     }
     {
       key = "<leader>f<CR>";
-      action =
+      action.__raw =
         # lua
         ''
           function() require("telescope.builtin").resume() end        
         '';
-      lua = true;
       options.desc = "Resume previous search";
     }
     {
       key = "<leader>f/";
-      action =
+      action.__raw =
         # lua
         ''
           function() require("telescope.builtin").current_buffer_fuzzy_find() end 
         '';
-      lua = true;
       options.desc = "Find words in the current buffer";
     }
     {
       key = "<leader>gt";
-      action =
+      action.__raw =
         # lua
         ''
           function() require("telescope.builtin").git_status { use_file_path = true } end
         '';
-      lua = true;
       options.desc = "Git status";
     }
     {
       key = "<leader>fW";
-      action =
+      action.__raw =
         # lua
         ''
            function() require("telescope.builtin").live_grep {
@@ -233,14 +222,12 @@
             }
           end
         '';
-      lua = true;
       options.desc = "Find words in all file";
     }
     {
       key = "<leader>fF";
-      action = ''
+      action.__raw = ''
         function() require("telescope.builtin").find_files { hidden = true, no_ignore = true } end'';
-      lua = true;
       options.desc = "Find all files";
     }
     # Git Signs
@@ -251,14 +238,12 @@
     }
     {
       key = "<leader>gh";
-      action = ''function() require("gitsigns").reset_hunk() end'';
-      lua = true;
+      action.__raw = ''function() require("gitsigns").reset_hunk() end'';
       options.desc = "Reset Hunk";
     }
     {
       key = "<leader>gr";
-      action = ''function() require("gitsigns").reset_buffer() end'';
-      lua = true;
+      action.__raw = ''function() require("gitsigns").reset_buffer() end'';
       options.desc = "Reset Buffer";
     }
     # Neo tree 
