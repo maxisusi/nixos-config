@@ -24,5 +24,6 @@
     direnv
     obsidian
     atuin
+    zsh
   ];
 }
