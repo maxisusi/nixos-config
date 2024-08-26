@@ -21,7 +21,6 @@
       enable = true;
       wayland.enable = true;
     };
-
   };
 
   environment.plasma5.excludePackages = with pkgs.kdePackages; [ spectacle ];

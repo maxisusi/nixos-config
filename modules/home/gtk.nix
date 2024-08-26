@@ -13,7 +13,6 @@
       name = "JetBrainsMono Nerd Font";
       size = 11;
     };
-    catppuccin.enable = true;
     iconTheme = {
       name = "Papirus-Dark";
       package = pkgs.catppuccin-papirus-folders.override {

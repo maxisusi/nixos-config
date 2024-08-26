@@ -1,7 +1,7 @@
 {
   plugins.none-ls = {
     enable = true;
-    debug = true;
+    settings = { debug = true; };
     sources = {
       formatting = {
         prettier = { enable = true; };
