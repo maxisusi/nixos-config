@@ -7,5 +7,5 @@
     ++ [ (import ./gtk.nix) ] ++ [ (import ./bat.nix) ]
     ++ [ (import ./btop.nix) ];
 
-  catppuccin.flavor = "mocha";
+  catppuccin.flavor = "latte";
 }

@@ -67,6 +67,7 @@
   colorschemes = {
     catppuccin = {
       enable = true;
+      flavour = "latte";
       settings.integrations = {
         cmp = true;
         gitsigns = true;
