@@ -24,13 +24,14 @@
         inherit system;
         config.allowUnfree = true;
       };
+      color_scheme = "latte";
       lib = nixpkgs.lib;
       user = "max";
     in {
       formatter.x86_64-linux = nixpkgs.legacyPackages.${system}.nixpkgs-fmt;
       nixosConfigurations = (import ./hosts {
         inherit (nixpkgs) lib;
-        inherit inputs user system home-manager nixvim catppuccin;
+        inherit inputs user system home-manager nixvim catppuccin color_scheme;
       });
     };
 }
