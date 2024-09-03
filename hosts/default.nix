@@ -1,4 +1,5 @@
-{ lib, inputs, system, home-manager, user, nixvim, catppuccin, ... }@attr: {
+{ lib, inputs, system, home-manager, user, nixvim, catppuccin, color_scheme, ...
+}@attr: {
   # Desktop Environment
   desktop = lib.nixosSystem {
     inherit system;
@@ -14,7 +15,7 @@
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
         home-manager.extraSpecialArgs = {
-          inherit inputs user system;
+          inherit inputs user system color_scheme;
         }; # Pass flake as variable
         home-manager.users.${user} = {
           imports =
@@ -39,7 +40,7 @@
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
         home-manager.extraSpecialArgs = {
-          inherit inputs user system;
+          inherit inputs user system color_scheme;
         }; # Pass flake as variable
         home-manager.users.${user} = {
           imports =

@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, color_scheme, ... }:
 
 {
   # Import all your configuration modules here
@@ -67,12 +67,15 @@
   colorschemes = {
     catppuccin = {
       enable = true;
-      settings.integrations = {
-        cmp = true;
-        gitsigns = true;
-        nvimtree = true;
-        treesitter = true;
-        notify = true;
+      settings = {
+        flavour = color_scheme;
+        integrations = {
+          cmp = true;
+          gitsigns = true;
+          nvimtree = true;
+          treesitter = true;
+          notify = true;
+        };
       };
     };
   };

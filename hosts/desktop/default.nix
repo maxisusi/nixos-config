@@ -14,9 +14,11 @@
       layout = "us";
       variant = "altgr-intl";
     };
-
-    #  -- KDE SETTINGS --
     desktopManager.plasma5.enable = true;
+  };
+
+  #  -- KDE SETTINGS --
+  services = {
     displayManager.sddm = {
       enable = true;
       wayland.enable = true;

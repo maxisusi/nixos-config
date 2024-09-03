@@ -3,7 +3,7 @@
     enable = true;
     catppuccin.enable = true;
     font = {
-      name = "JetBrainsMono Nerd Font";
+      name = "JetBrainsMono NF SemiBold";
       size = 10.0;
     };
     shellIntegration = { enableFishIntegration = true; };
