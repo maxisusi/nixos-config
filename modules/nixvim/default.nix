@@ -67,13 +67,15 @@
   colorschemes = {
     catppuccin = {
       enable = true;
-      flavour = "latte";
-      settings.integrations = {
-        cmp = true;
-        gitsigns = true;
-        nvimtree = true;
-        treesitter = true;
-        notify = true;
+      settings = {
+        flavour = "latte";
+        integrations = {
+          cmp = true;
+          gitsigns = true;
+          nvimtree = true;
+          treesitter = true;
+          notify = true;
+        };
       };
     };
   };
