@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, color_scheme, ... }:
 
 {
   # Import all your configuration modules here
@@ -68,7 +68,7 @@
     catppuccin = {
       enable = true;
       settings = {
-        flavour = "latte";
+        flavour = color_scheme;
         integrations = {
           cmp = true;
           gitsigns = true;
