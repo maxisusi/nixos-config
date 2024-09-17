@@ -25,5 +25,7 @@
     obsidian
     atuin
     zsh
+    go
+    air
   ];
 }

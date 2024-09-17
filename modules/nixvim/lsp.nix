@@ -13,6 +13,7 @@
         pylsp.enable = true;
         pylyzer.enable = true;
         intelephense.enable = true;
+        gopls.enable = true;
       };
       keymaps = {
         lspBuf = { "K" = "hover"; };
