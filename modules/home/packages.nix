@@ -27,5 +27,6 @@
     zsh
     go
     air
+    xxd
   ];
 }
