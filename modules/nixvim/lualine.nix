@@ -1,14 +1,19 @@
 {
   plugins.lualine = {
     enable = true;
-    theme = "catppuccin";
-    componentSeparators = {
-      left = " ";
-      right = " ";
-    };
-    sectionSeparators = {
-      left = " ";
-      right = " ";
+    settings = {
+      options = {
+        theme = "catppuccin";
+        componentSeparators = {
+          left = " ";
+          right = " ";
+        };
+        sectionSeparators = {
+          left = " ";
+          right = " ";
+        };
+      };
+
     };
   };
 }

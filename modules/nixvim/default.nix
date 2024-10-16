@@ -34,6 +34,8 @@
     ./mini.nix
     ./dap.nix
     ./rust-tools.nix
+
+    { plugins.web-devicons = { enable = true; }; }
   ];
 
   extraPlugins = with pkgs.vimPlugins; [{ plugin = nvim-window-picker; }];
@@ -150,16 +152,17 @@
       options.desc = "Force write";
     }
     # Leap 
-    {
-      key = "Q";
-      action = "<Plug>(leap-backward)";
-      options.desc = "Leap backward";
-    }
-    {
-      key = "q";
-      action = "<Plug>(leap-forward)";
-      options.desc = "Leap forward";
-    }
+    # Disabling because I want to learn how to use marcros in vim 
+    # {
+    #   key = "Q";
+    #   action = "<Plug>(leap-backward)";
+    #   options.desc = "Leap backward";
+    # }
+    # {
+    #   key = "q";
+    #   action = "<Plug>(leap-forward)";
+    #   options.desc = "Leap forward";
+    # }
     # Telescope - special commands
     {
       key = "<leader>ls";

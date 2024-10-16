@@ -12,7 +12,6 @@
         cmake.enable = true;
         pylsp.enable = true;
         pylyzer.enable = true;
-        intelephense.enable = true;
         gopls.enable = true;
       };
       keymaps = {
