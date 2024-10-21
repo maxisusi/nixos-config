@@ -8,7 +8,7 @@
         nixfmt = { enable = true; };
         black = { enable = true; }; # Python
       };
-      diagnostics = { phpstan = { enable = true; }; };
+      # diagnostics = { phpstan = { enable = true; }; };
     };
   };
 }
