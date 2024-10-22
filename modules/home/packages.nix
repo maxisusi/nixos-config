@@ -28,5 +28,6 @@
     go
     air
     xxd
+    rsibreak
   ];
 }
