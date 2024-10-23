@@ -34,7 +34,7 @@
     ./mini.nix
     ./dap.nix
     ./rust-tools.nix
-
+    ./spectre.nix
     { plugins.web-devicons = { enable = true; }; }
   ];
 
