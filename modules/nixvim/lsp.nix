@@ -13,6 +13,7 @@
         pylsp.enable = true;
         pylyzer.enable = true;
         gopls.enable = true;
+        phpactor.enable = true;
       };
       keymaps = {
         lspBuf = { "K" = "hover"; };
@@ -38,7 +39,7 @@
     };
     lsp-format = {
       enable = true;
-      setup = {
+      settings = {
         options = { exclude = [ "(typescript-tools)" "(intelephense)" ]; };
       };
     };

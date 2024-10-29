@@ -19,7 +19,7 @@
     vlc
     libreoffice
     catppuccin-kde
-    kdeconnect
+    plasma5Packages.kdeconnect-kde
     vscode-extensions.vadimcn.vscode-lldb.adapter
     direnv
     obsidian
