@@ -29,6 +29,5 @@
     air
     xxd
     rsibreak
-    egl-wayland
   ];
 }

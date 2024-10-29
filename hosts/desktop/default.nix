@@ -40,7 +40,8 @@
 
     # Parameters added to the Kernel command line. Here, used to make suspend work properly.
     # https://search.nixos.org/options?channel=24.05&show=boot.kernelParams
-    kernelParams = [ "nvidia.NVreg_PreserveVideoMemoryAllocations=1" ];
+    kernelParams =
+      [ "nvidia.NVreg_PreserveVideoMemoryAllocations=1" "nvidia-drm.fbdev=1" ];
   };
 
   environment = {
