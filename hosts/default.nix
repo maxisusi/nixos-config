@@ -1,10 +1,20 @@
-{ lib, inputs, system, home-manager, user, nixvim, catppuccin, color_scheme, ...
-}@attr: {
+{ lib, inputs, system, home-manager, user, nixvim, catppuccin, color_scheme
+, nixpkgs-unstable, ... }@attr: {
   # Desktop Environment
   desktop = lib.nixosSystem {
     inherit system;
     specialArgs = attr;
     modules = [
+      {
+        nixpkgs.overlays = [
+          (final: prev: {
+            unstable = import nixpkgs-unstable {
+              inherit system;
+              config.allowUnfree = true;
+            };
+          })
+        ];
+      }
       ./desktop
       ../modules/core
       nixvim.nixosModules.nixvim
@@ -15,7 +25,7 @@
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
         home-manager.extraSpecialArgs = {
-          inherit inputs user system color_scheme;
+          inherit inputs user system color_scheme nixpkgs-unstable;
         }; # Pass flake as variable
         home-manager.users.${user} = {
           imports =

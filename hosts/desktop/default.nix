@@ -31,12 +31,24 @@
   programs.steam.gamescopeSession.enable = true;
   programs.gamemode.enable = true;
 
+  boot = {
+    # Nvidia GPU kernel module.
+    # https://search.nixos.org/options?channel=24.05&show=boot.extraModulePackages
+    # https://search.nixos.org/options?channel=24.05&show=boot.initrd.kernelModules
+    extraModulePackages = [ config.boot.kernelPackages.nvidia_x11_beta ];
+    initrd.kernelModules = [ "nvidia" ];
+
+    # Parameters added to the Kernel command line. Here, used to make suspend work properly.
+    # https://search.nixos.org/options?channel=24.05&show=boot.kernelParams
+    kernelParams = [ "nvidia.NVreg_PreserveVideoMemoryAllocations=1" ];
+  };
+
   environment = {
     sessionVariables = {
       STEAM_EXTRA_COMPAT_TOOLS_PATH =
         "\${HOME}/.steam/root/compatibilitytools.d";
     };
-    systemPackages = with pkgs; [ protonup ];
+    systemPackages = with pkgs; [ protonup linuxPackages.nvidia_x11 ];
   };
 
   # Load nvidia driver for Xorg and Wayland
@@ -70,7 +82,7 @@
     nvidiaSettings = true;
 
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
+    package = config.boot.kernelPackages.nvidiaPackages.beta;
   };
 
 }
