@@ -18,6 +18,12 @@
             unbind C-b
             set -g prefix C-a
 
+      # Set vi mode-keys on copy mode
+            setw -g mode-keys vi
+            bind -T copy-mode-vi v send -X begin-selection
+            bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "pbcopy"
+            bind P paste-buffer
+            bind -T copy-mode-vi MouseDragEnd1Pane send-keys -X copy-pipe-and-cancel "pbcopy"
       # Fixing strikethrough not appearing on tmux with neovim
             set -g default-terminal "xterm-kitty"
             set -ga terminal-overrides ",xterm-256color:Tc,alacritty:RGB"
