@@ -36,12 +36,16 @@
     # https://search.nixos.org/options?channel=24.05&show=boot.extraModulePackages
     # https://search.nixos.org/options?channel=24.05&show=boot.initrd.kernelModules
     extraModulePackages = [ config.boot.kernelPackages.nvidia_x11_beta ];
-    initrd.kernelModules = [ "nvidia" ];
+    initrd.kernelModules =
+      [ "nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm" ];
 
     # Parameters added to the Kernel command line. Here, used to make suspend work properly.
     # https://search.nixos.org/options?channel=24.05&show=boot.kernelParams
-    kernelParams =
-      [ "nvidia.NVreg_PreserveVideoMemoryAllocations=1" "nvidia-drm.fbdev=1" ];
+    kernelParams = [
+      "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
+      "nvidia-drm.fbdev=1"
+      "nvidia-drm.modeset=1"
+    ];
   };
 
   environment = {
