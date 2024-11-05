@@ -3,6 +3,9 @@
 {
   # Import all your configuration modules here
   imports = [
+    # ./illuminate.nix
+    # ./better-escape.nix
+    # ./friendly-snippets.nix
     ./bufferline.nix
     ./treesitter.nix
     ./lsp.nix
@@ -13,18 +16,15 @@
     ./telescope.nix
     ./wich_key.nix
     ./comment.nix
-    ./illuminate.nix
     ./options.nix
     ./colorizer.nix
     ./lazygit.nix
     ./gitsign.nix
     ./tmux-navigator.nix
     ./leap.nix
-    ./better-escape.nix
     ./notify.nix
     ./surround.nix
     ./none-ls.nix
-    ./friendly-snippets.nix
     ./luasnip.nix
     ./dressing.nix
     ./indent-blankline.nix
