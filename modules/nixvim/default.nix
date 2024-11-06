@@ -4,8 +4,8 @@
   # Import all your configuration modules here
   imports = [
     # ./illuminate.nix
-    # ./better-escape.nix
     # ./friendly-snippets.nix
+    ./better-escape.nix
     ./bufferline.nix
     ./treesitter.nix
     ./lsp.nix
