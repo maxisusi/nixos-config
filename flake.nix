@@ -21,8 +21,8 @@
 
   outputs = { self, nixpkgs, home-manager, nixvim, catppuccin, nixpkgs-unstable
     , ... }@inputs:
-    let
 
+    let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
         inherit system;

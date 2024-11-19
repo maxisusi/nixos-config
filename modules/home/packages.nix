@@ -29,5 +29,6 @@
     air
     xxd
     rsibreak
+    wl-clipboard
   ];
 }

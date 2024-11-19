@@ -8,23 +8,6 @@
 
   networking.hostName = "desktop"; # Define your hostname.
 
-  # Configure keymap in X11
-  services.xserver = {
-    xkb = {
-      layout = "us";
-      variant = "altgr-intl";
-    };
-    desktopManager.plasma5.enable = true;
-  };
-
-  #  -- KDE SETTINGS --
-  services = {
-    displayManager.sddm = {
-      enable = true;
-      wayland.enable = true;
-    };
-  };
-
   environment.plasma5.excludePackages = with pkgs.kdePackages; [ spectacle ];
   # Steam and optimisations
   programs.steam.enable = true;
