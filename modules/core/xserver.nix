@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ config, lib, pkgs, ... }:
 
 let cfg = config.xserver_host;
 in {
@@ -17,6 +17,8 @@ in {
           wayland.enable = true;
         };
       };
+      environment.plasma6.excludePackages = with pkgs.kdePackages;
+        [ spectacle ];
     }
     (lib.mkIf cfg.desktop.enable {
       services = {

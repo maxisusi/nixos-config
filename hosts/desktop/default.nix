@@ -8,7 +8,6 @@
 
   networking.hostName = "desktop"; # Define your hostname.
 
-  environment.plasma5.excludePackages = with pkgs.kdePackages; [ spectacle ];
   # Steam and optimisations
   programs.steam.enable = true;
   programs.steam.gamescopeSession.enable = true;
