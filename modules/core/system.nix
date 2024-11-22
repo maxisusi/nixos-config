@@ -46,6 +46,8 @@
       TERMINAL = "kitty";
       EDITOR = "nvim";
       VISUAL = "vim";
+      MANPAGER = "nvim +Man!";
+      MANWIDTH = "999";
     };
     systemPackages = with pkgs; [
       google-chrome
