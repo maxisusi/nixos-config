@@ -7,6 +7,7 @@
         openCommand = "code --goto {{filename}}";
         editCommand = "code";
       };
+      git = { overrideGpg = true; };
     };
   };
 }

@@ -1,11 +1,11 @@
 { config, lib, ... }:
 
-let cfg = config.MyConf;
+let cfg = config.xserver_host;
 in {
-
-  options.MyConf = {
-    desktop.enable = lib.mkEnableOption "desktop configuration for MyConf";
-    laptop.enable = lib.mkEnableOption "desktop configuration for MyConf";
+  options.xserver_host = {
+    desktop.enable =
+      lib.mkEnableOption "desktop configuration for xserver_host";
+    laptop.enable = lib.mkEnableOption "desktop configuration for xserver_host";
   };
 
   config = lib.mkMerge [
@@ -26,7 +26,6 @@ in {
             layout = "us";
             variant = "altgr-intl";
           };
-          desktopManager.plasma5.enable = true;
         };
       };
     })
