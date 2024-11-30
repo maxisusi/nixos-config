@@ -9,7 +9,7 @@
       "__GLX_VENDOR_LIBRARY_NAME,nvidia"
     ];
     bind = [
-
+      "$mod, M, exec, hyrpctl dispatch exit"
       "$mod, Q, exec, kitty"
       ", Print, exec, grimblast copy area"
       "$mod, F, exec, firefox"
