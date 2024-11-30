@@ -30,5 +30,6 @@
     xxd
     rsibreak
     wl-clipboard
+    (callPackage ../../packages/sloth { })
   ];
 }

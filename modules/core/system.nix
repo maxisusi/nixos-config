@@ -24,6 +24,10 @@
 
   networking.networkmanager.enable = true;
 
+  documentation.enable = true;
+  documentation.man.enable = true;
+  documentation.dev.enable = true;
+
   # Opening ports for KDE Connect
   networking.firewall = {
     enable = true;
@@ -57,7 +61,12 @@
       wally-cli
       nh
       keymapp
-
+      gcc
+      clang
+      linux-manual
+      man-pages
+      man-pages-posix
+      man-db
     ];
   };
 
