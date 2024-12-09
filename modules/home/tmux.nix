@@ -1,13 +1,7 @@
 { pkgs, ... }: {
   programs.tmux = {
     enable = true;
-    catppuccin = {
-      enable = true;
-      extraConfig = ''
-        set -g @catppuccin_status_modules_right "application session cpu"
-      '';
-
-    };
+    catppuccin = { enable = true; };
     plugins = with pkgs; [
       tmuxPlugins.vim-tmux-navigator
       tmuxPlugins.sensible
