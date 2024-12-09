@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, lib, ... }: {
   time.timeZone = "Europe/Zurich";
 
   i18n = {
@@ -70,8 +70,11 @@
     ];
   };
 
-  fonts.packages = with pkgs;
-    [ (nerdfonts.override { fonts = [ "JetBrainsMono" ]; }) ];
+  # fonts.packages = with pkgs;
+  #   [ (nerdfonts.override { fonts = [ "JetBrainsMono" ]; }) ];
+  #
+  fonts.packages = [ ] ++ builtins.filter lib.attrsets.isDerivation
+    (builtins.attrValues pkgs.nerd-fonts);
 
   virtualisation.docker.enable = true;
 
