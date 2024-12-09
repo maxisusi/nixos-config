@@ -31,5 +31,12 @@
     rsibreak
     wl-clipboard
     (callPackage ../../packages/sloth { })
+    yazi
+    fd
+    fzf
+    poppler
+    imagemagick
+    p7zip
+    ffmpeg
   ];
 }

@@ -5,7 +5,6 @@
     plugins = with pkgs; [
       tmuxPlugins.vim-tmux-navigator
       tmuxPlugins.sensible
-      tmuxPlugins.cpu
     ];
     extraConfig = ''
       # Unbind default C-b command
