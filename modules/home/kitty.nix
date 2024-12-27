@@ -1,7 +1,6 @@
 {
   programs.kitty = {
     enable = true;
-    catppuccin.enable = true;
     font = {
       name = "JetBrainsMono NF SemiBold";
       size = 10.0;

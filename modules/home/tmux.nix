@@ -1,7 +1,7 @@
 { pkgs, ... }: {
   programs.tmux = {
     enable = true;
-    catppuccin = { enable = true; };
+    # catppuccin = { enable = true; };
     plugins = with pkgs; [
       tmuxPlugins.vim-tmux-navigator
       tmuxPlugins.sensible
