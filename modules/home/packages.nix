@@ -38,5 +38,6 @@
     imagemagick
     p7zip
     ffmpeg
+    tmuxifier
   ];
 }

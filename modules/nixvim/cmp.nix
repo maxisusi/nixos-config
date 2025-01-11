@@ -99,10 +99,12 @@
           }
         ];
         mapping = {
-          "<C-Space>" = ''cmp.mapping(cmp.mapping.complete(), { "i", "c" }) '';
+          "<C-Space>" = "cmp.mapping.complete()";
           "<CR>" = "cmp.mapping.confirm({ select = true })";
-          "<C-j>" = "cmp.mapping.select_next_item()";
-          "<C-k>" = "cmp.mapping.select_prev_item()";
+          "<C-n>" =
+            "cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert })";
+          "<C-p>" =
+            "cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert })";
           "<S-CR>" =
             "cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true })";
         };

@@ -5,6 +5,7 @@
   imports = [
     # ./illuminate.nix
     # ./friendly-snippets.nix
+    # ./coq-nvim.nix
     ./better-escape.nix
     ./bufferline.nix
     ./treesitter.nix
