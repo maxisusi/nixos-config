@@ -6,8 +6,7 @@
     ++ [ (import ./neovim.nix) ] ++ [ (import ./kitty.nix) ]
     ++ [ (import ./gtk.nix) ] ++ [ (import ./bat.nix) ]
     ++ [ (import ./btop.nix) ] ++ [ (import ./hyprland.nix) ]
-    ++ [ (import ./catppuccin.nix) ];
+    ++ [ (import ./catppuccin.nix) ] ++ [ (import ./waybar.nix) ];
 
   catppuccin.flavor = color_scheme;
-
 }

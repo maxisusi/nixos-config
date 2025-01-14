@@ -46,6 +46,7 @@
   environment = {
     sessionVariables = { FLAKE = "/home/max/.config/flakes/nixos-config"; };
     variables = {
+      NIXOS_OZONE_WL = 1;
       RUST_BACKTRACE = 1;
       TERMINAL = "kitty";
       EDITOR = "nvim";
