@@ -9,5 +9,6 @@
     btop.enable = true;
     bat.enable = true;
     rofi.enable = true;
+    hyprlock.enable = true;
   };
 }
