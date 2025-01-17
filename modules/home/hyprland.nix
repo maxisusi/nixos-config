@@ -86,10 +86,10 @@ in {
 
     bind = [
       "$mod, M, exec, exit"
-      "$mod, C, killactive"
+      "$mod, Q, killactive"
 
       "$mod, R, exec, $menu"
-      "$mod, Q, exec, $terminal"
+      "$mod, T, exec, $terminal"
       "$mod, E, exec, $fileManager"
       "$mod, V, togglefloating"
 
