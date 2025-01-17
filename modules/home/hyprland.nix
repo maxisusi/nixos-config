@@ -11,6 +11,7 @@ in {
     "$terminal" = "kitty";
     "$fileManager" = "dolphin";
     "$menu" = "rofi -show drun";
+    "$lock" = "hyprlock";
 
     env = [
       "LIBVA_DRIVER_NAME,nvidia"
@@ -28,8 +29,8 @@ in {
     ];
 
     general = {
-      gaps_in = 0;
-      gaps_out = 10;
+      gaps_in = 8;
+      gaps_out = 0;
       border_size = 1;
       layout = "dwindle";
       resize_on_border = true;
@@ -40,7 +41,7 @@ in {
     };
 
     decoration = {
-      rounding = 3;
+      rounding = 8;
       blur = {
         enabled = true;
         size = 3;
@@ -92,7 +93,7 @@ in {
       "$mod, T, exec, $terminal"
       "$mod, E, exec, $fileManager"
       "$mod, V, togglefloating"
-
+      "$mod, L, exec, $lock"
       "$mod, left, movefocus, l"
       "$mod, right, movefocus, r"
       "$mod, up, movefocus, u"
