@@ -1,7 +1,9 @@
 { pkgs, ... }:
 let
   startupScript = pkgs.writeShellScriptBin "start" ''
-    waybar 
+    waybar &
+    dunst &
+    systemctl --user start hyprpolkitagent
   '';
 in {
   wayland.windowManager.hyprland.enable = true; # enable Hyprland
@@ -107,9 +109,8 @@ in {
       "$mod ALT, up, moveactive, 0 -80"
       "$mod ALT, down, moveactive, 0 80"
 
-      ", Print, exec, grimblast copy area"
+      ", Print, exec, hyprshot -m region active --clipboard-only "
       "$mod, G, exec, google-chrome-stable --enable-features=UseOzonePlatform --ozone-platform=wayland"
-      ", Print, exec, grimblast copy area"
     ] ++ (
       # workspaces
       # binds $mod + [shift +] {1..9} to [move to] workspace {1..9}
@@ -159,6 +160,9 @@ in {
     hyprpicker
     hypridle
     hyprlock
+    dunst
+    hyprpolkitagent
+    hyprshot
   ];
 
   programs.hyprlock = {
@@ -191,7 +195,7 @@ in {
         # inner_color = "${base07}";
         # font_color = "${base00}";
         fade_on_empty = true;
-        placeholder_text = "<i>Input Password...</i>";
+        placeholder_text = "<i>Type Password...</i>";
         hide_input = false;
         position = {
           x = 0;
