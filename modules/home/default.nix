@@ -1,4 +1,4 @@
-{ color_scheme, ... }: {
+{ ... }: {
   imports = [ (import ./tmux.nix) ] ++ [ (import ./layzgit.nix) ]
     ++ [ (import ./starship.nix) ] ++ [ (import ./git.nix) ]
     ++ [ (import ./ssh.nix) ] ++ [ (import ./fish.nix) ]
@@ -8,5 +8,4 @@
     ++ [ (import ./btop.nix) ] ++ [ (import ./hyprland.nix) ]
     ++ [ (import ./catppuccin.nix) ] ++ [ (import ./waybar.nix) ];
 
-  catppuccin.flavor = color_scheme;
 }

@@ -10,4 +10,5 @@
     desktop.enable = (lib.mkIf (config.networking.hostName == "desktop") true);
     laptop.enable = (lib.mkIf (config.networking.hostName == "laptop") true);
   };
+  catppuccin.enable = true;
 }
