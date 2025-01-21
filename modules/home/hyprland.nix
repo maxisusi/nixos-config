@@ -22,12 +22,6 @@ in {
 
     exec-once = "${startupScript}/bin/start";
 
-    monitor = [
-      "desc:Chimei Innolux Corporation 0x143F, highrr, 0x0, 1"
-      "desc:Philips Consumer Electronics Company PHL 346E2C UK02423042086, highrr, 0x-1440,1"
-      ", preferred, auto, 1"
-    ];
-
     general = {
       gaps_in = 8;
       gaps_out = 0;
@@ -128,6 +122,12 @@ in {
 
     bindm = [ "$mod, mouse:272, movewindow" "$mod, mouse:273, resizewindow" ];
 
+    monitor = [
+      "desc:Chimei Innolux Corporation 0x143F, highrr, 0x0, 1"
+      "desc:Philips Consumer Electronics Company PHL 346E2C UK02423042086, highrr, 0x-1440,1"
+      ", preferred, auto, 1"
+    ];
+
     bindel = [
       ",XF86MonBrightnessUp, exec, brightnessctl set 5%+"
       ",XF86MonBrightnessDown, exec, brightnessctl set 5%-"
@@ -142,6 +142,9 @@ in {
       ",XF86AudioMute, exec, pamixer -t"
       # Mute micro
       ",XF86AudioMicMute, exec, pamixer --default-source -t"
+
+      ", switch:off:Lid Switch,exec,hyprctl keyword monitor desc:Philips Consumer Electronics Company PHL 346E2C UK02423042086,highrr, 0x0, 1"
+      ", switch:on:Lid Switch,exec,hyprctl keyword monitor desc:Chimei Innolux Corporation 0x143F, disable"
     ];
   };
 
