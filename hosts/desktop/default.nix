@@ -41,7 +41,6 @@
   hardware.graphics.enable = true;
   hardware.graphics.enable32Bit = true;
   # hardware.opengl.driSupport = true;
-  hardware.opengl.driSupport32Bit = true;
   # Load nvidia driver for Xorg and Wayland
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.nvidia = {
