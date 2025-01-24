@@ -10,7 +10,7 @@ in {
   wayland.windowManager.hyprland.settings = {
     "$mod" = "SUPER";
     "$terminal" = "kitty";
-    "$fileManager" = "dolphin";
+    "$fileManager" = "nautilus";
     "$menu" = "rofi -show drun";
     "$lock" = "hyprlock";
 
@@ -150,7 +150,7 @@ in {
 
   wayland.windowManager.hyprland.systemd.variables = [ "--all" ];
   home.packages = with pkgs; [
-    dolphin
+    nautilus
     rofi
     rofi-power-menu
     brightnessctl

@@ -14,6 +14,7 @@
         pylyzer.enable = true;
         gopls.enable = true;
         phpactor.enable = true;
+        clangd.enable = true;
       };
       keymaps = {
         lspBuf = { "K" = "hover"; };
