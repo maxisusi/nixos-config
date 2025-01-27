@@ -39,7 +39,6 @@
     p7zip
     ffmpeg
     tmuxifier
-    wireshark
     tree
   ];
 }

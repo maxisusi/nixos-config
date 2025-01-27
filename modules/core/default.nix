@@ -1,4 +1,4 @@
-{ config, lib, ... }: {
+{ config, lib, pkgs, ... }: {
 
   imports = [ (import ./hardware.nix) ] ++ [ (import ./user.nix) ]
     ++ [ (import ./pipewire.nix) ] ++ [ (import ./system.nix) ]
@@ -11,4 +11,7 @@
     laptop.enable = (lib.mkIf (config.networking.hostName == "laptop") true);
   };
   catppuccin.enable = true;
+
+  programs.wireshark.enable = true;
+  programs.wireshark.package = pkgs.wireshark;
 }
