@@ -143,8 +143,8 @@ in {
       # Mute micro
       ",XF86AudioMicMute, exec, pamixer --default-source -t"
 
-      ", switch:off:Lid Switch,exec,hyprctl keyword monitor desc:Philips Consumer Electronics Company PHL 346E2C UK02423042086,highrr, 0x0, 1"
-      ", switch:on:Lid Switch,exec,hyprctl keyword monitor desc:Chimei Innolux Corporation 0x143F, disable"
+      # ", switch:off:Lid Switch,exec,hyprctl keyword monitor desc:Philips Consumer Electronics Company PHL 346E2C UK02423042086,highrr, 0x0, 1"
+      # ", switch:on:Lid Switch,exec,hyprctl keyword monitor desc:Chimei Innolux Corporation 0x1440, disable"
     ];
   };
 
@@ -165,6 +165,8 @@ in {
     hyprpolkitagent
     hyprshot
   ];
+
+  services.dunst.enable = true;
 
   programs.hyprlock = {
     enable = true;

@@ -8,7 +8,7 @@
     style = ''
               * {
                 font-family: "JetBrainsMono Nerd Font";
-                font-size: 12pt;
+                font-size: 10pt;
                 font-weight: bold;
                 /* border-radius: 8px; */
                 transition-property: background-color;
@@ -33,7 +33,7 @@
               window > box {
                 background-color: rgba(30, 30, 42,0.2);
                 opacity: 0.7;
-                padding: 3px;
+                padding: 2px;
                 padding-left: 8px;
                 border: 2px none #33ccff;
               }
@@ -42,7 +42,7 @@
                 padding-right: 4px;
               }
         #workspaces button {
-                padding: 4px;
+                padding: 2px;
               }
         #workspaces button.active {
                 background-color: rgb(181, 232, 224);
