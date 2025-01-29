@@ -2,7 +2,6 @@
 let
   startupScript = pkgs.writeShellScriptBin "start" ''
     waybar &
-    dunst &
   '';
 in {
   wayland.windowManager.hyprland.enable = true; # enable Hyprland
@@ -166,6 +165,7 @@ in {
     hyprshot
   ];
 
+  programs.rofi.enable = true;
   services.dunst.enable = true;
 
   programs.hyprlock = {
