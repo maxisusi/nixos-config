@@ -253,11 +253,16 @@
       action.__raw = ''function() require("gitsigns").reset_buffer() end'';
       options.desc = "Reset Buffer";
     }
-    # Neo tree 
+    # Yazi 
     {
       key = "<leader>o";
-      action = "<CMD>Neotree toggle<CR>";
-      options.desc = "Toggle Neo tree";
+      action = "<CMD>Yazi<CR>";
+      options.desc = "Toggle Yazi";
+    }
+    {
+      key = "<leader>cw";
+      action = "<CMD>Yazi cwd<CR>";
+      options.desc = "Open the file manager in nvim's working directory";
     }
     {
       key = "<leader>la";
