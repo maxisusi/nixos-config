@@ -40,5 +40,6 @@
     ffmpeg
     tmuxifier
     tree
+    commitizen
   ];
 }
