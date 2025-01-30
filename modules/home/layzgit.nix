@@ -11,7 +11,6 @@
 
           if [ ! -z "$JIRA_ID" ]; then
             git commit --amend -m "[$JIRA_ID] $COMMIT_MSG"
-          fi
           else
               git commit -m "$COMMIT_MSG"
           fi
