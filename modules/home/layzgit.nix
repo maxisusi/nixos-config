@@ -6,15 +6,7 @@
       customCommands = [{
         key = "C";
         command = ''
-          JIRA_ID=$(git rev-parse --abbrev-ref HEAD | grep -Eo "/\w+-[0-9]+" | head -n1 | cut -c2- | tr a-z A-Z)
-          COMMIT_MSG=$(git commit -m "{{ .Form.Type }}{{if .Form.Scopes}}({{ .Form.Scopes }}){{end}}: {{ .Form.Description }}")
-
-          if [ ! -z "$JIRA_ID" ]; then
-            git commit --amend -m "[$JIRA_ID] $COMMIT_MSG"
-          else
-              git commit -m "$COMMIT_MSG"
-          fi
-        '';
+          git commit -m "{{ .Form.Type }}{{if .Form.Scopes}}({{ .Form.Scopes }}){{end}}: {{ .Form.Description }}"'';
         description = "commit with commitizen";
         context = "files";
         prompts = [
@@ -99,6 +91,8 @@
           {
             type = "confirm";
             title = "Is the commit message correct?";
+            body =
+              "{{ .Form.Type }}{{if .Form.Scopes}}({{ .Form.Scopes }}){{end}}: {{ .Form.Description }}";
           }
         ];
       }];
