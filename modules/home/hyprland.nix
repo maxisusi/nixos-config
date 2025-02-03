@@ -77,7 +77,13 @@ in {
       touchpad = { natural_scroll = true; };
     };
 
-    windowrulev2 = [ "stayfocused,class:(rofi)" ];
+    windowrulev2 = [
+      "stayfocused,class:(rofi)"
+      "workspace 1, class:kitty"
+      "workspace 2, class:google-chrome"
+      "workspace 3, class:Slack"
+      "workspace 3, class:discord"
+    ];
 
     bind = [
       "$mod, M, exec, exit"
