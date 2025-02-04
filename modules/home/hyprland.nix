@@ -79,10 +79,10 @@ in {
 
     windowrulev2 = [
       "stayfocused,class:(rofi)"
-      "workspace 1, class:kitty"
-      "workspace 2, class:google-chrome"
-      "workspace 3, class:Slack"
-      "workspace 3, class:discord"
+      "workspace 1, monitor 1, class:kitty"
+      "workspace 2, monitor 1, class:google-chrome"
+      "workspace 3, monitor 0, class:Slack"
+      "workspace 3, monitor 0, class:discord"
     ];
 
     bind = [
@@ -129,7 +129,7 @@ in {
 
     monitor = [
       "desc:Chimei Innolux Corporation 0x143F, highrr, 0x0, 1"
-      "desc:Philips Consumer Electronics Company PHL 346E2C UK02423042086, highrr, 0x-1440,1"
+      "DP-1, highrr, 0x-1440,1"
       ", preferred, auto, 1"
     ];
 
