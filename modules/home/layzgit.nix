@@ -100,7 +100,10 @@
         openCommand = "code --goto {{filename}}";
         editCommand = "code";
       };
-      git = { overrideGpg = true; };
+      git = {
+        overrideGpg = true;
+        push = { force = "--force-with-lease"; };
+      };
     };
   };
 }
