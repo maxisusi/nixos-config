@@ -30,7 +30,7 @@
     xxd
     rsibreak
     wl-clipboard
-    (callPackage ../../packages/sloth { })
+    # (callPackage ../../packages/sloth { })
     yazi
     fd
     fzf
