@@ -37,6 +37,7 @@
     ./rust-tools.nix
     ./spectre.nix
     { plugins.web-devicons = { enable = true; }; }
+    { plugins.cmake-tools = { enable = true; }; }
   ];
 
   extraPlugins = with pkgs.vimPlugins; [{ plugin = nvim-window-picker; }];
