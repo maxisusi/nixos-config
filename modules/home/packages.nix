@@ -41,5 +41,7 @@
     tmuxifier
     tree
     commitizen
+    lsof
+    gnome-calculator
   ];
 }
