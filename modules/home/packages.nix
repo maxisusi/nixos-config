@@ -43,5 +43,6 @@
     commitizen
     lsof
     gnome-calculator
+    bitwig-studio
   ];
 }
