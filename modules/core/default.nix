@@ -12,6 +12,8 @@
   };
   catppuccin.enable = true;
 
+  services.udisks2.enable = true;
+
   programs.wireshark.enable = true;
   programs.wireshark.package = pkgs.wireshark;
 }

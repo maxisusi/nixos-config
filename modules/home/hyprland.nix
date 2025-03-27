@@ -129,7 +129,7 @@ in {
 
     monitor = [
       "desc:Chimei Innolux Corporation 0x143F, highrr, 0x0, 1"
-      "DP-3, 3440x1440@74.98Hz, 0x-1440,1"
+      "DP-3, preferred, 0x-1440,1"
       "DP-1, 3440x1440@74.98Hz, 0x-1440,1"
       # ", preferred, auto, 1"
     ];
@@ -170,6 +170,8 @@ in {
     hyprutils
     hyprpolkitagent
     hyprshot
+    wf-recorder
+    slurp
   ];
 
   programs.rofi.enable = true;
