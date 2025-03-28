@@ -22,7 +22,7 @@
       home-manager.nixosModules.home-manager
       {
         home-manager.backupFileExtension = "hm_backup";
-        home-manager.useGlobalPkgs = true;
+        home-manager.useGlobalPkgs = false;
         home-manager.useUserPackages = true;
         home-manager.extraSpecialArgs = {
           inherit inputs user system color_scheme nixpkgs-unstable;
@@ -57,7 +57,7 @@
       home-manager.nixosModules.home-manager
       {
         home-manager.backupFileExtension = "hm_backup";
-        home-manager.useGlobalPkgs = true;
+        home-manager.useGlobalPkgs = false;
         home-manager.useUserPackages = true;
         home-manager.extraSpecialArgs = {
           inherit inputs user system color_scheme;
@@ -81,7 +81,7 @@
       home-manager.nixosModules.home-manager
       {
         home-manager.backupFileExtension = "hm_backup";
-        home-manager.useGlobalPkgs = true;
+        home-manager.useGlobalPkgs = false;
         home-manager.useUserPackages = true;
         home-manager.extraSpecialArgs = {
           inherit inputs user system;

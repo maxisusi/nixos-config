@@ -11,6 +11,7 @@
       dps = "docker ps";
       vi = "nvim";
       ns = "nix-shell --command fish";
+      s = "kitten ssh";
     };
   };
 }
