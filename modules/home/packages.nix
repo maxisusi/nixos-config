@@ -43,8 +43,9 @@
     commitizen
     lsof
     gnome-calculator
-    bitwig-studio
-    openshot-qt
+    ghidra
+    gdb
+    nasm
   ];
   services.udiskie = {
     enable = true;

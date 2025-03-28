@@ -74,7 +74,12 @@ in {
       kb_layout = "us,ch";
       kb_variant = "altgr-intl,fr";
       kb_options = "grp:caps_toggle";
-      touchpad = { natural_scroll = true; };
+      touchpad = {
+        natural_scroll = true;
+        disable_while_typing = false;
+      };
+      repeat_delay = 200;
+      repeat_rate = 30;
     };
 
     windowrulev2 = [
@@ -112,7 +117,6 @@ in {
       "$mod ALT, right, moveactive, 80 0"
       "$mod ALT, up, moveactive, 0 -80"
       "$mod ALT, down, moveactive, 0 80"
-
       ", Print, exec, hyprshot -m region active --clipboard-only "
       "$mod, G, exec, google-chrome-stable --enable-features=UseOzonePlatform --ozone-platform=wayland"
     ] ++ (

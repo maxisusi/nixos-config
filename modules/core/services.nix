@@ -4,7 +4,7 @@
     mouse.naturalScrolling = true;
   };
   services.printing.enable = true;
-  services.printing.drivers = [ pkgs.brlaser ];
+  services.printing.drivers = [ pkgs.brlaser pkgs.hplip ];
   services.udev = {
     extraRules = ''SUBSYSTEM=="usbmon", GROUP="wireshark", MODE="0640" '';
   };
