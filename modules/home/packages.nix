@@ -46,6 +46,7 @@
     ghidra
     gdb
     nasm
+    wget
   ];
   services.udiskie = {
     enable = true;
