@@ -2,6 +2,7 @@
 let
   startupScript = pkgs.writeShellScriptBin "start" ''
     waybar &
+    systemctl --user start hyprpolkitagent
   '';
 in {
   wayland.windowManager.hyprland.enable = true; # enable Hyprland
