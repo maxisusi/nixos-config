@@ -97,8 +97,8 @@
         ];
       }];
       os = {
-        openCommand = "code --goto {{filename}}";
-        editCommand = "code";
+        open = "code --goto {{filename}}";
+        edit = "code";
       };
       git = {
         overrideGpg = true;

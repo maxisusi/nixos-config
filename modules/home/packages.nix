@@ -9,8 +9,8 @@
     rsync
     tokei
     python3
-    insomnia
     zoxide
+    hoppscotch
     flameshot
     neofetch
     rustfmt
