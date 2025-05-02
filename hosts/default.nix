@@ -28,8 +28,7 @@
           inherit inputs user system color_scheme nixpkgs-unstable;
         }; # Pass flake as variable
         home-manager.users.${user} = {
-          imports =
-            [ ../modules/home catppuccin.homeManagerModules.catppuccin ];
+          imports = [ ../modules/home catppuccin.homeModules.catppuccin ];
         };
       }
     ];
@@ -63,8 +62,7 @@
           inherit inputs user system color_scheme;
         }; # Pass flake as variable
         home-manager.users.${user} = {
-          imports =
-            [ ../modules/home catppuccin.homeManagerModules.catppuccin ];
+          imports = [ ../modules/home catppuccin.homeModules.catppuccin ];
         };
       }
     ];

@@ -37,7 +37,26 @@
     ./rust-tools.nix
     ./spectre.nix
     { plugins.web-devicons = { enable = true; }; }
-    { plugins.blink-cmp = { enable = true; }; }
+    {
+      plugins.blink-cmp = {
+        enable = true;
+        settings = {
+          completion = {
+            accept = {
+              auto_brackets = {
+                enabled = true;
+                semantic_token_resolution.enabled = false;
+              };
+            };
+            documentation.auto_show = true;
+          };
+          appearance = {
+            use_nvim_cmp_as_default = true;
+            nerd_font_variant = "normal";
+          };
+        };
+      };
+    }
     { plugins.cmake-tools = { enable = true; }; }
   ];
 
