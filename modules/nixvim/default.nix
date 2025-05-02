@@ -10,7 +10,7 @@
     ./bufferline.nix
     ./treesitter.nix
     ./lsp.nix
-    ./cmp.nix
+    # ./cmp.nix
     ./neo-tree.nix
     ./autopair.nix
     ./lualine.nix
@@ -37,6 +37,7 @@
     ./rust-tools.nix
     ./spectre.nix
     { plugins.web-devicons = { enable = true; }; }
+    { plugins.blink-cmp = { enable = true; }; }
     { plugins.cmake-tools = { enable = true; }; }
   ];
 
