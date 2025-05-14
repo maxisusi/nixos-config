@@ -29,7 +29,7 @@ in {
       border_size = 1;
       layout = "dwindle";
       resize_on_border = true;
-      "col.active_border" = "rgb(cba6f7) rgb(94e2d5) 45deg";
+      "col.active_border" = "rgb(E49B5D) rgb(34302C) 45deg";
       "col.inactive_border" = "0x00000000";
       no_border_on_floating = false;
     };
@@ -216,10 +216,12 @@ in {
       ipc = "on";
       splash = false;
       splash_offset = 2.0;
-      preload =
-        [ "/home/max/.config/flakes/nixos-config/wallpapers/purplesky.png" ];
-      wallpaper =
-        [ ",/home/max/.config/flakes/nixos-config/wallpapers/purplesky.png" ];
+      preload = [
+        "/home/max/.config/flakes/nixos-config/wallpapers/nixos-catppuccin.png"
+      ];
+      wallpaper = [
+        ",/home/max/.config/flakes/nixos-config/wallpapers/nixos-catppuccin.png"
+      ];
     };
   };
 

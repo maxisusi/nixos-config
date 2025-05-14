@@ -45,8 +45,8 @@
                 padding: 2px;
               }
         #workspaces button.active {
-                background-color: rgb(181, 232, 224);
-                color: rgb(26, 24, 38);
+                background-color: #E49B5D;
+                color: #292522;
               }
         #workspaces button.urgent {
                 color: rgb(26, 24, 38);
