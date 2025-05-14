@@ -26,7 +26,7 @@
       undofile = true; # Build-in persistent undo
       termguicolors = true; # enable 24-bit RGB color in the TUI
       timeoutlen = 500; # shorten key timeout length a little bit for which-key
-      cmdheight = 0; # hide command line unless needed
+      cmdheight = 1; # hide command line unless needed
     };
     globals = {
       mapleader = " "; # set the leader key

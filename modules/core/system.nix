@@ -44,7 +44,7 @@
   };
 
   environment = {
-    sessionVariables = { NH_LAKE = "/home/max/.config/flakes/nixos-config"; };
+    sessionVariables = { NH_FLAKE = "/home/max/.config/flakes/nixos-config"; };
     variables = {
       NIXOS_OZONE_WL = 1;
       RUST_BACKTRACE = 1;

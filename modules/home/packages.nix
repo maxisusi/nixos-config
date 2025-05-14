@@ -47,6 +47,7 @@
     gdb
     nasm
     wget
+    meld
   ];
   services.udiskie = {
     enable = true;

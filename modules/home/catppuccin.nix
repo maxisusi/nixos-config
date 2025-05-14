@@ -1,7 +1,7 @@
 { color_scheme, ... }: {
 
   catppuccin = {
-    enable = true;
+    enable = false;
     flavor = color_scheme;
   };
 }
