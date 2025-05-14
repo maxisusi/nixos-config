@@ -179,7 +179,16 @@ in {
   ];
 
   programs.rofi.enable = true;
-  services.dunst.enable = true;
+  services.dunst = {
+    enable = true;
+    settings = {
+      urgency_normal = {
+        background = "#292522";
+        foreground = "#ECE1D7";
+        frame_color = "#E49B5D";
+      };
+    };
+  };
 
   programs.hyprlock = { enable = true; };
   services.hypridle = {
