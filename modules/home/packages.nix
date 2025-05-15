@@ -48,7 +48,50 @@
     nasm
     wget
     meld
+    wineWowPackages.stable
+    winetricks
+    firefox
   ];
+
+  programs.firefox = {
+    enable = true;
+    profiles = {
+      max = {
+        bookmarks = {
+          force = true;
+          settings = [
+            {
+              name = "wikipedia";
+              tags = [ "wiki" ];
+              keyword = "wiki";
+              url =
+                "https://en.wikipedia.org/wiki/Special:Search?search=%s&go=Go";
+            }
+            {
+              name = "kernel.org";
+              url = "https://www.kernel.org";
+            }
+            {
+              name = "Nix sites";
+              toolbar = true;
+              bookmarks = [
+                {
+                  name = "homepage";
+                  url = "https://nixos.org/";
+                }
+                {
+                  name = "wiki";
+                  tags = [ "wiki" "nix" ];
+                  url = "https://wiki.nixos.org/";
+                }
+              ];
+            }
+          ];
+        };
+      };
+    };
+  };
+
   services.udiskie = {
     enable = true;
     settings = {

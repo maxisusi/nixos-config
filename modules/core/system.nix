@@ -15,7 +15,7 @@
     gc = {
       automatic = true;
       dates = "weekly";
-      options = "--delete-older-than 7d";
+      options = "--delete-older-than 10d";
     };
   };
 
@@ -56,7 +56,7 @@
     };
     systemPackages = with pkgs; [
       google-chrome
-      firefox
+      # firefox
       docker
       docker-compose
       wally-cli
