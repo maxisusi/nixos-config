@@ -1,4 +1,5 @@
-{ pkgs, color_scheme, ... }:
+{ pkgs, ... # color_scheme
+}:
 
 {
   # Import all your configuration modules here
@@ -43,10 +44,7 @@
         settings = {
           completion = {
             accept = {
-              auto_brackets = {
-                enabled = true;
-                semantic_token_resolution.enabled = false;
-              };
+              auto_brackets = { semantic_token_resolution.enabled = false; };
             };
             documentation.auto_show = true;
           };
@@ -60,7 +58,10 @@
     { plugins.cmake-tools = { enable = true; }; }
   ];
 
-  extraPlugins = with pkgs.vimPlugins; [{ plugin = nvim-window-picker; }];
+  extraPlugins = with pkgs.vimPlugins; [
+    { plugin = nvim-window-picker; }
+    { plugin = no-neck-pain-nvim; }
+  ];
   extraConfigLua =
     #lua
     ''
@@ -295,6 +296,11 @@
       key = "<leader>ld";
       action = "<CMD>lua vim.diagnostic.open_float()<CR>";
       options.desc = "Hover diagnostics";
+    }
+    {
+      key = "<leader>lD";
+      action = "<CMD>Telescope diagnostics<CR>";
+      options.desc = "Display diagnostics from buffer";
     }
     {
       key = "<leader>gg";
