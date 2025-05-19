@@ -1,7 +1,4 @@
-{ pkgs, ... # color_scheme
-}:
-
-{
+{ pkgs, color_scheme, ... }: {
   # Import all your configuration modules here
   imports = [
     # ./illuminate.nix
@@ -90,20 +87,19 @@
     '';
 
   colorschemes = {
-    # catppuccin = {
-    #   enable = true;
-    #   settings = {
-    #     flavour = color_scheme;
-    #     integrations = {
-    #       cmp = true;
-    #       gitsigns = true;
-    #       nvimtree = true;
-    #       treesitter = true;
-    #       notify = true;
-    #     };
-    #   };
-    # };
-    melange = { enable = true; };
+    catppuccin = {
+      enable = true;
+      settings = {
+        flavour = color_scheme;
+        integrations = {
+          cmp = true;
+          gitsigns = true;
+          nvimtree = true;
+          treesitter = true;
+          notify = true;
+        };
+      };
+    };
   };
 
   autoCmd = [{
