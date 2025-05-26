@@ -34,6 +34,7 @@
     ./dap.nix
     ./rust-tools.nix
     ./spectre.nix
+    { plugins.hardtime = { enable = true; }; }
     { plugins.web-devicons = { enable = true; }; }
     {
       plugins.blink-cmp = {
