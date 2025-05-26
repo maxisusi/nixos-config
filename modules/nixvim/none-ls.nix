@@ -4,7 +4,10 @@
     settings = { debug = true; };
     sources = {
       formatting = {
-        prettier = { enable = true; };
+        prettier = {
+          enable = true;
+          disableTsServerFormatter = true;
+        };
         nixfmt = { enable = true; };
         black = { enable = true; }; # Python
         # phpcsfixer = { enable = true; }; # PHP
