@@ -11,6 +11,7 @@
     python3
     zoxide
     hoppscotch
+    postman
     flameshot
     neofetch
     rustfmt
