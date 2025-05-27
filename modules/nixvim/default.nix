@@ -1,14 +1,9 @@
 { pkgs, color_scheme, ... }: {
   # Import all your configuration modules here
   imports = [
-    # ./illuminate.nix
-    # ./friendly-snippets.nix
-    # ./coq-nvim.nix
-    # ./better-escape.nix
     ./bufferline.nix
     ./treesitter.nix
     ./lsp.nix
-    # ./cmp.nix
     ./neo-tree.nix
     ./autopair.nix
     ./lualine.nix
@@ -172,19 +167,6 @@
       action = "<cmd>w!<cr>";
       options.desc = "Force write";
     }
-    # Leap 
-    # Disabling because I want to learn how to use marcros in vim 
-    # {
-    #   key = "Q";
-    #   action = "<Plug>(leap-backward)";
-    #   options.desc = "Leap backward";
-    # }
-    # {
-    #   key = "q";
-    #   action = "<Plug>(leap-forward)";
-    #   options.desc = "Leap forward";
-    # }
-    # Telescope - special commands
     {
       key = "<leader>ls";
       action.__raw =
