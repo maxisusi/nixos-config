@@ -6,7 +6,10 @@
       enable = true;
 
       servers = {
-        eslint.enable = true;
+        eslint = {
+          enable = true;
+          settings = { format = { enable = false; }; };
+        };
         nixd.enable = true;
         zls.enable = true;
         cmake.enable = true;
@@ -45,9 +48,7 @@
     };
     lsp-format = {
       enable = true;
-      settings = {
-        options = { exclude = [ "(typescript-tools)" "(intelephense)" ]; };
-      };
+      settings = { typescript = { exclude = [ "typescript-tools" ]; }; };
     };
   };
 }

@@ -6,7 +6,7 @@
       formatting = {
         prettier = {
           enable = true;
-          disableTsServerFormatter = true;
+          # disableTsServerFormatter = true;
         };
         nixfmt = { enable = true; };
         black = { enable = true; }; # Python
