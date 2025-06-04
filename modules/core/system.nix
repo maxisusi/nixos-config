@@ -46,7 +46,6 @@
   environment = {
     sessionVariables = { NH_FLAKE = "/home/max/.config/flakes/nixos-config"; };
     variables = {
-      NIXOS_OZONE_WL = 1;
       RUST_BACKTRACE = 1;
       TERMINAL = "kitty";
       EDITOR = "nvim";
@@ -55,8 +54,6 @@
       MANWIDTH = "999";
     };
     systemPackages = with pkgs; [
-      google-chrome
-      # firefox
       docker
       docker-compose
       wally-cli

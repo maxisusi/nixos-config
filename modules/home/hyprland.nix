@@ -118,7 +118,7 @@ in {
       "$mod ALT, up, moveactive, 0 -80"
       "$mod ALT, down, moveactive, 0 80"
       ", Print, exec, hyprshot -m region active --clipboard-only "
-      "$mod, G, exec, google-chrome-stable --enable-features=UseOzonePlatform --ozone-platform=wayland"
+      "$mod, G, exec, google-chrome-stable"
       # "$mod ALT, mouse_down, exec, hyprctl keyword cursor:zoom_factor `$(hyprctl getoption cursor:zoom_factor | awk 'NR==1 {factor = $2; if (factor < 1) {factor = 1}; print factor * 1.25}')`"
       # "$mod ALT, mouse_up, exec, hyprctl keyword cursor:zoom_factor `$(hyprctl getoption cursor:zoom_factor | awk 'NR==1 {factor = $2; if (factor < 1) {factor = 1}; print factor / 1.25}')`"
     ] ++ (

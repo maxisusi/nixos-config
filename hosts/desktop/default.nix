@@ -35,11 +35,22 @@
       STEAM_EXTRA_COMPAT_TOOLS_PATH =
         "\${HOME}/.steam/root/compatibilitytools.d";
     };
-    systemPackages = with pkgs; [ protonup linuxPackages.nvidia_x11 ];
+    systemPackages = with pkgs; [
+      protonup
+      linuxPackages.nvidia_x11
+      (google-chrome.override {
+        commandLineArgs = [
+          "--enable-features=VaapiVideoDecodeLinuxGL,VaapiVideoEncoder,Vulkan,VulkanFromANGLE,DefaultANGLEVulkan,VaapiIgnoreDriverChecks,UseMultiPlaneFormatForHardwareVideo"
+          "--use-angle=vulkan"
+          "--disable-features=UseChromeOSDirectVideoDecoder"
+        ];
+      })
+    ];
   };
 
   hardware.graphics.enable = true;
   hardware.graphics.enable32Bit = true;
+  hardware.graphics.extraPackages = with pkgs; [ nvidia-vaapi-driver libva ];
   # hardware.opengl.driSupport = true;
   # Load nvidia driver for Xorg and Wayland
   services.xserver.videoDrivers = [ "nvidia" ];
