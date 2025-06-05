@@ -48,7 +48,10 @@
     };
     lsp-format = {
       enable = true;
-      settings = { typescript = { exclude = [ "typescript-tools" ]; }; };
+      settings = {
+        typescript = { exclude = [ "typescript-tools" ]; };
+        typescriptreact = { exclude = [ "typescript-tools" "ts-ls" ]; };
+      };
     };
   };
 }
