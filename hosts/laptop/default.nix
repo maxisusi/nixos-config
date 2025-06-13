@@ -6,7 +6,9 @@
   networking.hostName = "laptop"; # Define your hostname.
 
   # Turns on the Ozone Wayland backend 
-  environment = { variables = { NIXOS_OZONE_WL = 1; }; };
+  environment = {
+    variables = { NIXOS_OZONE_WL = 1; };
+    systemPackages = with pkgs; [ google-chrome ];
+  };
 
-  systemPackages = with pkgs; [ google-chrome ];
 }

@@ -52,6 +52,7 @@
     wineWowPackages.stable
     winetricks
     firefox
+    tomato-c
   ];
 
   programs.firefox = {
