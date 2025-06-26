@@ -224,12 +224,10 @@ in {
       ipc = "on";
       splash = false;
       splash_offset = 2.0;
-      preload = [
-        "/home/max/.config/flakes/nixos-config/wallpapers/nixos-catppuccin.png"
-      ];
-      wallpaper = [
-        ",/home/max/.config/flakes/nixos-config/wallpapers/nixos-catppuccin.png"
-      ];
+      preload =
+        [ "/home/max/.config/flakes/nixos-config/wallpapers/neosaka.jpg" ];
+      wallpaper =
+        [ ",/home/max/.config/flakes/nixos-config/wallpapers/neosaka.jpg" ];
     };
   };
 
