@@ -1,34 +1,36 @@
 { pkgs, color_scheme, ... }: {
   # Import all your configuration modules here
   imports = [
+    # MUST
     ./bufferline.nix
     ./treesitter.nix
     ./lsp.nix
-    ./neo-tree.nix
-    ./autopair.nix
-    ./lualine.nix
-    ./telescope.nix
-    ./wich_key.nix
-    ./comment.nix
     ./options.nix
-    ./colorizer.nix
+    ./telescope.nix
     ./lazygit.nix
+    ./comment.nix
     ./gitsign.nix
     ./tmux-navigator.nix
     ./leap.nix
-    ./notify.nix
     ./surround.nix
     ./none-ls.nix
-    ./luasnip.nix
     ./dressing.nix
     ./indent-blankline.nix
     ./vim-visual-multi.nix
     ./typescript-tools.nix
-    ./copilot.nix
-    ./mini.nix
     ./dap.nix
-    ./rust-tools.nix
     ./spectre.nix
+    # KINDA
+    ./rust-tools.nix
+    ./copilot.nix
+    ./autopair.nix
+    ./lualine.nix
+    ./wich_key.nix
+    ./colorizer.nix
+    ./notify.nix
+    ./luasnip.nix
+    ./mini.nix
+    # IDK
     { plugins.hardtime = { enable = true; }; }
     { plugins.web-devicons = { enable = true; }; }
     {
@@ -50,11 +52,7 @@
     }
     { plugins.cmake-tools = { enable = true; }; }
   ];
-
-  extraPlugins = with pkgs.vimPlugins; [
-    { plugin = nvim-window-picker; }
-    { plugin = no-neck-pain-nvim; }
-  ];
+  extraPlugins = with pkgs.vimPlugins; [{ plugin = no-neck-pain-nvim; }];
   extraConfigLua =
     #lua
     ''
