@@ -31,6 +31,7 @@
     ./luasnip.nix
     ./mini.nix
     # IDK
+    { plugins.yazi = { enable = true; }; }
     { plugins.hardtime = { enable = true; }; }
     { plugins.web-devicons = { enable = true; }; }
     {

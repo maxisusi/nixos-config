@@ -45,6 +45,7 @@
           "--disable-features=UseChromeOSDirectVideoDecoder"
         ];
       })
+      # google-chrome
     ];
   };
 
