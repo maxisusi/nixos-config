@@ -56,10 +56,6 @@
 
   colorschemes.nord.enable = true;
 
-  extraPlugins = with pkgs.vimPlugins; [
-    { plugin = nvim-window-picker; }
-    { plugin = no-neck-pain-nvim; }
-  ];
   extraConfigLua =
     #lua
     ''
