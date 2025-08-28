@@ -4,8 +4,13 @@
     plugins = with pkgs; [
       tmuxPlugins.vim-tmux-navigator
       tmuxPlugins.sensible
+      tmuxPlugins.tmux-thumbs
     ];
     extraConfig = ''
+      # Thumbs settings
+            unbind C-f
+            set -g @thumbs-key F
+
       # Unbind default C-b command
             unbind C-b
             set -g prefix C-a

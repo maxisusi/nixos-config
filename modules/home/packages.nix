@@ -1,4 +1,18 @@
 { pkgs, ... }: {
+  nixpkgs.overlays = [
+    (final: prev: {
+      claude-code = prev.claude-code.overrideAttrs (oldAttrs: rec {
+        version = "1.0.43";
+        src = prev.fetchzip {
+          url =
+            "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-${version}.tgz";
+          hash = "sha256-MPnctLow88Muzd9h5c6w/u0tO4Umrl6YJcp/1/BTFD4=";
+        };
+        npmDepsHash =
+          ""; # Set to empty first, then replace with hash from build error
+      });
+    })
+  ];
   home.packages = with pkgs; [
     oh-my-fish
     slack
@@ -53,6 +67,9 @@
     winetricks
     firefox
     tomato-c
+    claude-code
+    thumbs
+    elixir
   ];
 
   # programs.firefox = {

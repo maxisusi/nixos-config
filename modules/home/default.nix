@@ -8,5 +8,4 @@
     ++ [ (import ./btop.nix) ] ++ [ (import ./hyprland.nix) ]
     ++ [ (import ./catppuccin.nix) ] ++ [ (import ./waybar.nix) ]
     ++ [ (import ./ghostty.nix) ];
-
 }
