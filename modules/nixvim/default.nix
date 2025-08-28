@@ -53,6 +53,13 @@
     { plugins.cmake-tools = { enable = true; }; }
   ];
   extraPlugins = with pkgs.vimPlugins; [{ plugin = no-neck-pain-nvim; }];
+
+  colorschemes.nord.enable = true;
+
+  extraPlugins = with pkgs.vimPlugins; [
+    { plugin = nvim-window-picker; }
+    { plugin = no-neck-pain-nvim; }
+  ];
   extraConfigLua =
     #lua
     ''
@@ -80,21 +87,21 @@
       }
     '';
 
-  colorschemes = {
-    catppuccin = {
-      enable = true;
-      settings = {
-        flavour = color_scheme;
-        integrations = {
-          cmp = true;
-          gitsigns = true;
-          nvimtree = true;
-          treesitter = true;
-          notify = true;
-        };
-      };
-    };
-  };
+  # colorschemes = {
+  #   catppuccin = {
+  #     enable = true;
+  #     settings = {
+  #       flavour = color_scheme;
+  #       integrations = {
+  #         cmp = true;
+  #         gitsigns = true;
+  #         nvimtree = true;
+  #         treesitter = true;
+  #         notify = true;
+  #       };
+  #     };
+  #   };
+  # };
 
   autoCmd = [{
     event = [ "CursorMoved" ];

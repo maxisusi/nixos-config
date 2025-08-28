@@ -7,7 +7,7 @@
     };
 
     treesitter-context.enable = true;
-    rainbow-delimiters.enable = true;
+    # rainbow-delimiters.enable = true;
     ts-autotag.enable = true;
   };
 }
