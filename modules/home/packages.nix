@@ -34,7 +34,6 @@
     vlc
     libreoffice
     catppuccin-kde
-    plasma5Packages.kdeconnect-kde
     vscode-extensions.vadimcn.vscode-lldb.adapter
     direnv
     obsidian
@@ -45,7 +44,6 @@
     xxd
     rsibreak
     wl-clipboard
-    # (callPackage ../../packages/sloth { })
     yazi
     fd
     fzf
@@ -55,7 +53,6 @@
     ffmpeg
     tmuxifier
     tree
-    commitizen
     lsof
     gnome-calculator
     ghidra

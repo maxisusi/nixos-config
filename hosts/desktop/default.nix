@@ -38,14 +38,7 @@
     systemPackages = with pkgs; [
       protonup
       linuxPackages.nvidia_x11
-      (google-chrome.override {
-        commandLineArgs = [
-          "--enable-features=VaapiVideoDecodeLinuxGL,VaapiVideoEncoder,Vulkan,VulkanFromANGLE,DefaultANGLEVulkan,VaapiIgnoreDriverChecks,UseMultiPlaneFormatForHardwareVideo"
-          "--use-angle=vulkan"
-          "--disable-features=UseChromeOSDirectVideoDecoder"
-        ];
-      })
-      # google-chrome
+      google-chrome
     ];
   };
 
