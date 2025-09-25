@@ -184,6 +184,7 @@ in {
     hyprshot
     wf-recorder
     slurp
+    hyprsunset
   ];
 
   programs.rofi.enable = true;

@@ -28,7 +28,7 @@
         inherit system;
         config.allowUnfree = true;
       };
-      color_scheme = "frappe";
+      color_scheme = "latte";
       lib = nixpkgs.lib;
       user = "max";
     in {

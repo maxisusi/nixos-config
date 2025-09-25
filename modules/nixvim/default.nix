@@ -55,7 +55,7 @@
   ];
   extraPlugins = with pkgs.vimPlugins; [{ plugin = no-neck-pain-nvim; }];
 
-  colorschemes.nord.enable = true;
+  # colorschemes.nord.enable = true;
 
   extraConfigLua =
     #lua
@@ -84,21 +84,21 @@
       }
     '';
 
-  # colorschemes = {
-  #   catppuccin = {
-  #     enable = true;
-  #     settings = {
-  #       flavour = color_scheme;
-  #       integrations = {
-  #         cmp = true;
-  #         gitsigns = true;
-  #         nvimtree = true;
-  #         treesitter = true;
-  #         notify = true;
-  #       };
-  #     };
-  #   };
-  # };
+  colorschemes = {
+    catppuccin = {
+      enable = true;
+      settings = {
+        flavour = color_scheme;
+        integrations = {
+          cmp = true;
+          gitsigns = true;
+          nvimtree = true;
+          treesitter = true;
+          notify = true;
+        };
+      };
+    };
+  };
 
   autoCmd = [{
     event = [ "CursorMoved" ];
