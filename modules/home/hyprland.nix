@@ -114,8 +114,10 @@ in {
       "$mod ALT, right, moveactive, 80 0"
       "$mod ALT, up, moveactive, 0 -80"
       "$mod ALT, down, moveactive, 0 80"
+
       ", Print, exec, ${screenshotScript}/bin/screenshot"
       "$mod, G, exec, google-chrome-stable"
+      "$mod, C, exec, kitty -d ~/.config/flakes/nixos-config nvim flake.nix"
       # "$mod ALT, mouse_down, exec, hyprctl keyword cursor:zoom_factor `$(hyprctl getoption cursor:zoom_factor | awk 'NR==1 {factor = $2; if (factor < 1) {factor = 1}; print factor * 1.25}')`"
       # "$mod ALT, mouse_up, exec, hyprctl keyword cursor:zoom_factor `$(hyprctl getoption cursor:zoom_factor | awk 'NR==1 {factor = $2; if (factor < 1) {factor = 1}; print factor / 1.25}')`"
     ] ++ (

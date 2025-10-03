@@ -20,8 +20,8 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, nixvim, stylix, nix-colors, nixpkgs-unstable
-    , ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, nixvim, stylix, nix-colors
+    , nixpkgs-unstable, ... }@inputs:
 
     let
       system = "x86_64-linux";
