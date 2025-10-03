@@ -4,6 +4,24 @@ let
     waybar &
     systemctl --user start hyprpolkitagent
   '';
+  screenshotScript = pkgs.writeShellScriptBin "screenshot" ''
+    #!/usr/bin/env bash
+    [[ -f ~/.config/user-dirs.dirs ]] && source ~/.config/user-dirs.dirs
+    OUTPUT_DIR="''${OMARCHY_SCREENSHOT_DIR:-''${XDG_PICTURES_DIR:-$HOME/Pictures}}"
+
+    if [[ ! -d "$OUTPUT_DIR" ]]; then
+      notify-send "Screenshot directory does not exist: $OUTPUT_DIR" -u critical -t 3000
+      exit 1
+    fi
+
+    pkill slurp || hyprshot -m ''${1:-region} --raw |
+      satty --filename - \
+        --output-filename "$OUTPUT_DIR/screenshot-$(date +'%Y-%m-%d_%H-%M-%S').png" \
+        --early-exit \
+        --actions-on-enter save-to-clipboard \
+        --save-after-copy \
+        --copy-command 'wl-copy'
+  '';
 in {
   wayland.windowManager.hyprland.enable = true; # enable Hyprland
 
@@ -115,7 +133,7 @@ in {
       "$mod ALT, right, moveactive, 80 0"
       "$mod ALT, up, moveactive, 0 -80"
       "$mod ALT, down, moveactive, 0 80"
-      ", Print, exec, hyprshot -m region active --clipboard-only "
+      ", Print, exec, ${screenshotScript}/bin/screenshot"
       "$mod, G, exec, google-chrome-stable"
       # "$mod ALT, mouse_down, exec, hyprctl keyword cursor:zoom_factor `$(hyprctl getoption cursor:zoom_factor | awk 'NR==1 {factor = $2; if (factor < 1) {factor = 1}; print factor * 1.25}')`"
       # "$mod ALT, mouse_up, exec, hyprctl keyword cursor:zoom_factor `$(hyprctl getoption cursor:zoom_factor | awk 'NR==1 {factor = $2; if (factor < 1) {factor = 1}; print factor / 1.25}')`"
