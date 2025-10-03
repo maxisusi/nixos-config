@@ -70,6 +70,8 @@
     slurp
     hyprshot
     satty
+    wiremix
+    bluetui
   ];
 
   services.udiskie = {

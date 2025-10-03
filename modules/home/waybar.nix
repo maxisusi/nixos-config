@@ -141,17 +141,15 @@ in {
         format-disabled = "󰂲";
         format-connected = "";
         tooltip-format = "Devices connected: {num_connections}";
-        on-click = "blueberry";
+        on-click = "kitty bluetui";
       };
       wireplumber = {
         # Changed from "pulseaudio"
         "format" = "";
         format-muted = "󰝟";
         scroll-step = 5;
-        on-click = "pavucontrol";
         tooltip-format = "Playing at {volume}%";
-        on-click-right =
-          "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; # Updated command
+        on-click = "kitty wiremix --tab output"; # Updated command
         max-volume = 150; # Optional: allow volume over 100%
       };
       tray = { spacing = 13; };
