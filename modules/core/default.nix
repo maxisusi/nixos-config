@@ -28,9 +28,7 @@
         name = "DejaVu Serif";
       };
     };
-    targets = {
-      nixvim.enable = true;
-    };
+    targets = { nixvim.enable = true; };
   };
 
   services.udisks2.enable = true;

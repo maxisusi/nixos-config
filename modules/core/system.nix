@@ -68,9 +68,6 @@
     ];
   };
 
-  # fonts.packages = with pkgs;
-  #   [ (nerdfonts.override { fonts = [ "JetBrainsMono" ]; }) ];
-  #
   fonts.packages = [ ] ++ builtins.filter lib.attrsets.isDerivation
     (builtins.attrValues pkgs.nerd-fonts);
 
