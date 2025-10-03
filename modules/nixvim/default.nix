@@ -55,8 +55,6 @@
   ];
   extraPlugins = with pkgs.vimPlugins; [{ plugin = no-neck-pain-nvim; }];
 
-  # colorschemes.nord.enable = true;
-
   extraConfigLua =
     #lua
     ''
@@ -83,7 +81,6 @@
           border = _border
       }
     '';
-
 
   autoCmd = [{
     event = [ "CursorMoved" ];

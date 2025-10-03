@@ -20,13 +20,16 @@
         name = "JetBrainsMono Nerd Font";
       };
       sansSerif = {
-        package = pkgs.nerd-fonts.jetbrains-mono;
-        name = "JetBrainsMono Nerd Font";
+        package = pkgs.dejavu_fonts;
+        name = "DejaVu Sans";
       };
       serif = {
-        package = pkgs.nerd-fonts.jetbrains-mono;
-        name = "JetBrainsMono Nerd Font";
+        package = pkgs.dejavu_fonts;
+        name = "DejaVu Serif";
       };
+    };
+    targets = {
+      nixvim.enable = true;
     };
   };
 
@@ -34,4 +37,9 @@
 
   programs.wireshark.enable = true;
   programs.wireshark.package = pkgs.wireshark;
+
+  programs.nixvim = {
+    enable = true;
+    imports = [ ../nixvim ];
+  };
 }
