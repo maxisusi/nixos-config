@@ -1,0 +1,1 @@
+- Always test you changes with `nh os switch`

@@ -12,7 +12,8 @@
   };
   stylix = {
     enable = true;
-    image = ../../wallpapers/neosaka.jpg;
+    # image = ../../wallpapers/neosaka.jpg;
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
     polarity = "dark";
     fonts = {
       monospace = {
