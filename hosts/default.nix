@@ -1,5 +1,4 @@
-{ lib, inputs, system, home-manager, user, nixvim, catppuccin, color_scheme
-, nixpkgs-unstable, ... }@attr: {
+{ lib, inputs, system, home-manager, user, nixvim, stylix, nixpkgs-unstable, ... }@attr: {
   # Desktop Environment
   desktop = lib.nixosSystem {
     inherit system;
@@ -18,17 +17,17 @@
       ./desktop
       ../modules/core
       nixvim.nixosModules.nixvim
-      catppuccin.nixosModules.catppuccin
+      stylix.nixosModules.stylix
       home-manager.nixosModules.home-manager
       {
         home-manager.backupFileExtension = "hm_backup";
         home-manager.useGlobalPkgs = false;
         home-manager.useUserPackages = true;
         home-manager.extraSpecialArgs = {
-          inherit inputs user system color_scheme nixpkgs-unstable;
+          inherit inputs user system nixpkgs-unstable;
         }; # Pass flake as variable
         home-manager.users.${user} = {
-          imports = [ ../modules/home catppuccin.homeModules.catppuccin ];
+          imports = [ ../modules/home ];
         };
       }
     ];
@@ -52,17 +51,17 @@
       ./laptop
       ../modules/core
       nixvim.nixosModules.nixvim
-      catppuccin.nixosModules.catppuccin
+      stylix.nixosModules.stylix
       home-manager.nixosModules.home-manager
       {
         home-manager.backupFileExtension = "hm_backup";
         home-manager.useGlobalPkgs = false;
         home-manager.useUserPackages = true;
         home-manager.extraSpecialArgs = {
-          inherit inputs user system color_scheme;
+          inherit inputs user system;
         }; # Pass flake as variable
         home-manager.users.${user} = {
-          imports = [ ../modules/home catppuccin.homeModules.catppuccin ];
+          imports = [ ../modules/home ];
         };
       }
     ];
@@ -75,7 +74,7 @@
       ./laptop_hp
       ../modules/core
       nixvim.nixosModules.nixvim
-      catppuccin.nixosModules.catppuccin
+      stylix.nixosModules.stylix
       home-manager.nixosModules.home-manager
       {
         home-manager.backupFileExtension = "hm_backup";
@@ -86,7 +85,7 @@
         }; # Pass flake as variable
         home-manager.users.${user} = {
           imports =
-            [ ../modules/home catppuccin.homeManagerModules.catppuccin ];
+            [ ../modules/home stylix.homeManagerModules.stylix ];
         };
       }
     ];

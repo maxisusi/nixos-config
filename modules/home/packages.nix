@@ -33,7 +33,6 @@
     discord
     vlc
     libreoffice
-    catppuccin-kde
     vscode-extensions.vadimcn.vscode-lldb.adapter
     direnv
     obsidian

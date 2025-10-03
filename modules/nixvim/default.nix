@@ -1,4 +1,4 @@
-{ pkgs, color_scheme, ... }: {
+{ pkgs, ... }: {
   # Import all your configuration modules here
   imports = [
     # MUST
@@ -84,21 +84,6 @@
       }
     '';
 
-  colorschemes = {
-    catppuccin = {
-      enable = true;
-      settings = {
-        flavour = color_scheme;
-        integrations = {
-          cmp = true;
-          gitsigns = true;
-          nvimtree = true;
-          treesitter = true;
-          notify = true;
-        };
-      };
-    };
-  };
 
   autoCmd = [{
     event = [ "CursorMoved" ];

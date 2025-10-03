@@ -5,7 +5,7 @@
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    catppuccin.url = "github:catppuccin/nix";
+    stylix.url = "github:danth/stylix";
 
     hyprland.url = "github:hyprwm/Hyprland";
 
@@ -19,7 +19,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, nixvim, catppuccin, nixpkgs-unstable
+  outputs = { self, nixpkgs, home-manager, nixvim, stylix, nixpkgs-unstable
     , ... }@inputs:
 
     let
@@ -28,14 +28,13 @@
         inherit system;
         config.allowUnfree = true;
       };
-      color_scheme = "latte";
       lib = nixpkgs.lib;
       user = "max";
     in {
       formatter.x86_64-linux = nixpkgs.legacyPackages.${system}.nixpkgs-fmt;
       nixosConfigurations = (import ./hosts {
         inherit (nixpkgs) lib;
-        inherit inputs user system home-manager nixvim catppuccin color_scheme
+        inherit inputs user system home-manager nixvim stylix
           nixpkgs-unstable;
       });
     };

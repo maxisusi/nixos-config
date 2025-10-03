@@ -10,7 +10,25 @@
     desktop.enable = (lib.mkIf (config.networking.hostName == "desktop") true);
     laptop.enable = (lib.mkIf (config.networking.hostName == "laptop") true);
   };
-  catppuccin.enable = true;
+  stylix = {
+    enable = true;
+    image = ../../wallpapers/neosaka.jpg;
+    polarity = "dark";
+    fonts = {
+      monospace = {
+        package = pkgs.nerd-fonts.jetbrains-mono;
+        name = "JetBrainsMono Nerd Font";
+      };
+      sansSerif = {
+        package = pkgs.nerd-fonts.jetbrains-mono;
+        name = "JetBrainsMono Nerd Font";
+      };
+      serif = {
+        package = pkgs.nerd-fonts.jetbrains-mono;
+        name = "JetBrainsMono Nerd Font";
+      };
+    };
+  };
 
   services.udisks2.enable = true;
 

@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 let
   startupScript = pkgs.writeShellScriptBin "start" ''
     waybar &
@@ -29,8 +29,6 @@ in {
       border_size = 1;
       layout = "dwindle";
       resize_on_border = true;
-      "col.active_border" = "rgb(E49B5D) rgb(34302C) 45deg";
-      "col.inactive_border" = "0x00000000";
       no_border_on_floating = false;
     };
 

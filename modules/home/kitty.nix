@@ -1,10 +1,6 @@
-{
+{ lib, ... }: {
   programs.kitty = {
     enable = true;
-    font = {
-      name = "JetBrainsMono NF SemiBold";
-      size = 10.0;
-    };
     shellIntegration = { enableFishIntegration = true; };
     settings = {
       adjust_line_height = 2;

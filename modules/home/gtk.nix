@@ -1,13 +1,9 @@
-{ pkgs, ... }: {
+{ pkgs, lib, ... }: {
   fonts.fontconfig.enable = true;
   home.packages = [ pkgs.twemoji-color-font pkgs.noto-fonts-emoji ];
 
   gtk = {
     enable = true;
-    font = {
-      name = "JetBrainsMono Nerd Font";
-      size = 11;
-    };
 
     # iconTheme = {
     #   name = "Papirus-Dark";
