@@ -6,6 +6,7 @@
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     stylix.url = "github:danth/stylix";
+    nix-colors.url = "github:misterio77/nix-colors";
 
     hyprland.url = "github:hyprwm/Hyprland";
 
@@ -19,7 +20,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, nixvim, stylix, nixpkgs-unstable
+  outputs = { self, nixpkgs, home-manager, nixvim, stylix, nix-colors, nixpkgs-unstable
     , ... }@inputs:
 
     let
@@ -34,7 +35,7 @@
       formatter.x86_64-linux = nixpkgs.legacyPackages.${system}.nixpkgs-fmt;
       nixosConfigurations = (import ./hosts {
         inherit (nixpkgs) lib;
-        inherit inputs user system home-manager nixvim stylix
+        inherit inputs user system home-manager nixvim stylix nix-colors
           nixpkgs-unstable;
       });
     };
