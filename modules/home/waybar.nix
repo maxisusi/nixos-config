@@ -13,7 +13,7 @@ let
       border: none;
       border-radius: 0;
       min-height: 0;
-      font-size: 14px;
+      font-size: 16px;
     }
 
     #workspaces {
@@ -96,7 +96,7 @@ in {
       cpu = {
         interval = 5;
         format = "󰍛";
-        on-click = "ghostty -e btop";
+        on-click = "kitty btop";
       };
       clock = {
         format = "{:%A %I:%M %p}";
@@ -116,7 +116,7 @@ in {
         tooltip-format-disconnected = "Disconnected";
         interval = 3;
         nospacing = 1;
-        on-click = "ghostty -e nmcli";
+        on-click = "kitty nmcli";
       };
       battery = {
         interval = 5;
