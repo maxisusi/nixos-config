@@ -1,27 +1,8 @@
 { pkgs, lib, ... }:
 let
-  startupScript = pkgs.writeShellScriptBin "start" ''
-    waybar &
-    systemctl --user start hyprpolkitagent
-  '';
-  screenshotScript = pkgs.writeShellScriptBin "screenshot" ''
-    #!/usr/bin/env bash
-    [[ -f ~/.config/user-dirs.dirs ]] && source ~/.config/user-dirs.dirs
-    OUTPUT_DIR="''${OMARCHY_SCREENSHOT_DIR:-''${XDG_PICTURES_DIR:-$HOME/Pictures}}"
-
-    if [[ ! -d "$OUTPUT_DIR" ]]; then
-      notify-send "Screenshot directory does not exist: $OUTPUT_DIR" -u critical -t 3000
-      exit 1
-    fi
-
-    pkill slurp || hyprshot -m ''${1:-region} --raw |
-      satty --filename - \
-        --output-filename "$OUTPUT_DIR/screenshot-$(date +'%Y-%m-%d_%H-%M-%S').png" \
-        --early-exit \
-        --actions-on-enter save-to-clipboard \
-        --save-after-copy \
-        --copy-command 'wl-copy'
-  '';
+  scripts = import ./scripts { inherit pkgs; };
+  startupScript = scripts.startup;
+  screenshotScript = scripts.screenshot;
 in {
   wayland.windowManager.hyprland.enable = true; # enable Hyprland
 
@@ -43,7 +24,7 @@ in {
 
     general = {
       gaps_in = 8;
-      gaps_out = 0;
+      gaps_out = 8;
       border_size = 1;
       layout = "dwindle";
       resize_on_border = true;
@@ -242,9 +223,9 @@ in {
       splash = false;
       splash_offset = 2.0;
       preload =
-        [ "/home/max/.config/flakes/nixos-config/wallpapers/neosaka.jpg" ];
+        [ "/home/max/.config/flakes/nixos-config/wallpapers/cliff.png" ];
       wallpaper =
-        [ ",/home/max/.config/flakes/nixos-config/wallpapers/neosaka.jpg" ];
+        [ ",/home/max/.config/flakes/nixos-config/wallpapers/cliff.png" ];
     };
   };
 

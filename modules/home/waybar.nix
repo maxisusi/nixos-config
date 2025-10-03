@@ -13,9 +13,7 @@ let
       border: none;
       border-radius: 0;
       min-height: 0;
-      font-family: CaskaydiaMono Nerd Font;
       font-size: 14px;
-      /* background-color: transparent; */
     }
 
     #workspaces {

@@ -12,8 +12,9 @@
   };
   stylix = {
     enable = true;
-    # image = ../../wallpapers/neosaka.jpg;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
+    # image = ../../wallpapers/cliff.png;
+    base16Scheme =
+      "${pkgs.base16-schemes}/share/themes/gruvbox-material-dark-hard.yaml";
     polarity = "dark";
     fonts = {
       monospace = {
