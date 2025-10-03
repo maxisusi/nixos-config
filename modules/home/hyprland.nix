@@ -226,9 +226,9 @@ in {
       splash = false;
       splash_offset = 2.0;
       preload =
-        [ "/home/max/.config/flakes/nixos-config/wallpapers/cliff.png" ];
+        [ "/home/max/.config/flakes/nixos-config/wallpapers/beach.png" ];
       wallpaper =
-        [ ",/home/max/.config/flakes/nixos-config/wallpapers/cliff.png" ];
+        [ ",/home/max/.config/flakes/nixos-config/wallpapers/beach.png" ];
     };
   };
 
