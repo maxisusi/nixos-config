@@ -15,6 +15,8 @@
       vi = "nvim";
       ns = "nix-shell --command fish";
       s = "kitten ssh";
+      t = "tmux";
+      tk = "tmux kill-server";
     };
   };
 }
