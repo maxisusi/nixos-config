@@ -10,7 +10,7 @@ in {
     "$mod" = "SUPER";
     "$terminal" = "kitty";
     "$fileManager" = "nautilus";
-    "$menu" = "rofi -show drun";
+    "$menu" = "wofi --show drun";
     "$lock" = "hyprlock";
 
     env = [
@@ -80,7 +80,7 @@ in {
     };
 
     windowrulev2 = [
-      "stayfocused,class:(rofi)"
+      "stayfocused,class:(wofi)"
       "workspace 1, monitor 1, class:kitty"
       "workspace 2, monitor 1, class:google-chrome"
       "workspace 3, monitor 0, class:Slack"
@@ -169,8 +169,9 @@ in {
   wayland.windowManager.hyprland.systemd.variables = [ "--all" ];
   home.packages = with pkgs; [
     nautilus
-    rofi
-    rofi-power-menu
+    wofi
+    # rofi
+    # rofi-power-menu
     brightnessctl
     pamixer
     hyprpaper
@@ -187,7 +188,7 @@ in {
     hyprsunset
   ];
 
-  programs.rofi.enable = true;
+  # programs.rofi.enable = true;
   services.dunst = { enable = true; };
 
   programs.hyprlock = { enable = true; };
