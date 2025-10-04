@@ -4,6 +4,7 @@ let
   startupScript = scripts.startup;
   screenshotScript = scripts.screenshot;
   nhSwitchScript = scripts.nhSwitch;
+  webappLauncherScript = scripts.webappLauncher;
 in {
   wayland.windowManager.hyprland.enable = true; # enable Hyprland
 
@@ -121,6 +122,10 @@ in {
       "$mod, C, exec, kitty -d ~/.config/flakes/nixos-config nvim flake.nix"
       "$mod, p, exec, kitty btop"
       "$mod, U, exec, ${nhSwitchScript}/bin/nh-switch"
+      # Example webapp shortcuts - uncomment and modify URLs as needed
+      "$mod SHIFT, P, exec, ${webappLauncherScript}/bin/webapp-launcher https://www.perplexity.ai/"
+      "$mod SHIFT, M, exec, ${webappLauncherScript}/bin/webapp-launcher https://mail.proton.me/"
+      "$mod SHIFT, S, exec, slack"
       # "$mod ALT, mouse_down, exec, hyprctl keyword cursor:zoom_factor `$(hyprctl getoption cursor:zoom_factor | awk 'NR==1 {factor = $2; if (factor < 1) {factor = 1}; print factor * 1.25}')`"
       # "$mod ALT, mouse_up, exec, hyprctl keyword cursor:zoom_factor `$(hyprctl getoption cursor:zoom_factor | awk 'NR==1 {factor = $2; if (factor < 1) {factor = 1}; print factor / 1.25}')`"
     ] ++ (
@@ -188,6 +193,7 @@ in {
     wf-recorder
     slurp
     hyprsunset
+    webappLauncherScript
   ];
 
   # programs.rofi.enable = true;
