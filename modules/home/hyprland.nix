@@ -11,7 +11,7 @@ in {
     "$mod" = "SUPER";
     "$terminal" = "kitty";
     "$fileManager" = "nautilus";
-    "$menu" = "wofi --show drun";
+    "$menu" = "wofi";
     "$lock" = "hyprlock";
 
     env = [

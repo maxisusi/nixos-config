@@ -6,5 +6,5 @@
     ++ [ (import ./kitty.nix) ] ++ [ (import ./gtk.nix) ]
     ++ [ (import ./bat.nix) ] ++ [ (import ./btop.nix) ]
     ++ [ (import ./hyprland.nix) ] ++ [ (import ./waybar.nix) ]
-    ++ [ (import ./ghostty.nix) ];
+    ++ [ (import ./ghostty.nix) ] ++ [ (import ./wofi.nix) ];
 }
