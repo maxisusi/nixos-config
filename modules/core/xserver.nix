@@ -11,14 +11,11 @@ in {
   config = lib.mkMerge [
     {
       services = {
-        desktopManager.plasma6.enable = true;
         displayManager.sddm = {
           enable = true;
           wayland.enable = true;
         };
       };
-      environment.plasma6.excludePackages = with pkgs.kdePackages;
-        [ spectacle ];
     }
     (lib.mkIf cfg.desktop.enable {
       services = {
