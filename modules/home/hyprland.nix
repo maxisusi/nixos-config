@@ -20,7 +20,7 @@ in {
       "XDG_SESSION_TYPE,wayland"
       "GBM_BACKEND,nvidia-drm"
       "__GLX_VENDOR_LIBRARY_NAME,nvidia"
-      "GTK_SCALE,2"
+      "GTK_SCALE,1.75"
     ];
 
     exec-once = "${startupScript}/bin/start";
@@ -155,7 +155,7 @@ in {
 
     monitor = [
       "desc:Chimei Innolux Corporation 0x143F, highrr, 0x0, 1"
-      "DP-3, preferred, 0x-1440,1"
+      "DP-3, preferred, auto,1.666667"
       "DP-1, 3440x1440@74.98Hz, 0x-1440,1"
       # ", preferred, auto, 1"
     ];
