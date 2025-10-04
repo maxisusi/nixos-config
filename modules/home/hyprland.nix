@@ -20,6 +20,7 @@ in {
       "XDG_SESSION_TYPE,wayland"
       "GBM_BACKEND,nvidia-drm"
       "__GLX_VENDOR_LIBRARY_NAME,nvidia"
+      "GTK_SCALE,2"
     ];
 
     exec-once = "${startupScript}/bin/start";
@@ -102,7 +103,6 @@ in {
       "$mod, right, movefocus, r"
       "$mod, up, movefocus, u"
       "$mod, down, movefocus, d"
-      # "$mod, P, pseudo"
 
       "$mod SHIFT, left, movewindow, l"
       "$mod SHIFT, right, movewindow, r"
@@ -118,16 +118,23 @@ in {
       "$mod ALT, down, moveactive, 0 80"
 
       ", Print, exec, ${screenshotScript}/bin/screenshot"
+      "$mod SHIFT, Print, exec, hyprpicker -a"
       "$mod, G, exec, google-chrome-stable"
       "$mod, C, exec, kitty -d ~/.config/flakes/nixos-config nvim flake.nix"
       "$mod, p, exec, kitty btop"
       "$mod, U, exec, ${nhSwitchScript}/bin/nh-switch"
-      # Example webapp shortcuts - uncomment and modify URLs as needed
-      "$mod SHIFT, P, exec, ${webappLauncherScript}/bin/webapp-launcher https://www.perplexity.ai/"
-      "$mod SHIFT, M, exec, ${webappLauncherScript}/bin/webapp-launcher https://mail.proton.me/"
+
+      # Apps
       "$mod SHIFT, S, exec, slack"
-      # "$mod ALT, mouse_down, exec, hyprctl keyword cursor:zoom_factor `$(hyprctl getoption cursor:zoom_factor | awk 'NR==1 {factor = $2; if (factor < 1) {factor = 1}; print factor * 1.25}')`"
-      # "$mod ALT, mouse_up, exec, hyprctl keyword cursor:zoom_factor `$(hyprctl getoption cursor:zoom_factor | awk 'NR==1 {factor = $2; if (factor < 1) {factor = 1}; print factor / 1.25}')`"
+      "$mod SHIFT, D, exec, discord"
+      "$mod SHIFT, O, exec, obsidian"
+      "$mod SHIFT, M, exec, ${webappLauncherScript}/bin/webapp-launcher https://mail.proton.me/"
+
+      # AI's
+      "$mod SHIFT, P, exec, ${webappLauncherScript}/bin/webapp-launcher https://www.perplexity.ai/"
+      "$mod SHIFT, G, exec, ${webappLauncherScript}/bin/webapp-launcher https://grok.com/"
+      "$mod SHIFT, C, exec, ${webappLauncherScript}/bin/webapp-launcher https://chatgpt.com/"
+
     ] ++ (
       # workspaces
       # binds $mod + [shift +] {1..9} to [move to] workspace {1..9}
