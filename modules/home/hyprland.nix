@@ -129,6 +129,7 @@ in {
       "$mod SHIFT, D, exec, discord"
       "$mod SHIFT, O, exec, obsidian"
       "$mod SHIFT, M, exec, ${webappLauncherScript}/bin/webapp-launcher https://mail.proton.me/"
+      "$mod SHIFT, R, exec, ${webappLauncherScript}/bin/webapp-launcher https://docs.rs/"
 
       # AI's
       "$mod SHIFT, P, exec, ${webappLauncherScript}/bin/webapp-launcher https://www.perplexity.ai/"
