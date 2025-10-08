@@ -20,7 +20,7 @@ in {
       "XDG_SESSION_TYPE,wayland"
       "GBM_BACKEND,nvidia-drm"
       "__GLX_VENDOR_LIBRARY_NAME,nvidia"
-      "GTK_SCALE,1.75"
+      "GTK_SCALE,1.25"
     ];
 
     exec-once = "${startupScript}/bin/start";
@@ -135,6 +135,7 @@ in {
       "$mod SHIFT, P, exec, ${webappLauncherScript}/bin/webapp-launcher https://www.perplexity.ai/"
       "$mod SHIFT, G, exec, ${webappLauncherScript}/bin/webapp-launcher https://grok.com/"
       "$mod SHIFT, C, exec, ${webappLauncherScript}/bin/webapp-launcher https://chatgpt.com/"
+      "$mod SHIFT, T, exec, ${webappLauncherScript}/bin/webapp-launcher https://app.todoist.com/"
 
     ] ++ (
       # workspaces
@@ -156,7 +157,7 @@ in {
 
     monitor = [
       "desc:Chimei Innolux Corporation 0x143F, highrr, 0x0, 1"
-      "DP-3, preferred, auto,1.333334"
+      "DP-3, preferred, auto,1.250000"
       "DP-1, 3440x1440@74.98Hz, 0x-1440,1"
       # ", preferred, auto, 1"
     ];
