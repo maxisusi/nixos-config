@@ -13,9 +13,8 @@
   stylix = {
     enable = true;
     # image = ../../wallpapers/cliff.png;
-    base16Scheme =
-      "${pkgs.base16-schemes}/share/themes/gruvbox-material-dark-hard.yaml";
-    polarity = "dark";
+    base16Scheme = ../../alabaster.yaml;
+    polarity = "light";
     fonts = {
       monospace = {
         package = pkgs.nerd-fonts.jetbrains-mono;
