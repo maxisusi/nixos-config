@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
 let
   scripts = import ./scripts { inherit pkgs; };
   startupScript = scripts.startup;
@@ -120,8 +120,8 @@ in {
       ", Print, exec, ${screenshotScript}/bin/screenshot"
       "$mod SHIFT, Print, exec, hyprpicker -a"
       "$mod, G, exec, google-chrome-stable"
-      "$mod, C, exec, kitty -d ~/.config/flakes/nixos-config nvim flake.nix"
-      "$mod, p, exec, kitty btop"
+      "$mod, C, exec, ghostty -e bash -c 'cd ~/.config/flakes/nixos-config && nvim flake.nix'"
+      "$mod, p, exec, ghostty -e btop"
       "$mod, U, exec, ${nhSwitchScript}/bin/nh-switch"
 
       # Apps
