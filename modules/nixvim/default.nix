@@ -30,6 +30,7 @@
     ./notify.nix
     ./luasnip.nix
     ./mini.nix
+    ./alabaster.nix
     # IDK
     { plugins.yazi = { enable = true; }; }
     { plugins.hardtime = { enable = true; }; }

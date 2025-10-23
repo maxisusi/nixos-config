@@ -29,7 +29,7 @@
         name = "DejaVu Serif";
       };
     };
-    targets = { nixvim.enable = true; };
+    targets = { nixvim.enable = false; };
   };
 
   services.udisks2.enable = true;
