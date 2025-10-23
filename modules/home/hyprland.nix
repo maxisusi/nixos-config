@@ -10,7 +10,7 @@ in {
 
   wayland.windowManager.hyprland.settings = {
     "$mod" = "SUPER";
-    "$terminal" = "kitty";
+    "$terminal" = "ghostty";
     "$fileManager" = "nautilus";
     "$menu" = "wofi";
     "$lock" = "hyprlock";
@@ -84,7 +84,7 @@ in {
 
     windowrulev2 = [
       "stayfocused,class:(wofi)"
-      "workspace 1, monitor 1, class:kitty"
+      "workspace 1, monitor 1, class:ghostty"
       "workspace 2, monitor 1, class:google-chrome"
       "workspace 3, monitor 0, class:Slack"
       "workspace 3, monitor 0, class:discord"
