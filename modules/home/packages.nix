@@ -72,6 +72,7 @@
     satty
     wiremix
     bluetui
+    gh
   ];
 
   services.udiskie = {
