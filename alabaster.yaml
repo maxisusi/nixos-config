@@ -2,9 +2,9 @@ scheme: "Alabaster"
 author: "Claude"
 base00: "f7f7f7" # Default Background - very light gray
 base01: "f0f0f0" # Lighter Background (status bars, line numbers)
-base02: "e8e8e8" # Selection Background
-base03: "d0d0d0" # Comments, Invisibles, Line Highlighting
-base04: "999999" # Dark Foreground (status bars)
+base02: "d4d4d4" # Selection Background
+base03: "808080" # Comments, Invisibles, Line Highlighting
+base04: "666666" # Dark Foreground (status bars)
 base05: "434343" # Default Foreground
 base06: "2b2b2b" # Light Foreground (not often used)
 base07: "1a1a1a" # Light Background (not often used)

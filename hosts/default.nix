@@ -1,4 +1,5 @@
-{ lib, inputs, system, home-manager, user, nixvim, stylix, nixpkgs-unstable, ... }@attr: {
+{ lib, inputs, system, home-manager, user, nixvim, stylix, nixpkgs-unstable, ...
+}@attr: {
   # Desktop Environment
   desktop = lib.nixosSystem {
     inherit system;
@@ -26,9 +27,7 @@
         home-manager.extraSpecialArgs = {
           inherit inputs user system nixpkgs-unstable;
         }; # Pass flake as variable
-        home-manager.users.${user} = {
-          imports = [ ../modules/home ];
-        };
+        home-manager.users.${user} = { imports = [ ../modules/home ]; };
       }
     ];
   };
@@ -60,9 +59,7 @@
         home-manager.extraSpecialArgs = {
           inherit inputs user system;
         }; # Pass flake as variable
-        home-manager.users.${user} = {
-          imports = [ ../modules/home ];
-        };
+        home-manager.users.${user} = { imports = [ ../modules/home ]; };
       }
     ];
   };
@@ -84,8 +81,7 @@
           inherit inputs user system;
         }; # Pass flake as variable
         home-manager.users.${user} = {
-          imports =
-            [ ../modules/home stylix.homeManagerModules.stylix ];
+          imports = [ ../modules/home stylix.homeManagerModules.stylix ];
         };
       }
     ];
