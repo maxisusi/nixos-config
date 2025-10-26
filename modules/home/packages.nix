@@ -73,6 +73,7 @@
     wiremix
     bluetui
     gh
+    telegram-bot-api
   ];
 
   services.udiskie = {

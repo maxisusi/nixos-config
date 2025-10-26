@@ -16,12 +16,13 @@ in {
   colorscheme = "alabaster";
 
   opts = {
-    background = "light";  # Use light background for correct alabaster colors
+    background = "light"; # Use light background for correct alabaster colors
   };
 
   globals = {
     # Plugin configuration options  
-    alabaster_dim_comments = false; # Keep comments bright (false = bright, true = dim)
+    alabaster_dim_comments =
+      false; # Keep comments bright (false = bright, true = dim)
     alabaster_floatborder = false; # Default floating window border styling
   };
 
@@ -34,7 +35,7 @@ in {
     local comment_fg = "#aa3731"  -- Comments (red)
     local punct_fg = "#777777"    -- Punctuation (gray)
     local keyword_fg = "#000000"  -- Keywords, variables (black)
-    
+
     -- Fix function-related groups (should be blue)
     vim.api.nvim_set_hl(0, "@function", { fg = def_fg })
     vim.api.nvim_set_hl(0, "@function.builtin", { fg = def_fg })
@@ -44,19 +45,19 @@ in {
     vim.api.nvim_set_hl(0, "@method.call", { fg = def_fg })
     vim.api.nvim_set_hl(0, "@constructor", { fg = def_fg })
     vim.api.nvim_set_hl(0, "@keyword.function", { fg = def_fg })
-    
+
     -- Fix constant-related groups (should be purple)
     vim.api.nvim_set_hl(0, "@constant.macro", { fg = const_fg })
-    
+
     -- Fix type definitions (should be blue like functions)
     vim.api.nvim_set_hl(0, "@type", { fg = def_fg })
     vim.api.nvim_set_hl(0, "@type.builtin", { fg = def_fg })
     vim.api.nvim_set_hl(0, "@type.definition", { fg = def_fg })
-    
+
     -- Fix string-related groups (should be green)
     vim.api.nvim_set_hl(0, "@string.regex", { fg = string_fg })
     vim.api.nvim_set_hl(0, "@string.escape", { fg = string_fg })
-    
+
     -- Legacy treesitter groups for compatibility
     vim.api.nvim_set_hl(0, "TSFunction", { fg = def_fg })
     vim.api.nvim_set_hl(0, "TSFuncBuiltin", { fg = def_fg })
