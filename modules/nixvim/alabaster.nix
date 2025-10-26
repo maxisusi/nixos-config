@@ -16,7 +16,7 @@ in {
   colorscheme = "alabaster";
 
   opts = {
-    background = "light"; # Use light background for correct alabaster colors
+    background = "dark"; # Use dark background for dark alabaster theme
   };
 
   globals = {
@@ -26,15 +26,15 @@ in {
     alabaster_floatborder = false; # Default floating window border styling
   };
 
-  # Comprehensive treesitter color fixes to match alabaster theme
+  # Comprehensive treesitter color fixes to match alabaster dark theme
   extraConfigLua = ''
-    -- Alabaster theme colors
-    local def_fg = "#325cc0"      -- Functions, definitions (blue)
-    local const_fg = "#7a3e9d"    -- Constants, types (purple)
-    local string_fg = "#448c27"   -- Strings (green)
-    local comment_fg = "#aa3731"  -- Comments (red)
-    local punct_fg = "#777777"    -- Punctuation (gray)
-    local keyword_fg = "#000000"  -- Keywords, variables (black)
+    -- Alabaster dark theme colors
+    local def_fg = "#71ADE7"      -- Functions, definitions (blue)
+    local const_fg = "#CC8BC9"    -- Constants, types (purple)
+    local string_fg = "#95CB82"   -- Strings (green)
+    local comment_fg = "#DFDF8E"  -- Comments (yellow)
+    local punct_fg = "#708B8D"    -- Punctuation (gray-blue)
+    local keyword_fg = "#CECECE"  -- Keywords, variables (light gray)
 
     -- Fix function-related groups (should be blue)
     vim.api.nvim_set_hl(0, "@function", { fg = def_fg })

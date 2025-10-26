@@ -1,18 +1,18 @@
-scheme: "Alabaster"
+scheme: "Alabaster Dark"
 author: "Claude"
-base00: "f7f7f7" # Default Background - very light gray
-base01: "f0f0f0" # Lighter Background (status bars, line numbers)
-base02: "d4d4d4" # Selection Background
-base03: "808080" # Comments, Invisibles, Line Highlighting
-base04: "666666" # Dark Foreground (status bars)
-base05: "434343" # Default Foreground
-base06: "2b2b2b" # Light Foreground (not often used)
-base07: "1a1a1a" # Light Background (not often used)
-base08: "aa3731" # Variables, XML Tags, Markup Link Text, Markup Lists, Diff Deleted
-base09: "a0570d" # Integers, Boolean, Constants, XML Attributes, Markup Link Url
-base0A: "aa5a17" # Classes, Markup Bold, Search Text Background
-base0B: "448c27" # Strings, Inherited Class, Markup Code, Diff Inserted
-base0C: "2485b3" # Support, Regular Expressions, Escape Characters, Markup Quotes
-base0D: "3976d6" # Functions, Methods, Attribute IDs, Headings
-base0E: "7d3ac8" # Keywords, Storage, Selector, Markup Italic, Diff Changed
-base0F: "905e26" # Deprecated, Opening/Closing Embedded Language Tags
+base00: "0E1415" # Default Background - dark gray/green
+base01: "293334" # Lighter Background (status bars, line numbers)
+base02: "293334" # Selection Background
+base03: "708B8D" # Comments, Invisibles, Line Highlighting - gray-blue
+base04: "CECECE" # Dark Foreground (status bars)
+base05: "CECECE" # Default Foreground - light gray
+base06: "CECECE" # Light Foreground
+base07: "CECECE" # Light Background
+base08: "c33333" # Variables, XML Tags, Markup Link Text, Markup Lists, Diff Deleted
+base09: "CD974B" # Integers, Boolean, Constants, XML Attributes, Markup Link Url - active color
+base0A: "CD974B" # Classes, Markup Bold, Search Text Background
+base0B: "95CB82" # Strings, Inherited Class, Markup Code, Diff Inserted - green
+base0C: "71ADE7" # Support, Regular Expressions, Escape Characters, Markup Quotes - blue
+base0D: "71ADE7" # Functions, Methods, Attribute IDs, Headings - blue (definitions)
+base0E: "CC8BC9" # Keywords, Storage, Selector, Markup Italic, Diff Changed - purple (constants)
+base0F: "DFDF8E" # Deprecated, Opening/Closing Embedded Language Tags - comments color
