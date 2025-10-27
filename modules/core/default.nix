@@ -14,7 +14,7 @@
     enable = true;
     # image = ../../wallpapers/cliff.png;
     base16Scheme = ../../alabaster.yaml;
-    polarity = "light";
+    polarity = "dark";
     fonts = {
       monospace = {
         package = pkgs.nerd-fonts.jetbrains-mono;
