@@ -28,19 +28,18 @@
   documentation.man.enable = true;
   documentation.dev.enable = true;
 
-  # Opening ports for KDE Connect
+  # Open port on system
   networking.firewall = {
     enable = true;
     allowedTCPPortRanges = [{
-      from = 1714;
-      to = 1764;
+      from = 53316;
+      to = 53317;
     } # KDE Connect
       ];
     allowedUDPPortRanges = [{
-      from = 1714;
-      to = 1764;
-    } # KDE Connect
-      ];
+      from = 53316;
+      to = 53317;
+    }];
   };
 
   environment = {

@@ -72,8 +72,8 @@
     satty
     wiremix
     bluetui
-    gh
     telegram-bot-api
+    jocalsend
   ];
 
   services.udiskie = {
