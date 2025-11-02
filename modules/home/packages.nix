@@ -74,6 +74,7 @@
     bluetui
     telegram-bot-api
     jocalsend
+    yaak
   ];
 
   services.udiskie = {
