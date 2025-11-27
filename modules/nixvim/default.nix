@@ -22,7 +22,7 @@
     ./spectre.nix
     # KINDA
     ./rust-tools.nix
-    ./copilot.nix
+    # ./copilot.nix
     ./autopair.nix
     ./lualine.nix
     ./wich_key.nix
