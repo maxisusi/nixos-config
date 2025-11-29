@@ -1,9 +1,11 @@
 { pkgs, ... }: {
   programs.git = {
     enable = true;
-    userName = "maxisusi";
-    userEmail = "maxbalej@proton.me";
-    extraConfig = {
+    settings = {
+      user = {
+        name = "maxisusi";
+        email = "maxbalej@proton.me";
+      };
       push = { autoSetupRemote = true; };
       pull = { rebase = true; };
       gpg = { format = "ssh"; };

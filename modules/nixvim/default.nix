@@ -18,7 +18,7 @@
     ./indent-blankline.nix
     ./vim-visual-multi.nix
     ./typescript-tools.nix
-    ./dap.nix
+    # ./dap.nix
     ./spectre.nix
     # KINDA
     ./rust-tools.nix

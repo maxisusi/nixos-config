@@ -36,7 +36,7 @@
         "\${HOME}/.steam/root/compatibilitytools.d";
     };
     systemPackages = with pkgs; [
-      protonup
+      protonup-ng
       linuxPackages.nvidia_x11
       google-chrome
     ];

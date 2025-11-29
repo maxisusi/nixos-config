@@ -1,8 +1,8 @@
 { pkgs, lib, ... }: {
   fonts.fontconfig.enable = true;
-  home.packages = [ 
-    pkgs.twemoji-color-font 
-    pkgs.noto-fonts-emoji 
+  home.packages = [
+    pkgs.twemoji-color-font
+    pkgs.noto-fonts-color-emoji
     pkgs.dejavu_fonts
     pkgs.liberation_ttf
     pkgs.noto-fonts
