@@ -9,6 +9,11 @@ let
       rev = "481910715c46b83b9bf50bb9402d176391fb3017";
       sha256 = "sha256-Dfcwyi8KY2JG4jjy+Ey1YztxIv5J6SbnN8kINfzY6tk=";
     };
+    # Remove problematic query files that have outdated treesitter syntax
+    postInstall = ''
+      rm -rf $out/after/queries/hare/highlights.scm
+      rm -rf $out/after/queries/zig/highlights.scm
+    '';
   };
 in {
   extraPlugins = [ alabaster-nvim ];

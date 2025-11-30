@@ -6,8 +6,6 @@
     vscode
     ripgrep
     jq
-    gnumake
-    rsync
     tokei
     python3
     zoxide
