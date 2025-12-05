@@ -47,6 +47,9 @@
     bluetui
     jocalsend
     yaak
+    gnumake
+    nodejs
+    yarn
   ];
 
   services.udiskie = {
