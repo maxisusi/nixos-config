@@ -50,6 +50,7 @@
     gnumake
     nodejs
     yarn
+    just
   ];
 
   services.udiskie = {
