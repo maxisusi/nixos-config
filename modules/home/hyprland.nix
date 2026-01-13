@@ -31,7 +31,6 @@ in {
       border_size = 1;
       layout = "dwindle";
       resize_on_border = true;
-      no_border_on_floating = false;
     };
 
     decoration = {
