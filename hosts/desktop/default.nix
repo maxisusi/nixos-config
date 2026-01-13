@@ -8,6 +8,12 @@
 
   networking.hostName = "desktop"; # Define your hostname.
 
+  networking.interfaces.eno1.wakeOnLan = {
+    enable = true;
+    policy = [ "magic" ];
+  };
+  networking.firewall.allowedUDPPorts = [ 9 ];
+
   # Steam and optimisations
   programs.steam.enable = true;
   programs.steam.gamescopeSession.enable = true;

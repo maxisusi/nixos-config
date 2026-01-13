@@ -96,7 +96,7 @@ in {
       cpu = {
         interval = 5;
         format = "󰍛";
-        on-click = "kitty btop";
+        on-click = "ghostty -e btop";
       };
       clock = {
         format = "{:%A %I:%M %p}";
@@ -116,7 +116,7 @@ in {
         tooltip-format-disconnected = "Disconnected";
         interval = 3;
         nospacing = 1;
-        on-click = "kitty nmcli";
+        on-click = "ghostty -e nmcli";
       };
       battery = {
         interval = 5;
@@ -141,7 +141,7 @@ in {
         format-disabled = "󰂲";
         format-connected = "";
         tooltip-format = "Devices connected: {num_connections}";
-        on-click = "kitty bluetui";
+        on-click = "ghostty -e bluetui";
       };
       wireplumber = {
         # Changed from "pulseaudio"
@@ -149,7 +149,7 @@ in {
         format-muted = "󰝟";
         scroll-step = 5;
         tooltip-format = "Playing at {volume}%";
-        on-click = "kitty wiremix --tab output"; # Updated command
+        on-click = "ghostty -e wiremix --tab output"; # Updated command
         max-volume = 150; # Optional: allow volume over 100%
       };
       tray = { spacing = 13; };
