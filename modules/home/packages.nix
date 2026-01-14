@@ -51,6 +51,7 @@
     nodejs
     yarn
     just
+    opencode
   ];
 
   services.udiskie = {
