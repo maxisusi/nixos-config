@@ -1,1 +1,1 @@
-{ plugins.rustaceanvim = { enable = true; }; }
+{ plugins.rustaceanvim = { enable = false; }; }
