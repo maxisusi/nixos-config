@@ -5,6 +5,7 @@ in {
     extraConfig = ''
       Host *
           IdentityAgent ${onePassPath}
+          SetEnv TERM=xterm-256color
     '';
   };
 }
