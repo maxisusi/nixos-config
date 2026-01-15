@@ -6,14 +6,9 @@ let
     src = pkgs.fetchFromGitHub {
       owner = "p00f";
       repo = "alabaster.nvim";
-      rev = "481910715c46b83b9bf50bb9402d176391fb3017";
-      sha256 = "sha256-Dfcwyi8KY2JG4jjy+Ey1YztxIv5J6SbnN8kINfzY6tk=";
+      rev = "76ee17c34f13190d1a3532613c7ca946303f0ffe";
+      sha256 = "sha256-U4MCkhJNKQWPVE5HC0zK6bU3ZMg4DQnheEqjAqxoGcQ=";
     };
-    # Remove problematic query files that have outdated treesitter syntax
-    postInstall = ''
-      rm -rf $out/after/queries/hare/highlights.scm
-      rm -rf $out/after/queries/zig/highlights.scm
-    '';
   };
 in {
   extraPlugins = [ alabaster-nvim ];
