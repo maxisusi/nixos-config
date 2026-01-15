@@ -52,6 +52,7 @@
     yarn
     just
     opencode
+    tree-sitter
   ];
 
   services.udiskie = {
