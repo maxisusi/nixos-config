@@ -54,6 +54,7 @@
     opencode
     tree-sitter
     bitwarden-desktop
+    gh
   ];
 
   services.udiskie = {
