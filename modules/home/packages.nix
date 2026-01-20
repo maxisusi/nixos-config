@@ -53,6 +53,7 @@
     just
     opencode
     tree-sitter
+    bitwarden-desktop
   ];
 
   services.udiskie = {
