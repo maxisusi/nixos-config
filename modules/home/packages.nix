@@ -55,6 +55,7 @@
     tree-sitter
     bitwarden-desktop
     gh
+    brave
   ];
 
   services.udiskie = {
