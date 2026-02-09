@@ -5,7 +5,8 @@ let
   screenshotScript = scripts.screenshot;
   nhSwitchScript = scripts.nhSwitch;
   webappLauncherScript = scripts.webappLauncher;
-in {
+in
+{
   wayland.windowManager.hyprland.enable = true; # enable Hyprland
 
   wayland.windowManager.hyprland.settings = {
@@ -81,12 +82,12 @@ in {
       repeat_rate = 30;
     };
 
-    windowrulev2 = [
-      "stayfocused,class:(wofi)"
-      "workspace 1, monitor 1, class:ghostty"
-      "workspace 2, monitor 1, class:google-chrome"
-      "workspace 3, monitor 0, class:Slack"
-      "workspace 3, monitor 0, class:discord"
+    windowrule = [
+      "match:class wofi, stay_focused on"
+      "match:class ghostty, workspace 1, monitor 1"
+      "match:class google-chrome, workspace 2, monitor 1"
+      "match:class Slack, workspace 3, monitor 0"
+      "match:class discord, workspace 3, monitor 0"
     ];
 
     bind = [
@@ -136,15 +137,23 @@ in {
       "$mod SHIFT, C, exec, ${webappLauncherScript}/bin/webapp-launcher https://chatgpt.com/"
       "$mod SHIFT, T, exec, ${webappLauncherScript}/bin/webapp-launcher https://app.todoist.com/"
 
-    ] ++ (
+    ]
+    ++ (
       # workspaces
       # binds $mod + [shift +] {1..9} to [move to] workspace {1..9}
-      builtins.concatLists (builtins.genList (i:
-        let ws = i + 1;
-        in [
-          "$mod, code:1${toString i}, workspace, ${toString ws}"
-          "$mod SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
-        ]) 9));
+      builtins.concatLists (
+        builtins.genList (
+          i:
+          let
+            ws = i + 1;
+          in
+          [
+            "$mod, code:1${toString i}, workspace, ${toString ws}"
+            "$mod SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
+          ]
+        ) 9
+      )
+    );
 
     bindm = [
       "$mod, mouse:272, movewindow"
@@ -205,9 +214,13 @@ in {
   ];
 
   # programs.rofi.enable = true;
-  services.dunst = { enable = true; };
+  services.dunst = {
+    enable = true;
+  };
 
-  programs.hyprlock = { enable = true; };
+  programs.hyprlock = {
+    enable = true;
+  };
   services.hypridle = {
     enable = true;
     settings = {
@@ -242,10 +255,8 @@ in {
       ipc = "on";
       splash = false;
       splash_offset = 2.0;
-      preload =
-        [ "/home/max/.config/flakes/nixos-config/wallpapers/cliff.png" ];
-      wallpaper =
-        [ ",/home/max/.config/flakes/nixos-config/wallpapers/cliff.png" ];
+      preload = [ "/home/max/.config/flakes/nixos-config/wallpapers/cliff.png" ];
+      wallpaper = [ ",/home/max/.config/flakes/nixos-config/wallpapers/cliff.png" ];
     };
   };
 
