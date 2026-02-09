@@ -1,10 +1,17 @@
-{ pkgs, ... }:
+{
+  lib,
+  osConfig,
+  pkgs,
+  ...
+}:
 let
   scripts = import ./scripts { inherit pkgs; };
   startupScript = scripts.startup;
   screenshotScript = scripts.screenshot;
   nhSwitchScript = scripts.nhSwitch;
   webappLauncherScript = scripts.webappLauncher;
+  isDesktop = osConfig.networking.hostName == "desktop";
+  isLaptop = osConfig.networking.hostName == "laptop";
 in
 {
   wayland.windowManager.hyprland.enable = true; # enable Hyprland
@@ -163,12 +170,12 @@ in
       # "$mod ALT, mouse_up, exec, hyprctl keyword cursor:zoom_factor `$(hyprctl getoption cursor:zoom_factor | awk 'NR==1 {factor = $2; if (factor < 1) {factor = 1}; print factor / 1.25}')`"
     ];
 
-    monitor = [
-      "desc:Chimei Innolux Corporation 0x143F, highrr, 0x0, 1"
-      "DP-3, preferred, auto,1"
-      "DP-1, 3440x1440@74.98Hz, 0x-1440,1"
-      # ", preferred, auto, 1"
-    ];
+    monitor =
+      (lib.optionals isLaptop [
+        "desc:Chimei Innolux Corporation 0x143F, highrr, 0x0, 1"
+        ", preferred, auto-up, 1"
+      ])
+      ++ (lib.optionals isDesktop [ "DP-3, preferred, auto,1" ]);
 
     bindel = [
       ",XF86MonBrightnessUp, exec, brightnessctl set 5%+"

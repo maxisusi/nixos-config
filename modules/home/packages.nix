@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
 
   home.packages = with pkgs; [
     oh-my-fish
@@ -56,6 +57,7 @@
     bitwarden-desktop
     gh
     brave
+    android-studio
   ];
 
   services.udiskie = {
