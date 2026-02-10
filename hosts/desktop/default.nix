@@ -43,7 +43,7 @@
     };
     systemPackages = with pkgs; [
       protonup-ng
-      linuxPackages.nvidia_x11
+      # Don't install nvidia_x11 directly - it conflicts with hardware.nvidia.package
       google-chrome
     ];
   };

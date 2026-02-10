@@ -58,6 +58,7 @@
     gh
     brave
     android-studio
+    jetbrains.datagrip
   ];
 
   services.udiskie = {
