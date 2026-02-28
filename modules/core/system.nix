@@ -1,4 +1,5 @@
-{ pkgs, lib, ... }: {
+{ pkgs, lib, ... }:
+{
   time.timeZone = "Europe/Zurich";
 
   i18n = {
@@ -10,7 +11,10 @@
   };
 
   nix = {
-    settings.experimental-features = [ "nix-command" "flakes" ];
+    settings.experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
     # Automatic garbage collection
     gc = {
       automatic = true;
@@ -31,22 +35,29 @@
   # Open port on system
   networking.firewall = {
     enable = true;
-    allowedTCPPortRanges = [{
-      from = 53316;
-      to = 53317;
-    } # KDE Connect
-      ];
-    allowedUDPPortRanges = [{
-      from = 53316;
-      to = 53317;
-    }];
+    allowedTCPPortRanges = [
+      {
+        from = 53316;
+        to = 53317;
+      }
+      # KDE Connect
+    ];
+    allowedUDPPortRanges = [
+      {
+        from = 53316;
+        to = 53317;
+      }
+    ];
   };
 
   environment = {
-    sessionVariables = { NH_FLAKE = "/home/max/.config/flakes/nixos-config"; };
+    sessionVariables = {
+      NH_FLAKE = "/home/max/.config/flakes/nixos-config";
+    };
     variables = {
       RUST_BACKTRACE = 1;
-      TERMINAL = "kitty";
+      SSH_AUTH_SOCK = "/home/max/.bitwarden-ssh-agent.sock";
+      TERMINAL = "ghostty";
       EDITOR = "nvim";
       VISUAL = "vim";
       MANPAGER = "nvim +Man!";
@@ -67,8 +78,8 @@
     ];
   };
 
-  fonts.packages = [ ] ++ builtins.filter lib.attrsets.isDerivation
-    (builtins.attrValues pkgs.nerd-fonts);
+  fonts.packages =
+    [ ] ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 
   virtualisation.docker.enable = true;
 
