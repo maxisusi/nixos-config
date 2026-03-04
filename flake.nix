@@ -20,8 +20,17 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, nixvim, stylix, nix-colors
-    , nixpkgs-unstable, ... }@inputs:
+  outputs =
+    {
+      self,
+      nixpkgs,
+      home-manager,
+      nixvim,
+      stylix,
+      nix-colors,
+      nixpkgs-unstable,
+      ...
+    }@inputs:
 
     let
       system = "x86_64-linux";
@@ -31,12 +40,23 @@
       };
       lib = nixpkgs.lib;
       user = "max";
-    in {
+    in
+    {
       formatter.x86_64-linux = nixpkgs.legacyPackages.${system}.nixpkgs-fmt;
-      nixosConfigurations = (import ./hosts {
-        inherit (nixpkgs) lib;
-        inherit inputs user system home-manager nixvim stylix nix-colors
-          nixpkgs-unstable;
-      });
+      nixosConfigurations = (
+        import ./hosts {
+          inherit (nixpkgs) lib;
+          inherit
+            inputs
+            user
+            system
+            home-manager
+            nixvim
+            stylix
+            nix-colors
+            nixpkgs-unstable
+            ;
+        }
+      );
     };
 }

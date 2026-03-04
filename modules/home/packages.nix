@@ -59,6 +59,7 @@
     brave
     android-studio
     jetbrains.datagrip
+    pay-respects
   ];
 
   services.udiskie = {
