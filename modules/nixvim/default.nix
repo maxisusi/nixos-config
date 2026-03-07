@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   # Import all your configuration modules here
   imports = [
     # MUST
@@ -32,16 +33,35 @@
     ./mini.nix
     ./alabaster.nix
     # IDK
-    { plugins.yazi = { enable = true; }; }
-    { plugins.hardtime = { enable = true; }; }
-    { plugins.web-devicons = { enable = true; }; }
+    {
+      plugins.yazi = {
+        enable = true;
+      };
+    }
+    {
+      plugins.hardtime = {
+        enable = true;
+      };
+    }
+    {
+      plugins.web-devicons = {
+        enable = true;
+      };
+    }
+    {
+      plugins.markdown-preview = {
+        enable = true;
+      };
+    }
     {
       plugins.blink-cmp = {
         enable = true;
         settings = {
           completion = {
             accept = {
-              auto_brackets = { semantic_token_resolution.enabled = false; };
+              auto_brackets = {
+                semantic_token_resolution.enabled = false;
+              };
             };
             documentation.auto_show = true;
           };
@@ -52,9 +72,13 @@
         };
       };
     }
-    { plugins.cmake-tools = { enable = true; }; }
+    {
+      plugins.cmake-tools = {
+        enable = true;
+      };
+    }
   ];
-  extraPlugins = with pkgs.vimPlugins; [{ plugin = no-neck-pain-nvim; }];
+  extraPlugins = with pkgs.vimPlugins; [ { plugin = no-neck-pain-nvim; } ];
 
   extraConfigLua =
     #lua
@@ -83,25 +107,27 @@
       }
     '';
 
-  autoCmd = [{
-    event = [ "CursorMoved" ];
-    callback = {
-      __raw =
-        #lua
-        ''
-          function()
-              if vim.v.hlsearch == 1 and vim.fn.searchcount().exact_match == 0 then
-                  vim.schedule(
-                      function()
-                          vim.cmd.nohlsearch()
-                      end
-                  )
-              end
-          end
-        '';
-      desc = "remove search highlight when done";
-    };
-  }];
+  autoCmd = [
+    {
+      event = [ "CursorMoved" ];
+      callback = {
+        __raw =
+          #lua
+          ''
+            function()
+                if vim.v.hlsearch == 1 and vim.fn.searchcount().exact_match == 0 then
+                    vim.schedule(
+                        function()
+                            vim.cmd.nohlsearch()
+                        end
+                    )
+                end
+            end
+          '';
+        desc = "remove search highlight when done";
+      };
+    }
+  ];
 
   keymaps = [
     {
@@ -220,8 +246,7 @@
     }
     {
       key = "<leader>fF";
-      action.__raw = ''
-        function() require("telescope.builtin").find_files { hidden = true, no_ignore = true } end'';
+      action.__raw = ''function() require("telescope.builtin").find_files { hidden = true, no_ignore = true } end'';
       options.desc = "Find all files";
     }
     # Git Signs
@@ -240,7 +265,7 @@
       action.__raw = ''function() require("gitsigns").reset_buffer() end'';
       options.desc = "Reset Buffer";
     }
-    # Yazi 
+    # Yazi
     {
       key = "<leader>o";
       action = "<CMD>Yazi<CR>";
