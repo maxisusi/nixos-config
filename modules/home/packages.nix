@@ -35,8 +35,8 @@
     gnome-calculator
     gdb
     wget
-    wineWowPackages.stable
-    winetricks
+    # wineWowPackages.stable
+    # winetricks
     firefox
     tomato-c
     claude-code

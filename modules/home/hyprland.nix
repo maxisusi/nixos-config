@@ -5,8 +5,13 @@
   ...
 }:
 let
-  scripts = import ./scripts { inherit pkgs; };
+  wallpaperPath = "/home/max/.config/flakes/nixos-config/wallpapers/neosaka.jpg";
+  scripts = import ./scripts {
+    inherit pkgs;
+    wallpaper = wallpaperPath;
+  };
   startupScript = scripts.startup;
+  setWallpaperScript = scripts.setWallpaper;
   screenshotScript = scripts.screenshot;
   nhSwitchScript = scripts.nhSwitch;
   webappLauncherScript = scripts.webappLauncher;
@@ -261,10 +266,15 @@ in
     settings = {
       ipc = "on";
       splash = false;
-      splash_offset = 2.0;
-      preload = [ "/home/max/.config/flakes/nixos-config/wallpapers/cliff.png" ];
-      wallpaper = [ ",/home/max/.config/flakes/nixos-config/wallpapers/cliff.png" ];
+      preload = [ wallpaperPath ];
+      wallpaper =
+        (lib.optionals isLaptop [
+          "eDP-1,${wallpaperPath}"
+          "DP-3,${wallpaperPath}"
+        ])
+        ++ (lib.optionals isDesktop [ "DP-3,${wallpaperPath}" ]);
     };
   };
 
+  systemd.user.services.hyprpaper.Service.ExecStartPost = "${setWallpaperScript}/bin/set-wallpaper";
 }
