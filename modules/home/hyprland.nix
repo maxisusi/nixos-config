@@ -20,6 +20,7 @@ let
 in
 {
   wayland.windowManager.hyprland.enable = true; # enable Hyprland
+  wayland.windowManager.hyprland.configType = "hyprlang";
 
   wayland.windowManager.hyprland.settings = {
     "$mod" = "SUPER";
