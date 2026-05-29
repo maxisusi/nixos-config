@@ -37,14 +37,14 @@
     enable = true;
     allowedTCPPortRanges = [
       {
-        from = 53316;
+        from = 8080;
         to = 53317;
       }
       # KDE Connect
     ];
     allowedUDPPortRanges = [
       {
-        from = 53316;
+        from = 8080;
         to = 53317;
       }
     ];
