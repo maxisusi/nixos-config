@@ -61,7 +61,7 @@ in
                     name = "Environments";
                     bookmarks = [
                       {
-                        name = "Tipee";
+                        name = "tipee app";
                         url = "https://notre.tipee.net/home.php#/";
                       }
                       {
@@ -75,10 +75,10 @@ in
                     bookmarks = [
                       {
                         name = "Public API";
-                        url = "https://api.tipee.ch/getting-started/introduction";
+                        url = "https://api.tipee.ch/guides-and-resources/first-steps";
                       }
                       {
-                        name = "Local api";
+                        name = "Local API";
                         url = "http://localhost:10510/api/doc";
                       }
                     ];
@@ -87,7 +87,7 @@ in
                     name = "GitHub";
                     bookmarks = [
                       {
-                        name = "PR's";
+                        name = "Latest PR";
                         url = "https://github.com/gammadia/tipee/pulls/maxisusi";
                       }
                       {
@@ -101,7 +101,7 @@ in
                     url = "https://app.datadoghq.eu/logs?query=%40instance%3A%28%2Avit%2A%20OR%20%2Avlt%2A%29%20-status%3A%28error%20OR%20warn%29&agg_m=count&agg_m_source=base&agg_t=count&cols=host%2Cservice&fromUser=true&messageDisplay=inline&refresh_mode=sliding&storage=hot&stream_sort=desc&viz=stream&from_ts=1753786869774&to_ts=1756378869774&live=true";
                   }
                   {
-                    name = "tipee • Design";
+                    name = "Design system";
                     url = "https://design.tipee.ch/7e40187d1/p/77bd55-tipee--design";
                   }
                 ];
@@ -147,14 +147,25 @@ in
                   }
                 ];
               }
-              {
-                name = "Cute Fantasy RPG - 16x16 top down pixel art asset pack by Kenmi";
-                url = "https://kenmi-art.itch.io/cute-fantasy-rpg";
-              }
             ];
           }
         ];
       };
+    };
+  };
+
+  # Make Firefox the default browser.
+  home.sessionVariables.BROWSER = "firefox";
+
+  xdg.mimeApps = {
+    enable = true;
+    defaultApplications = {
+      "text/html" = "firefox.desktop";
+      "application/xhtml+xml" = "firefox.desktop";
+      "x-scheme-handler/http" = "firefox.desktop";
+      "x-scheme-handler/https" = "firefox.desktop";
+      "x-scheme-handler/about" = "firefox.desktop";
+      "x-scheme-handler/unknown" = "firefox.desktop";
     };
   };
 }

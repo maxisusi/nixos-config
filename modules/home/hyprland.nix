@@ -28,6 +28,7 @@ in
     "$fileManager" = "nautilus";
     "$menu" = "wofi";
     "$lock" = "hyprlock";
+    "$browser" = "firefox";
 
     env = [
       "LIBVA_DRIVER_NAME,nvidia"
@@ -98,7 +99,7 @@ in
     windowrule = [
       "match:class wofi, stay_focused on"
       "match:class ghostty, workspace 1, monitor 1"
-      "match:class google-chrome, workspace 2, monitor 1"
+      "match:class firefox, workspace 2, monitor 1"
       "match:class Slack, workspace 3, monitor 0"
       "match:class discord, workspace 3, monitor 0"
     ];
@@ -132,7 +133,7 @@ in
 
       ", Print, exec, ${screenshotScript}/bin/screenshot"
       "$mod SHIFT, Print, exec, hyprpicker -a"
-      "$mod, G, exec, google-chrome-stable"
+      "$mod, G, exec, $browser"
       "$mod, C, exec, ghostty -e bash -c 'cd ~/.config/flakes/nixos-config && nvim flake.nix'"
       "$mod, p, exec, ghostty -e btop"
       "$mod, U, exec, ${nhSwitchScript}/bin/nh-switch"
