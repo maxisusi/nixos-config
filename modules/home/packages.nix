@@ -60,6 +60,7 @@
     android-studio
     jetbrains.datagrip
     pay-respects
+    freecad
   ];
 
   services.udiskie = {
