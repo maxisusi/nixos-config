@@ -16,6 +16,7 @@ in
       extensions.packages = with addons; [
         onepassword-password-manager
         ublock-origin
+        react-devtools
       ];
 
       # Kagi as the sole search engine; hide all the built-in defaults.
