@@ -35,9 +35,6 @@
     gnome-calculator
     gdb
     wget
-    # wineWowPackages.stable
-    # winetricks
-    firefox
     tomato-c
     claude-code
     gemini-cli
