@@ -18,6 +18,29 @@ in
         ublock-origin
       ];
 
+      # Kagi as the sole search engine; hide all the built-in defaults.
+      search = {
+        force = true;
+        default = "Kagi";
+        privateDefault = "Kagi";
+        engines = {
+          "Kagi" = {
+            urls = [ { template = "https://kagi.com/search?q={searchTerms}"; } ];
+            icon = "https://kagi.com/favicon.ico";
+            updateInterval = 24 * 60 * 60 * 1000; # daily
+            definedAliases = [ "@k" "@kagi" ];
+          };
+
+          # Hide the default built-in engines.
+          "google".metaData.hidden = true;
+          "bing".metaData.hidden = true;
+          "ddg".metaData.hidden = true;
+          "ebay".metaData.hidden = true;
+          "amazondotcom-us".metaData.hidden = true;
+          "wikipedia".metaData.hidden = true;
+        };
+      };
+
       # Bookmarks imported from Google Chrome (max.balej@tipee.ch profile).
       # The "Toolbar" directory maps to Chrome's "Bookmarks bar".
       bookmarks = {
