@@ -15,6 +15,7 @@
     ./leap.nix
     ./surround.nix
     ./none-ls.nix
+    ./oxc.nix
     ./dressing.nix
     ./indent-blankline.nix
     ./vim-visual-multi.nix

@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }: {
+{ pkgs, ... }: {
   fonts.fontconfig.enable = true;
   home.packages = [ 
     pkgs.twemoji-color-font 
@@ -10,7 +10,6 @@
 
   gtk = {
     enable = true;
-    gtk4.theme = config.gtk.theme;
 
     # iconTheme = {
     #   name = "Papirus-Dark";

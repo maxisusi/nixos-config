@@ -11,6 +11,7 @@
             unstable = import nixpkgs-unstable {
               inherit system;
               config.allowUnfree = true;
+              config.permittedInsecurePackages = [ "electron-39.8.10" ];
             };
           })
         ];
@@ -43,6 +44,7 @@
             unstable = import nixpkgs-unstable {
               inherit system;
               config.allowUnfree = true;
+              config.permittedInsecurePackages = [ "electron-39.8.10" ];
             };
           })
         ];

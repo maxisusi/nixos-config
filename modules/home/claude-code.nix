@@ -84,6 +84,14 @@ let
 
   settingsFile = (pkgs.formats.json { }).generate "claude-settings.json" settings;
 
+  claudeHudConfigFile = (pkgs.formats.json { }).generate "claude-hud-config.json" claudeHudConfig;
+
+  claudeHudConfig = {
+    display = {
+      showCost = true;
+    };
+  };
+
   settings = {
     permissions = {
       defaultMode = "auto";
@@ -116,5 +124,13 @@ in
     target="$HOME/.claude/settings.json"
     $DRY_RUN_CMD rm -f "$target"
     $DRY_RUN_CMD install -D -m 0644 ${settingsFile} "$target"
+  '';
+
+  # claude-hud reads its config from this path. Install as mutable so
+  # /claude-hud:configure can still write to it at runtime.
+  home.activation.claudeHudConfig = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    target="$HOME/.claude/plugins/claude-hud/config.json"
+    $DRY_RUN_CMD rm -f "$target"
+    $DRY_RUN_CMD install -D -m 0644 ${claudeHudConfigFile} "$target"
   '';
 }
