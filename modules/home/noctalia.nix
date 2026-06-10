@@ -24,6 +24,14 @@
       # Point at the full wallpapers folder so all of them show in the picker.
       wallpaper.directory = "/home/max/.config/flakes/nixos-config/wallpapers";
 
+      # Weather in the bar (widget added to bar.default.center below).
+      # Location is resolved from IP; set location.address to pin a city.
+      weather = {
+        enabled = true;
+        unit = "celsius";
+      };
+      location.auto_locate = true;
+
       # Full-width, flush bar (no floating gaps, square corners).
       bar.default = {
         margin_ends = 0; # no left/right gaps -> spans full width
@@ -33,6 +41,13 @@
         radius_top_right = 0;
         radius_bottom_left = 0;
         radius_bottom_right = 0;
+
+        # Overrides the builtin default of just ["clock"]; start/end keep
+        # their compiled-in defaults.
+        center = [
+          "clock"
+          "weather"
+        ];
       };
     };
   };
