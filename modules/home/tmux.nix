@@ -38,6 +38,9 @@
 
       # Resize with mouse
             setw -g mouse on
+
+      # Transparent status bar: inherit the terminal's (blurred) background
+            set -g status-style bg=default,fg=default
     '';
   };
 }
