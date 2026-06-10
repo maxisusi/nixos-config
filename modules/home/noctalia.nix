@@ -14,6 +14,13 @@
     # Hyprland equivalents have been removed). Lock authenticates against the
     # standard `login` PAM service.
     settings = {
+      # Default color scheme: Kanagawa (a builtin theme compiled into noctalia).
+      theme = {
+        mode = "dark";
+        source = "builtin";
+        builtin = "Kanagawa";
+      };
+
       # Point at the full wallpapers folder so all of them show in the picker.
       wallpaper.directory = "/home/max/.config/flakes/nixos-config/wallpapers";
 

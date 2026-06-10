@@ -4,6 +4,16 @@ let
   # extensions like 1Password evaluate. The flake's prebuilt `.packages` use
   # their own nixpkgs with allowUnfree = false.
   addons = (inputs.firefox-addons.overlays.default pkgs pkgs).firefox-addons;
+
+  # Combined Hunspell dictionary dir (English + French) for Firefox spell-check.
+  # Firefox reads dictionaries from the directory in spellchecker.dictionary_path.
+  spellDicts = pkgs.symlinkJoin {
+    name = "firefox-hunspell-dicts";
+    paths = [
+      pkgs.hunspellDicts.en_US
+      pkgs.hunspellDicts.fr-moderne
+    ];
+  };
 in
 {
   programs.firefox = {
@@ -22,6 +32,11 @@ in
       settings = {
         # Required for userChrome.css to take effect.
         "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+
+        # Spell-checking in English (en_US) and French (fr_FR) simultaneously.
+        "spellchecker.dictionary_path" = "${spellDicts}/share/hunspell";
+        "spellchecker.dictionary" = "en_US,fr_FR";
+        "layout.spellcheckDefault" = 2; # also check single-line text inputs
 
         # Dark theme: force the built-in dark UI and dark website rendering.
         "ui.systemUsesDarkTheme" = 1;
