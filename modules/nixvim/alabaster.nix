@@ -92,6 +92,20 @@ in {
     vim.api.nvim_set_hl(0, "@lsp.type.type", { link = "@type" })
     vim.api.nvim_set_hl(0, "@lsp.type.keyword", { link = "@keyword" })
 
+      -- Transparent background: let the terminal's opacity/blur show through.
+      -- Only clear bg so the theme's fg colors are kept intact.
+      local function clear_bg(group)
+        local hl = vim.api.nvim_get_hl(0, { name = group, link = false })
+        hl.bg = nil
+        hl.ctermbg = nil
+        vim.api.nvim_set_hl(0, group, hl)
+      end
+      for _, group in ipairs({
+        "Normal", "NormalNC", "SignColumn", "LineNr", "FoldColumn", "EndOfBuffer",
+      }) do
+        clear_bg(group)
+      end
+
       -- Legacy treesitter groups for compatibility
       vim.api.nvim_set_hl(0, "TSComment", { fg = comment_fg })
       vim.api.nvim_set_hl(0, "TSString", { fg = string_fg })

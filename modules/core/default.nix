@@ -15,6 +15,9 @@
     # image = ../../wallpapers/cliff.png;
     base16Scheme = ../../alabaster.yaml;
     polarity = "dark";
+    # Global transparency knob (1.0 = fully opaque). Ghostty picks this up
+    # automatically; Hyprland blurs whatever shows through (hyprland.nix).
+    opacity.terminal = 0.95;
     fonts = {
       monospace = {
         package = pkgs.nerd-fonts.jetbrains-mono;
