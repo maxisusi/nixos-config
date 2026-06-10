@@ -14,10 +14,11 @@
     # Hyprland equivalents have been removed). Lock authenticates against the
     # standard `login` PAM service.
     settings = {
-      # Default color scheme: Kanagawa (a builtin theme compiled into noctalia).
+      # Colors derived from the current wallpaper (changed via the settings
+      # UI; was the builtin Kanagawa palette, kept as fallback).
       theme = {
         mode = "dark";
-        source = "builtin";
+        source = "wallpaper";
         builtin = "Kanagawa";
       };
 
@@ -32,7 +33,8 @@
       };
       location.auto_locate = true;
 
-      # Full-width, flush bar (no floating gaps, square corners).
+      # Full-width, flush bar (no floating gaps, square corners), styled to
+      # match the tweaks made in the settings UI.
       bar.default = {
         margin_ends = 0; # no left/right gaps -> spans full width
         margin_edge = 0; # flush against the screen edge
@@ -42,13 +44,51 @@
         radius_bottom_left = 0;
         radius_bottom_right = 0;
 
-        # Overrides the builtin default of just ["clock"]; start/end keep
-        # their compiled-in defaults.
+        background_opacity = 0.4;
+        thickness = 41;
+        padding = 22;
+        widget_spacing = 15;
+
+        # Widget layout (builtin defaults minus launcher/wallpaper/tray).
+        start = [ "workspaces" ];
         center = [
           "clock"
           "weather"
         ];
+        end = [
+          "media"
+          "notifications"
+          "clipboard"
+          "network"
+          "bluetooth"
+          "volume"
+          "brightness"
+          "battery"
+          "control-center"
+          "session"
+        ];
       };
+
+      # Per-widget styling.
+      widget = {
+        battery.show_label = false;
+        network.show_label = false;
+        volume.show_label = false;
+        tray.scale = 0.9;
+        media = {
+          art_size = 21.0;
+          capsule = true;
+          capsule_padding = 15.0;
+          hide_when_no_media = true;
+        };
+      };
+
+      calendar.enabled = true;
+      shell.screen_time_enabled = true;
+
+      # Low-battery warning for the MX Master mouse.
+      battery.device."/org/freedesktop/UPower/devices/battery_hidpp_battery_0".warning_threshold =
+        20;
     };
   };
 }
