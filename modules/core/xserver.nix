@@ -16,6 +16,11 @@ in {
           wayland.enable = true;
         };
       };
+      # Unlock the GNOME Keyring (Secret Service) with the login password at
+      # SDDM login. Without this the keyring stays locked under Hyprland, so
+      # apps like 1Password can't persist secrets (e.g. the 2FA token) and fail
+      # with "unable to save your two-factor token".
+      security.pam.services.sddm.enableGnomeKeyring = true;
     }
     (lib.mkIf cfg.desktop.enable {
       services = {
