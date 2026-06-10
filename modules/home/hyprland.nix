@@ -11,7 +11,6 @@ let
     wallpaper = wallpaperPath;
   };
   startupScript = scripts.startup;
-  setWallpaperScript = scripts.setWallpaper;
   screenshotScript = scripts.screenshot;
   nhSwitchScript = scripts.nhSwitch;
   webappLauncherScript = scripts.webappLauncher;
@@ -26,8 +25,8 @@ in
     "$mod" = "SUPER";
     "$terminal" = "ghostty";
     "$fileManager" = "nautilus";
-    "$menu" = "wofi";
-    "$lock" = "hyprlock";
+    "$menu" = "noctalia msg panel-toggle launcher";
+    "$lock" = "noctalia msg session lock";
     "$browser" = "firefox";
 
     env = [
@@ -97,7 +96,6 @@ in
     };
 
     windowrule = [
-      "match:class wofi, stay_focused on"
       "match:class ghostty, workspace 1, monitor 1"
       "match:class firefox, workspace 2, monitor 1"
       "match:class Slack, workspace 3, monitor 0"
@@ -207,16 +205,12 @@ in
   wayland.windowManager.hyprland.systemd.variables = [ "--all" ];
   home.packages = with pkgs; [
     nautilus
-    wofi
     # rofi
     # rofi-power-menu
     brightnessctl
     pamixer
-    hyprpaper
     hyprpicker
     hypridle
-    hyprlock
-    dunst
     hyprland-qtutils
     hyprutils
     hyprpolkitagent
@@ -227,14 +221,9 @@ in
     webappLauncherScript
   ];
 
-  # programs.rofi.enable = true;
-  services.dunst = {
-    enable = true;
-  };
+  # Wallpaper, notifications, app launcher and lock screen are now handled by
+  # Noctalia (see ./noctalia.nix), replacing hyprpaper, dunst, wofi and hyprlock.
 
-  programs.hyprlock = {
-    enable = true;
-  };
   services.hypridle = {
     enable = true;
     settings = {
@@ -242,13 +231,13 @@ in
         before_sleep_cmd = "loginctl lock-session";
         after_sleep_cmd = "hyprctl dispatch dpms on";
         ignore_dbus_inhibit = false;
-        lock_cmd = "pidof hyprlock || hyprlock";
+        lock_cmd = "noctalia msg session lock";
       };
 
       listener = [
         {
           timeout = 900;
-          on-timeout = "hyprlock";
+          on-timeout = "noctalia msg session lock";
         }
         {
           timeout = 1200;
@@ -263,20 +252,4 @@ in
     };
   };
 
-  services.hyprpaper = {
-    enable = true;
-    settings = {
-      ipc = "on";
-      splash = false;
-      preload = [ wallpaperPath ];
-      wallpaper =
-        (lib.optionals isLaptop [
-          "eDP-1,${wallpaperPath}"
-          "DP-3,${wallpaperPath}"
-        ])
-        ++ (lib.optionals isDesktop [ "DP-3,${wallpaperPath}" ]);
-    };
-  };
-
-  systemd.user.services.hyprpaper.Service.ExecStartPost = "${setWallpaperScript}/bin/set-wallpaper";
 }

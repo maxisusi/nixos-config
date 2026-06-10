@@ -27,5 +27,10 @@
   };
 
   services.hypridle.enable = true;
-  programs.hyprlock.enable = true;
+
+  # Required by Quickshell's battery and power-profile indicators (UPower /
+  # PowerProfiles D-Bus services). Waybar read battery from sysfs directly and
+  # didn't need these.
+  services.upower.enable = true;
+  services.power-profiles-daemon.enable = true;
 }

@@ -1,7 +1,7 @@
-{ pkgs, setWallpaper }:
+{ pkgs }:
 
 pkgs.writeShellScriptBin "start" ''
-  waybar &
+  # Noctalia (bar, wallpaper, notifications, launcher, lock) launches via its
+  # systemd user service (programs.noctalia.systemd).
   systemctl --user start hyprpolkitagent
-  ${setWallpaper}/bin/set-wallpaper &
 ''
