@@ -52,6 +52,7 @@ in
     slurp
     hyprshot
     satty
+    kooha
     wiremix
     bluetui
     jocalsend
