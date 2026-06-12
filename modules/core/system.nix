@@ -59,7 +59,7 @@
     };
     variables = {
       RUST_BACKTRACE = 1;
-      SSH_AUTH_SOCK = "/home/max/.bitwarden-ssh-agent.sock";
+      SSH_AUTH_SOCK = "/home/max/.1password/agent.sock";
       TERMINAL = "ghostty";
       EDITOR = "nvim";
       VISUAL = "vim";

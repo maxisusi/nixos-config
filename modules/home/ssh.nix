@@ -1,5 +1,5 @@
 let
-  onePassPath = "/home/max/.bitwarden-ssh-agent.sock";
+  onePassPath = "/home/max/.1password/agent.sock";
 in
 {
   programs.ssh = {
