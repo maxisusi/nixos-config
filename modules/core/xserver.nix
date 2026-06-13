@@ -13,7 +13,10 @@ in {
       services = {
         displayManager.sddm = {
           enable = true;
-          wayland.enable = true;
+          # Run SDDM (the greeter) under X11, not Wayland. Nvidia + Wayland on
+          # the login screen causes the boot to hang at the SDDM greeter. The
+          # actual desktop session (Hyprland) is still Wayland.
+          wayland.enable = false;
         };
       };
     }
