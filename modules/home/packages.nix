@@ -70,6 +70,7 @@ in
     jetbrains.datagrip
     pay-respects
     freecad
+    cura-appimage
   ];
 
   services.udiskie = {
