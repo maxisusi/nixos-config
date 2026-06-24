@@ -7,6 +7,18 @@ let
     hash = "sha256-qrF1kz7EPt1g5F4y51nrDjmyoZlxt8hcfjoejCLCiQA=";
   };
 
+  # ponytail: "lazy senior dev" Claude Code plugin (skills + hooks).
+  # Installed the Nix way: fetch the marketplace repo into the store and point
+  # Claude at it as a read-only "directory" marketplace via settings.json
+  # (extraKnownMarketplaces + enabledPlugins). Claude copies it into its plugin
+  # cache on next launch; no interactive `/plugin` commands needed.
+  ponytail-src = pkgs.fetchFromGitHub {
+    owner = "hyeongchankim";
+    repo = "poneytail";
+    rev = "dedc97ca7c8a1e7463ac5b36f7fe4b28c3c435a2"; # v4.7.0
+    hash = "sha256-YUHjZfCTOIWrHJUUvnuoRSNG/l7wBuMQx/EdRdbLO3w=";
+  };
+
   claude-hud-statusline = pkgs.writeShellScript "claude-hud-statusline" ''
     cols=$(stty size </dev/tty 2>/dev/null | awk '{print $2}')
     export COLUMNS=$(( ''${cols:-120} > 4 ? ''${cols:-120} - 4 : 1 ))
@@ -108,6 +120,15 @@ let
     statusLine = {
       type = "command";
       command = "${claude-hud-statusline}";
+    };
+    extraKnownMarketplaces = {
+      ponytail.source = {
+        source = "directory";
+        path = "${ponytail-src}";
+      };
+    };
+    enabledPlugins = {
+      "ponytail@ponytail" = true;
     };
     hooks = {
       Stop = [{ hooks = [{ type = "command"; command = "${hook-stop}"; }]; }];
