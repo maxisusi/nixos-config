@@ -71,6 +71,7 @@ in
     pay-respects
     freecad
     cura-appimage
+    kicad
   ];
 
   services.udiskie = {

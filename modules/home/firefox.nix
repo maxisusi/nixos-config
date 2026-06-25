@@ -33,6 +33,10 @@ in
         # Required for userChrome.css to take effect.
         "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
 
+        # Disable middle-click paste (primary selection) — stops accidental
+        # pastes into search bars and form fields when clicking with the wheel.
+        "middlemouse.paste" = false;
+
         # Spell-checking in English (en_US) and French (fr_FR) simultaneously.
         "spellchecker.dictionary_path" = "${spellDicts}/share/hunspell";
         "spellchecker.dictionary" = "en_US,fr_FR";
