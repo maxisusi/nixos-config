@@ -250,6 +250,15 @@ in
                   }
                 ];
               }
+              {
+                name = "course";
+                bookmarks = [
+                  {
+                    name = "Maîtriser KiCad - Conçois tes propres circuits imprimés";
+                    url = "https://cours.abregeacademy.com/products/maitriser-kicad-concois-tes-propres-circuits-imprimes/";
+                  }
+                ];
+              }
             ];
           }
         ];
