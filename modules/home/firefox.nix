@@ -259,6 +259,10 @@ in
                   }
                 ];
               }
+              {
+                name = "Printables";
+                url = "https://www.printables.com/";
+              }
             ];
           }
         ];
