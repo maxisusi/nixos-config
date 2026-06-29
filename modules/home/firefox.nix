@@ -207,6 +207,10 @@ in
                     name = "Design system";
                     url = "https://design.tipee.ch/7e40187d1/p/77bd55-tipee--design";
                   }
+                  {
+                    name = "Sloth";
+                    url = "https://sloth.gammadia.net/";
+                  }
                 ];
               }
               {
