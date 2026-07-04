@@ -197,6 +197,10 @@ in
                         name = "Acquisition Project";
                         url = "https://github.com/orgs/tipee-sa/projects/66";
                       }
+                      {
+                        name = "Gestionnaire de tâches";
+                        url = "https://github.com/orgs/tipee-sa/projects/68";
+                      }
                     ];
                   }
                   {
