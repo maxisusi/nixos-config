@@ -12,7 +12,11 @@ let
 in
 {
   # Pin discord to the latest release (nixpkgs lags and it nags to update).
-  nixpkgs.overlays = [ (import ../../overlays/discord.nix) ];
+  # Pull orca-slicer from nixpkgs master (2.3.2 has a broken 3D view, see overlay).
+  nixpkgs.overlays = [
+    (import ../../overlays/discord.nix)
+    (import ../../overlays/orca-slicer.nix)
+  ];
 
   home.packages = with pkgs; [
     oh-my-fish
@@ -74,6 +78,7 @@ in
     freecad
     cura-appimage
     kicad
+    orca-slicer
   ];
 
   services.udiskie = {
