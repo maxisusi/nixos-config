@@ -11,6 +11,8 @@ let
   });
 in
 {
+  # Pin discord to the latest release (nixpkgs lags and it nags to update).
+  nixpkgs.overlays = [ (import ../../overlays/discord.nix) ];
 
   home.packages = with pkgs; [
     oh-my-fish
