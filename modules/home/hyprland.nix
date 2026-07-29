@@ -16,139 +16,177 @@ let
   webappLauncherScript = scripts.webappLauncher;
   isDesktop = osConfig.networking.hostName == "desktop";
   isLaptop = osConfig.networking.hostName == "laptop";
+
+  # Lua config helpers (Hyprland 0.55+ deprecated hyprlang for Lua).
+  # Variables like the old $mod are plain Nix bindings interpolated below.
+  lua = lib.generators.mkLuaInline;
+  mod = "SUPER";
+  terminal = "ghostty";
+  fileManager = "nautilus";
+  menu = "noctalia msg panel-toggle launcher";
+  lock = "noctalia msg session lock";
+  browser = "firefox";
+  exec = cmd: "hl.dsp.exec_cmd(${builtins.toJSON cmd})";
+  mkBind = keys: action: { _args = [ keys (lua action) ]; };
+  mkBindFlags = keys: action: flags: { _args = [ keys (lua action) flags ]; };
 in
 {
   wayland.windowManager.hyprland.enable = true; # enable Hyprland
-  wayland.windowManager.hyprland.configType = "hyprlang";
+  wayland.windowManager.hyprland.configType = "lua";
 
   wayland.windowManager.hyprland.settings = {
-    "$mod" = "SUPER";
-    "$terminal" = "ghostty";
-    "$fileManager" = "nautilus";
-    "$menu" = "noctalia msg panel-toggle launcher";
-    "$lock" = "noctalia msg session lock";
-    "$browser" = "firefox";
-
-    env = [
-      "LIBVA_DRIVER_NAME,nvidia"
-      "XDG_SESSION_TYPE,wayland"
-      "GBM_BACKEND,nvidia-drm"
-      "__GLX_VENDOR_LIBRARY_NAME,nvidia"
-      "GTK_SCALE,1.25"
+    env = map (e: { _args = e; }) [
+      [ "LIBVA_DRIVER_NAME" "nvidia" ]
+      [ "XDG_SESSION_TYPE" "wayland" ]
+      [ "GBM_BACKEND" "nvidia-drm" ]
+      [ "__GLX_VENDOR_LIBRARY_NAME" "nvidia" ]
+      [ "GTK_SCALE" "1.25" ]
     ];
 
-    exec-once = "${startupScript}/bin/start";
-
-    general = {
-      gaps_in = 0;
-      gaps_out = 0;
-      border_size = 1;
-      layout = "dwindle";
-      resize_on_border = true;
-    };
-
-    decoration = {
-      rounding = 8;
-      blur = {
-        enabled = true;
-        size = 6;
-        passes = 2;
-        vibrancy = 0.1696;
-      };
-    };
-
-    animations = {
-      enabled = true;
-      bezier = [
-        "fluent_decel, 0, 0.2, 0.4, 1"
-        "easeOutCirc, 0, 0.55, 0.45, 1"
-        "easeOutCubic, 0.33, 1, 0.68, 1"
-        "easeinoutsine, 0.37, 0, 0.63, 1"
-      ];
-      animation = [
-        # Windows
-        "windowsIn, 1, 3, easeOutCubic, popin 30%" # window open
-        "windowsOut, 1, 3, fluent_decel, popin 70%" # window close.
-        "windowsMove, 1, 2, easeinoutsine, slide" # everything in between, moving, dragging, resizing.
-
-        # Fade
-        "fadeIn, 1, 3, easeOutCubic" # fade in (open) -> layers and windows
-        "fadeOut, 1, 2, easeOutCubic" # fade out (close) -> layers and windows
-        "fadeSwitch, 0, 1, easeOutCirc" # fade on changing activewindow and its opacity
-        "fadeShadow, 1, 10, easeOutCirc" # fade on changing activewindow for shadows
-        "fadeDim, 1, 4, fluent_decel" # the easing of the dimming of inactive windows
-        "border, 0, 2.7, easeOutCirc" # for animating the border's color switch speed
-        "borderangle, 1, 30, fluent_decel, once" # for animating the border's gradient angle - styles: once (default), loop
-        "workspaces, 0, 4, easeOutCubic, fade" # styles: slide, slidevert, fade, slidefade, slidefadevert
+    # exec-once equivalent.
+    on = {
+      _args = [
+        "hyprland.start"
+        (lua "function() hl.exec_cmd(\"${startupScript}/bin/start\") end")
       ];
     };
 
-    input = {
-      kb_layout = "us,ch";
-      kb_variant = "altgr-intl,fr";
-      kb_options = "grp:caps_toggle";
-      touchpad = {
-        natural_scroll = true;
-        disable_while_typing = false;
+    # Sections merge with the colors stylix injects under settings.config.
+    config = {
+      general = {
+        gaps_in = 0;
+        gaps_out = 0;
+        border_size = 1;
+        layout = "dwindle";
+        resize_on_border = true;
       };
-      repeat_delay = 200;
-      repeat_rate = 30;
+
+      decoration = {
+        rounding = 8;
+        blur = {
+          enabled = true;
+          size = 6;
+          passes = 2;
+          vibrancy = 0.1696;
+        };
+      };
+
+      input = {
+        kb_layout = "us,ch";
+        kb_variant = "altgr-intl,fr";
+        kb_options = "grp:caps_toggle";
+        touchpad = {
+          natural_scroll = true;
+          disable_while_typing = false;
+        };
+        repeat_delay = 200;
+        repeat_rate = 30;
+      };
     };
 
-    windowrule = [
-      "match:class ghostty, workspace 1, monitor 1"
-      "match:class firefox, workspace 2, monitor 1"
-      "match:class Slack, workspace 3, monitor 0"
-      "match:class discord, workspace 3, monitor 0"
+    curve = map (c: { _args = c; }) [
+      [
+        "fluent_decel"
+        {
+          type = "bezier";
+          points = [ [ 0 0.2 ] [ 0.4 1 ] ];
+        }
+      ]
+      [
+        "easeOutCirc"
+        {
+          type = "bezier";
+          points = [ [ 0 0.55 ] [ 0.45 1 ] ];
+        }
+      ]
+      [
+        "easeOutCubic"
+        {
+          type = "bezier";
+          points = [ [ 0.33 1 ] [ 0.68 1 ] ];
+        }
+      ]
+      [
+        "easeinoutsine"
+        {
+          type = "bezier";
+          points = [ [ 0.37 0 ] [ 0.63 1 ] ];
+        }
+      ]
+    ];
+
+    animation = [
+      { leaf = "global"; enabled = true; speed = 4; bezier = "easeOutCubic"; }
+
+      # Windows
+      { leaf = "windowsIn"; enabled = true; speed = 3; bezier = "easeOutCubic"; style = "popin 30%"; } # window open
+      { leaf = "windowsOut"; enabled = true; speed = 3; bezier = "fluent_decel"; style = "popin 70%"; } # window close
+      { leaf = "windowsMove"; enabled = true; speed = 2; bezier = "easeinoutsine"; style = "slide"; } # moving, dragging, resizing
+
+      # Fade
+      { leaf = "fadeIn"; enabled = true; speed = 3; bezier = "easeOutCubic"; } # fade in (open) -> layers and windows
+      { leaf = "fadeOut"; enabled = true; speed = 2; bezier = "easeOutCubic"; } # fade out (close) -> layers and windows
+      { leaf = "fadeSwitch"; enabled = false; } # fade on changing activewindow and its opacity
+      { leaf = "fadeShadow"; enabled = true; speed = 10; bezier = "easeOutCirc"; } # fade on changing activewindow for shadows
+      { leaf = "fadeDim"; enabled = true; speed = 4; bezier = "fluent_decel"; } # the easing of the dimming of inactive windows
+      { leaf = "border"; enabled = false; } # border color switch speed
+      { leaf = "borderangle"; enabled = true; speed = 30; bezier = "fluent_decel"; style = "once"; } # border gradient angle
+      { leaf = "workspaces"; enabled = false; } # styles: slide, slidevert, fade, slidefade, slidefadevert
+    ];
+
+    window_rule = [
+      { match.class = "ghostty"; workspace = "1"; monitor = "1"; }
+      { match.class = "firefox"; workspace = "2"; monitor = "1"; }
+      { match.class = "Slack"; workspace = "3"; monitor = "0"; }
+      { match.class = "discord"; workspace = "3"; monitor = "0"; }
     ];
 
     bind = [
-      "$mod, M, exec, exit"
-      "$mod, Q, killactive"
+      (mkBind "${mod} + M" (exec "exit")) # was `exec, exit` in hyprlang: a shell no-op, kept as-is
+      (mkBind "${mod} + Q" "hl.dsp.window.close()")
 
-      "$mod, R, exec, $menu"
-      "$mod, T, exec, $terminal"
-      "$mod, E, exec, $fileManager"
-      "$mod, V, togglefloating"
-      "$mod, L, exec, $lock"
-      "$mod, left, movefocus, l"
-      "$mod, right, movefocus, r"
-      "$mod, up, movefocus, u"
-      "$mod, down, movefocus, d"
+      (mkBind "${mod} + R" (exec menu))
+      (mkBind "${mod} + T" (exec terminal))
+      (mkBind "${mod} + E" (exec fileManager))
+      (mkBind "${mod} + V" "hl.dsp.window.float()")
+      (mkBind "${mod} + L" (exec lock))
+      (mkBind "${mod} + left" ''hl.dsp.focus({ direction = "l" })'')
+      (mkBind "${mod} + right" ''hl.dsp.focus({ direction = "r" })'')
+      (mkBind "${mod} + up" ''hl.dsp.focus({ direction = "u" })'')
+      (mkBind "${mod} + down" ''hl.dsp.focus({ direction = "d" })'')
 
-      "$mod SHIFT, left, movewindow, l"
-      "$mod SHIFT, right, movewindow, r"
-      "$mod SHIFT, up, movewindow, u"
-      "$mod SHIFT, down, movewindow, d"
-      "$mod CTRL, left, resizeactive, -80 0"
-      "$mod CTRL, right, resizeactive, 80 0"
-      "$mod CTRL, up, resizeactive, 0 -80"
-      "$mod CTRL, down, resizeactive, 0 80"
-      "$mod ALT, left, moveactive,  -80 0"
-      "$mod ALT, right, moveactive, 80 0"
-      "$mod ALT, up, moveactive, 0 -80"
-      "$mod ALT, down, moveactive, 0 80"
+      (mkBind "${mod} + SHIFT + left" ''hl.dsp.window.move({ direction = "l" })'')
+      (mkBind "${mod} + SHIFT + right" ''hl.dsp.window.move({ direction = "r" })'')
+      (mkBind "${mod} + SHIFT + up" ''hl.dsp.window.move({ direction = "u" })'')
+      (mkBind "${mod} + SHIFT + down" ''hl.dsp.window.move({ direction = "d" })'')
+      (mkBind "${mod} + CTRL + left" "hl.dsp.window.resize({ x = -80, y = 0, relative = true })")
+      (mkBind "${mod} + CTRL + right" "hl.dsp.window.resize({ x = 80, y = 0, relative = true })")
+      (mkBind "${mod} + CTRL + up" "hl.dsp.window.resize({ x = 0, y = -80, relative = true })")
+      (mkBind "${mod} + CTRL + down" "hl.dsp.window.resize({ x = 0, y = 80, relative = true })")
+      (mkBind "${mod} + ALT + left" "hl.dsp.window.move({ x = -80, y = 0, relative = true })")
+      (mkBind "${mod} + ALT + right" "hl.dsp.window.move({ x = 80, y = 0, relative = true })")
+      (mkBind "${mod} + ALT + up" "hl.dsp.window.move({ x = 0, y = -80, relative = true })")
+      (mkBind "${mod} + ALT + down" "hl.dsp.window.move({ x = 0, y = 80, relative = true })")
 
-      ", Print, exec, ${screenshotScript}/bin/screenshot"
-      "$mod SHIFT, Print, exec, hyprpicker -a"
-      "$mod, G, exec, $browser"
-      "$mod, C, exec, ghostty -e bash -c 'cd ~/.config/flakes/nixos-config && nvim flake.nix'"
-      "$mod, p, exec, ghostty -e btop"
-      "$mod, U, exec, ${nhSwitchScript}/bin/nh-switch"
+      (mkBind "Print" (exec "${screenshotScript}/bin/screenshot"))
+      (mkBind "${mod} + SHIFT + Print" (exec "hyprpicker -a"))
+      (mkBind "${mod} + G" (exec browser))
+      (mkBind "${mod} + C" (exec "ghostty -e bash -c 'cd ~/.config/flakes/nixos-config && nvim flake.nix'"))
+      (mkBind "${mod} + p" (exec "ghostty -e btop"))
+      (mkBind "${mod} + U" (exec "${nhSwitchScript}/bin/nh-switch"))
 
       # Apps
-      "$mod SHIFT, S, exec, slack"
-      "$mod SHIFT, D, exec, discord"
-      "$mod SHIFT, O, exec, obsidian"
-      "$mod SHIFT, M, exec, ${webappLauncherScript}/bin/webapp-launcher https://mail.proton.me/"
-      "$mod SHIFT, R, exec, ${webappLauncherScript}/bin/webapp-launcher https://docs.rs/"
+      (mkBind "${mod} + SHIFT + S" (exec "slack"))
+      (mkBind "${mod} + SHIFT + D" (exec "discord"))
+      (mkBind "${mod} + SHIFT + O" (exec "obsidian"))
+      (mkBind "${mod} + SHIFT + M" (exec "${webappLauncherScript}/bin/webapp-launcher https://mail.proton.me/"))
+      (mkBind "${mod} + SHIFT + R" (exec "${webappLauncherScript}/bin/webapp-launcher https://docs.rs/"))
 
       # AI's
-      "$mod SHIFT, P, exec, ${webappLauncherScript}/bin/webapp-launcher https://www.perplexity.ai/"
-      "$mod SHIFT, G, exec, ${webappLauncherScript}/bin/webapp-launcher https://grok.com/"
-      "$mod SHIFT, C, exec, ${webappLauncherScript}/bin/webapp-launcher https://chatgpt.com/"
-      "$mod SHIFT, T, exec, ${webappLauncherScript}/bin/webapp-launcher https://app.todoist.com/"
-
+      (mkBind "${mod} + SHIFT + P" (exec "${webappLauncherScript}/bin/webapp-launcher https://www.perplexity.ai/"))
+      (mkBind "${mod} + SHIFT + G" (exec "${webappLauncherScript}/bin/webapp-launcher https://grok.com/"))
+      (mkBind "${mod} + SHIFT + C" (exec "${webappLauncherScript}/bin/webapp-launcher https://chatgpt.com/"))
+      (mkBind "${mod} + SHIFT + T" (exec "${webappLauncherScript}/bin/webapp-launcher https://app.todoist.com/"))
     ]
     ++ (
       # workspaces
@@ -157,49 +195,59 @@ in
         builtins.genList (
           i:
           let
-            ws = i + 1;
+            ws = toString (i + 1);
           in
           [
-            "$mod, code:1${toString i}, workspace, ${toString ws}"
-            "$mod SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
+            (mkBind "${mod} + code:1${toString i}" "hl.dsp.focus({ workspace = ${ws} })")
+            (mkBind "${mod} + SHIFT + code:1${toString i}" "hl.dsp.window.move({ workspace = ${ws}, follow = true })")
           ]
         ) 9
       )
-    );
+    )
+    ++ [
+      # Mouse binds (old bindm)
+      (mkBindFlags "${mod} + mouse:272" "hl.dsp.window.drag()" { mouse = true; })
+      (mkBindFlags "${mod} + mouse:273" "hl.dsp.window.resize()" { mouse = true; })
 
-    bindm = [
-      "$mod, mouse:272, movewindow"
-      "$mod, mouse:273, resizewindow"
-
-      # "$mod ALT, mouse_down, exec, hyprctl keyword cursor:zoom_factor `$(hyprctl getoption cursor:zoom_factor | awk 'NR==1 {factor = $2; if (factor < 1) {factor = 1}; print factor * 1.25}')`"
-      # "$mod ALT, mouse_up, exec, hyprctl keyword cursor:zoom_factor `$(hyprctl getoption cursor:zoom_factor | awk 'NR==1 {factor = $2; if (factor < 1) {factor = 1}; print factor / 1.25}')`"
+      # Repeating binds (old bindel)
+      (mkBindFlags "XF86MonBrightnessUp" (exec "brightnessctl set 5%+") { repeating = true; })
+      (mkBindFlags "XF86MonBrightnessDown" (exec "brightnessctl set 5%-") { repeating = true; })
+      (mkBindFlags "${mod} + XF86MonBrightnessUp" (exec "brightnessctl set 100%+") { repeating = true; })
+      (mkBindFlags "${mod} + XF86MonBrightnessDown" (exec "brightnessctl set 100%-") { repeating = true; })
+      # Volume
+      (mkBindFlags "XF86AudioRaiseVolume" (exec "pamixer -i 5") { repeating = true; })
+      (mkBindFlags "XF86AudioLowerVolume" (exec "pamixer -d 5") { repeating = true; })
+      (mkBindFlags "${mod} + XF86AudioRaiseVolume" (exec "pamixer -i 10") { repeating = true; })
+      (mkBindFlags "${mod} + XF86AudioLowerVolume" (exec "pamixer -d 10") { repeating = true; })
+      # Mute Audio
+      (mkBindFlags "XF86AudioMute" (exec "pamixer -t") { repeating = true; })
+      # Mute micro
+      (mkBindFlags "XF86AudioMicMute" (exec "pamixer --default-source -t") { repeating = true; })
     ];
 
     monitor =
       (lib.optionals isLaptop [
-        "desc:Chimei Innolux Corporation 0x143F, highrr, 0x0, 1"
-        ", preferred, auto-up, 1"
+        {
+          output = "desc:Chimei Innolux Corporation 0x143F";
+          mode = "highrr";
+          position = "0x0";
+          scale = 1;
+        }
+        {
+          output = "";
+          mode = "preferred";
+          position = "auto-up";
+          scale = 1;
+        }
       ])
-      ++ (lib.optionals isDesktop [ "DP-3, preferred, auto,1" ]);
-
-    bindel = [
-      ",XF86MonBrightnessUp, exec, brightnessctl set 5%+"
-      ",XF86MonBrightnessDown, exec, brightnessctl set 5%-"
-      "$mod, XF86MonBrightnessUp, exec, brightnessctl set 100%+"
-      "$mod, XF86MonBrightnessDown, exec, brightnessctl set 100%-"
-      # Volume
-      ",XF86AudioRaiseVolume, exec, pamixer -i 5"
-      ",XF86AudioLowerVolume, exec, pamixer -d 5"
-      "$mod, XF86AudioRaiseVolume, exec, pamixer -i 10"
-      "$mod, XF86AudioLowerVolume, exec, pamixer -d 10"
-      # Mute Audio
-      ",XF86AudioMute, exec, pamixer -t"
-      # Mute micro
-      ",XF86AudioMicMute, exec, pamixer --default-source -t"
-
-      # ", switch:off:Lid Switch,exec,hyprctl keyword monitor desc:Philips Consumer Electronics Company PHL 346E2C UK02423042086,highrr, 0x0, 1"
-      # ", switch:on:Lid Switch,exec,hyprctl keyword monitor desc:Chimei Innolux Corporation 0x1440, disable"
-    ];
+      ++ (lib.optionals isDesktop [
+        {
+          output = "DP-3";
+          mode = "preferred";
+          position = "auto";
+          scale = 1;
+        }
+      ]);
   };
 
   wayland.windowManager.hyprland.systemd.variables = [ "--all" ];

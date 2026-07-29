@@ -20,10 +20,14 @@
   programs.gamemode.enable = true;
 
   boot = {
+    # Build/deploy aarch64 closures (speedsoft Pi 5 SD image) via QEMU.
+    binfmt.emulatedSystems = [ "aarch64-linux" ];
+
     # Nvidia GPU kernel module.
     # https://search.nixos.org/options?channel=24.05&show=boot.extraModulePackages
     # https://search.nixos.org/options?channel=24.05&show=boot.initrd.kernelModules
-    extraModulePackages = [ config.boot.kernelPackages.nvidia_x11_beta ];
+    # latest (610.x): beta 595.45.04 fails to compile against zen kernel 7.1.4
+    extraModulePackages = [ config.boot.kernelPackages.nvidia_x11_latest ];
     initrd.kernelModules =
       [ "nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm" ];
 
@@ -83,7 +87,16 @@
     nvidiaSettings = true;
 
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
-    package = config.boot.kernelPackages.nvidiaPackages.beta;
+    package = config.boot.kernelPackages.nvidiaPackages.latest;
   };
+
+  # CalDigit TS3 Plus dock: its two Fresco Logic FL1100 xHCI controllers
+  # (1b73:1100) log "xHCI host controller not responding, assume dead" ~11s
+  # into boot when the idle Thunderbolt tunnel is runtime power-gated to
+  # D3cold, so dock USB only works after a manual replug. Pin them in D0 to
+  # keep the link alive. (Desktop — no battery cost to disabling runtime PM.)
+  services.udev.extraRules = ''
+    ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x1b73", ATTR{device}=="0x1100", ATTR{power/control}="on", ATTR{d3cold_allowed}="0"
+  '';
 
 }

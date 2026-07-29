@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ inputs, lib, ... }:
 {
   # Noctalia — a prebuilt Quickshell-based Wayland shell and bar.
   # https://docs.noctalia.dev/v5
@@ -18,7 +18,8 @@
       # UI; was the builtin Kanagawa palette, kept as fallback).
       theme = {
         mode = "dark";
-        source = "wallpaper";
+        # mkForce: noctalia's hm module now defaults this to "custom"
+        source = lib.mkForce "wallpaper";
         builtin = "Kanagawa";
       };
 

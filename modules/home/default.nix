@@ -6,6 +6,6 @@
     ++ [ (import ./gtk.nix) ] ++ [ (import ./bat.nix) ]
     ++ [ (import ./btop.nix) ] ++ [ (import ./hyprland.nix) ]
     ++ [ (import ./noctalia.nix) ] ++ [ (import ./ghostty.nix) ]
-    ++ [ (import ./claude-code.nix) ]
+    ++ [ (import ./claude-code.nix) ] ++ [ (import ./kicad.nix) ]
     ++ [ (import ./firefox.nix) ];
 }
