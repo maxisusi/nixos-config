@@ -25,6 +25,7 @@ in
   nixpkgs.overlays = [
     (import ../../overlays/discord.nix)
     (import ../../overlays/orca-slicer.nix)
+    (import ../../overlays/freecad.nix)
   ];
 
   home.packages = with pkgs; [
