@@ -27,36 +27,6 @@ let
 
   hooks-log = "$HOME/.cache/claude-code/hooks.log";
 
-  # Helper that logs payloads and extracts cwd basename
-  # Stop hook: title shows project, body shows last user prompt snippet
-  hook-stop = pkgs.writeShellScript "claude-hook-stop" ''
-    mkdir -p "$(dirname "${hooks-log}")"
-    payload=$(${pkgs.coreutils}/bin/cat)
-    printf '%s [Stop] %s\n' "$(${pkgs.coreutils}/bin/date -Iseconds)" "$payload" >> "${hooks-log}"
-
-    dir=$(printf '%s' "$payload" | ${pkgs.jq}/bin/jq -r '.cwd // ""')
-    [ -z "$dir" ] && dir="$PWD"
-    project=$(${pkgs.coreutils}/bin/basename "$dir")
-
-    transcript=$(printf '%s' "$payload" | ${pkgs.jq}/bin/jq -r '.transcript_path // ""')
-    ctx=""
-    if [ -n "$transcript" ] && [ -f "$transcript" ]; then
-      ctx=$(${pkgs.coreutils}/bin/tail -n 500 "$transcript" 2>/dev/null \
-        | ${pkgs.jq}/bin/jq -r 'select(.type == "user") |
-            if (.message.content | type) == "string" then .message.content
-            elif (.message.content | type) == "array" then (.message.content[] | select(.type == "text") | .text)
-            else empty end' 2>/dev/null \
-        | ${pkgs.gnugrep}/bin/grep -v '^$' \
-        | ${pkgs.coreutils}/bin/tail -n 1 \
-        | ${pkgs.coreutils}/bin/head -c 60)
-    fi
-
-    body="$project"
-    [ -n "$ctx" ] && body="$project · $ctx"
-
-    ${pkgs.dunst}/bin/dunstify -a 'Claude Code' -u normal 'Claude finished' "$body" 2>/dev/null || true
-  '';
-
   # Notification hook: fires for many things including end-of-turn bell.
   # Only show dunstify popup when the message indicates the user is actually needed.
   hook-notification = pkgs.writeShellScript "claude-hook-notification" ''
@@ -131,7 +101,6 @@ let
       "ponytail@ponytail" = true;
     };
     hooks = {
-      Stop = [{ hooks = [{ type = "command"; command = "${hook-stop}"; }]; }];
       Notification = [{ hooks = [{ type = "command"; command = "${hook-notification}"; }]; }];
       PermissionRequest = [{ hooks = [{ type = "command"; command = "${hook-permission}"; }]; }];
     };
