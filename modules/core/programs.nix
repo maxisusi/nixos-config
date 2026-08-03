@@ -21,6 +21,9 @@
     systemd.setPath.enable = true;
   };
   nix.settings = {
+    # Lets this user set restricted settings (substituters, trusted-public-keys)
+    # from a flake's nixConfig — e.g. tipee's --accept-flake-config binary cache.
+    trusted-users = [ "root" "max" ];
     substituters = [
       "https://hyprland.cachix.org"
       # Pre-built Pi 5 kernel/firmware for the speedsoft SD image — without
