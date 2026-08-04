@@ -19,10 +19,6 @@
         phpactor.enable = true;
         clangd.enable = true;
         # ts-ls.enable = true;
-        # volar = {
-        #   enable = true;
-        #   tslsIntegration = true;
-        # };
       };
       keymaps = {
         lspBuf = { "K" = "hover"; };

@@ -1,6 +1,16 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, system, nixpkgs-unstable, ... }:
 {
   time.timeZone = "Europe/Zurich";
+
+  # pkgs.unstable escape hatch; bootloader.nix pins kernels from it.
+  nixpkgs.overlays = [
+    (_: _: {
+      unstable = import nixpkgs-unstable {
+        inherit system;
+        config.allowUnfree = true;
+      };
+    })
+  ];
 
   i18n = {
     defaultLocale = "en_US.UTF-8";
@@ -27,7 +37,7 @@
   nixpkgs.config.permittedInsecurePackages = [
     "electron-39.8.10"
   ];
-  system.stateVersion = "23.11"; # Did you read the comment?
+  system.stateVersion = "23.11";
 
   networking.networkmanager.enable = true;
 

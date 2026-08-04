@@ -1,15 +1,13 @@
 { config, pkgs, ... }:
 
 {
-  imports = [
-    # Include the results of the hardware scan.
-    ./hardware-configuration.nix
-  ];
+  imports = [ ./hardware-configuration.nix ];
 
-  networking.hostName = "laptop_hp"; # Define your hostname.
+  networking.hostName = "laptop_hp";
 
-  # Configure keymap in X11
+  # Not covered by xserver_host (desktop/laptop only); SDDM needs X11 enabled.
   services.xserver = {
+    enable = true;
     xkb = {
       layout = "ch";
       variant = "fr";

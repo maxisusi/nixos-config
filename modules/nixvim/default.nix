@@ -1,6 +1,5 @@
 { pkgs, ... }:
 {
-  # Import all your configuration modules here
   imports = [
     # MUST
     ./bufferline.nix
@@ -24,7 +23,6 @@
     ./spectre.nix
     # KINDA
     ./rust-tools.nix
-    # ./copilot.nix
     ./autopair.nix
     ./lualine.nix
     ./wich_key.nix

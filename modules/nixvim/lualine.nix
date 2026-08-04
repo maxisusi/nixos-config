@@ -3,7 +3,6 @@
     enable = true;
     settings = {
       options = {
-        # theme = "catppuccin";
         componentSeparators = {
           left = " ";
           right = " ";

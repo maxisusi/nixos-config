@@ -1,92 +1,27 @@
-{ lib, inputs, system, home-manager, user, nixvim, stylix, nixpkgs-unstable, ...
-}@attr: {
-  # Desktop Environment
-  desktop = lib.nixosSystem {
-    inherit system;
-    specialArgs = attr;
-    modules = [
-      {
-        nixpkgs.overlays = [
-          (final: prev: {
-            unstable = import nixpkgs-unstable {
-              inherit system;
-              config.allowUnfree = true;
-              config.permittedInsecurePackages = [ "electron-39.8.10" ];
-            };
-          })
-        ];
-      }
-      ./desktop
-      ../modules/core
-      nixvim.nixosModules.nixvim
-      stylix.nixosModules.stylix
-      home-manager.nixosModules.home-manager
-      {
-        home-manager.backupFileExtension = "hm_backup";
-        home-manager.useGlobalPkgs = false;
-        home-manager.useUserPackages = true;
-        home-manager.extraSpecialArgs = {
-          inherit inputs user system nixpkgs-unstable;
-        }; # Pass flake as variable
-        home-manager.users.${user} = { imports = [ ../modules/home ]; };
-      }
-    ];
-  };
-
-  # Laptop Environment
-  laptop = lib.nixosSystem {
-    inherit system;
-    specialArgs = attr;
-    modules = [
-      {
-        nixpkgs.overlays = [
-          (final: prev: {
-            unstable = import nixpkgs-unstable {
-              inherit system;
-              config.allowUnfree = true;
-              config.permittedInsecurePackages = [ "electron-39.8.10" ];
-            };
-          })
-        ];
-      }
-      ./laptop
-      ../modules/core
-      nixvim.nixosModules.nixvim
-      stylix.nixosModules.stylix
-      home-manager.nixosModules.home-manager
-      {
-        home-manager.backupFileExtension = "hm_backup";
-        home-manager.useGlobalPkgs = false;
-        home-manager.useUserPackages = true;
-        home-manager.extraSpecialArgs = {
-          inherit inputs user system;
-        }; # Pass flake as variable
-        home-manager.users.${user} = { imports = [ ../modules/home ]; };
-      }
-    ];
-  };
-
-  laptop_hp = lib.nixosSystem {
-    inherit system;
-    specialArgs = attr;
-    modules = [
-      ./laptop_hp
-      ../modules/core
-      nixvim.nixosModules.nixvim
-      stylix.nixosModules.stylix
-      home-manager.nixosModules.home-manager
-      {
-        home-manager.backupFileExtension = "hm_backup";
-        home-manager.useGlobalPkgs = false;
-        home-manager.useUserPackages = true;
-        home-manager.extraSpecialArgs = {
-          inherit inputs user system;
-        }; # Pass flake as variable
-        home-manager.users.${user} = {
-          imports = [ ../modules/home stylix.homeManagerModules.stylix ];
-        };
-      }
-    ];
-  };
-
+{ lib, inputs, system, home-manager, user, nixvim, stylix, ... }@attr:
+let
+  # Every host gets the same stack; only the host dir differs.
+  common = [
+    ../modules/core
+    nixvim.nixosModules.nixvim
+    stylix.nixosModules.stylix
+    home-manager.nixosModules.home-manager
+    {
+      home-manager.backupFileExtension = "hm_backup";
+      home-manager.useGlobalPkgs = false;
+      home-manager.useUserPackages = true;
+      home-manager.extraSpecialArgs = { inherit inputs user system; };
+      home-manager.users.${user} = { imports = [ ../modules/home ]; };
+    }
+  ];
+  host = dir:
+    lib.nixosSystem {
+      inherit system;
+      specialArgs = attr;
+      modules = [ dir ] ++ common;
+    };
+in {
+  desktop = host ./desktop;
+  laptop = host ./laptop;
+  laptop_hp = host ./laptop_hp;
 }

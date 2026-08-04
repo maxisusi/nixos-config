@@ -1,9 +1,8 @@
 { pkgs, lib, ... }: {
   imports = [
-    # Include the results of the hardware scan.
     ./hardware-configuration.nix
   ];
-  networking.hostName = "laptop"; # Define your hostname.
+  networking.hostName = "laptop";
 
   # Kernel 7.1.x breaks USB-C DisplayPort alt mode on Lunar Lake (external
   # monitor not detected). Pin LTS until fixed, then drop this override.

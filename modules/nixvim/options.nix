@@ -30,7 +30,6 @@
     };
     globals = {
       mapleader = " "; # set the leader key
-      # autoformat_enabled = true;
       highlighturl_enabled = true;
     };
   };

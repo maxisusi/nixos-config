@@ -12,7 +12,6 @@
   };
   stylix = {
     enable = true;
-    # image = ../../wallpapers/cliff.png;
     base16Scheme = ../../alabaster.yaml;
     polarity = "dark";
     # Global transparency knob (1.0 = fully opaque). Ghostty picks this up

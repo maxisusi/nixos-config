@@ -1,19 +1,10 @@
 { pkgs, inputs, ... }:
 let
-  # Upstream flake runs `python3 tools/run_tests.py` without declaring python3.
-  colibri =
-    inputs.colibri.packages.${pkgs.stdenv.hostPlatform.system}.default.overrideAttrs
-      (old: {
-        nativeBuildInputs = (old.nativeBuildInputs or [ ]) ++ [ pkgs.python3 ];
-      });
+  colibri = inputs.colibri.packages.${pkgs.stdenv.hostPlatform.system}.default;
   # Not in nixpkgs yet — prebuilt binary from https://www.coderabbit.ai/cli
   coderabbit-cli = pkgs.callPackage ../../packages/coderabbit { };
 in
 {
-  nixpkgs.overlays = [
-    (import ../../overlays/freecad.nix)
-  ];
-
   home.packages = with pkgs; [
     oh-my-fish
     slack
@@ -87,7 +78,6 @@ in
       # workaround for
       # https://github.com/nix-community/home-manager/issues/632
       program_options = {
-        # replace with your favorite file manager
         file_manager = "${pkgs.nemo-with-extensions}/bin/nemo";
       };
     };

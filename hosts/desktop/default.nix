@@ -2,11 +2,10 @@
 
 {
   imports = [
-    # Include the results of the hardware scan.
     ./hardware-configuration.nix
   ];
 
-  networking.hostName = "desktop"; # Define your hostname.
+  networking.hostName = "desktop";
 
   networking.interfaces.eno1.wakeOnLan = {
     enable = true;
@@ -55,7 +54,6 @@
   hardware.graphics.enable = true;
   hardware.graphics.enable32Bit = true;
   hardware.graphics.extraPackages = with pkgs; [ nvidia-vaapi-driver libva ];
-  # hardware.opengl.driSupport = true;
   # Load nvidia driver for Xorg and Wayland
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.nvidia = {
