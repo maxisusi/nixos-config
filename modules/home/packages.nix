@@ -8,8 +8,6 @@ let
       });
   # Not in nixpkgs yet — prebuilt binary from https://www.coderabbit.ai/cli
   coderabbit-cli = pkgs.callPackage ../../packages/coderabbit { };
-  # Prebuilt binary from https://polar.sh/codelord — see packages/codelord.
-  codelord = pkgs.callPackage ../../packages/codelord { };
 in
 {
   nixpkgs.overlays = [
@@ -81,7 +79,6 @@ in
     tailscale
     colibri
     coderabbit-cli
-    codelord
   ];
 
   services.udiskie = {
