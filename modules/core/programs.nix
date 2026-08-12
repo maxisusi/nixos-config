@@ -22,17 +22,19 @@
   };
   nix.settings = {
     # Lets this user set restricted settings (substituters, trusted-public-keys)
-    # from a flake's nixConfig — e.g. tipee's --accept-flake-config binary cache.
+    # from a flake's nixConfig.
     trusted-users = [ "root" "max" ];
     substituters = [
       "https://hyprland.cachix.org"
       # Pre-built Pi 5 kernel/firmware for the speedsoft SD image — without
       # this the kernel compiles under QEMU (hours).
       "https://nixos-raspberrypi.cachix.org"
+      "https://nix-cache.tipee.cloud"
     ];
     trusted-public-keys = [
       "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
       "nixos-raspberrypi.cachix.org-1:4iMO9LXa8BqhU+Rpg6LQKiGa2lsNh/j2oiYLNOQ5sPI="
+      "nix-cache.tipee.cloud-1:wyyfWik+x7cpTODlztChPdYTWHEvrc200tLKES43CCE="
     ];
   };
 
