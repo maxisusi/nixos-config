@@ -1,6 +1,5 @@
 {
   lib,
-  osConfig,
   pkgs,
   ...
 }:
@@ -14,8 +13,6 @@ let
   screenshotScript = scripts.screenshot;
   nhSwitchScript = scripts.nhSwitch;
   webappLauncherScript = scripts.webappLauncher;
-  isDesktop = osConfig.networking.hostName == "desktop";
-  isLaptop = osConfig.networking.hostName == "laptop";
 
   # Lua config helpers (Hyprland 0.55+ deprecated hyprlang for Lua).
   # Variables like the old $mod are plain Nix bindings interpolated below.
@@ -225,30 +222,22 @@ in
       (mkBindFlags "XF86AudioMicMute" (exec "pamixer --default-source -t") { repeating = true; })
     ];
 
-    monitor =
-      (lib.optionals isLaptop [
-        {
-          output = "desc:Chimei Innolux Corporation 0x143F";
-          mode = "highrr";
-          position = "0x0";
-          scale = 1;
-        }
-        {
-          output = "";
-          mode = "preferred";
-          position = "auto-up";
-          scale = 1;
-        }
-      ])
-      ++ (lib.optionals isDesktop [
-        {
-          output = "DP-3";
-          mode = "preferred";
-          position = "auto";
-          scale = 1;
-        }
-      ]);
+    # No "monitor" rules here on purpose: nwg-displays owns the layout and
+    # rewrites ~/.config/hypr/monitors.lua on Save, sourced by extraConfig
+    # below. Unlisted outputs fall back to Hyprland's preferred/auto/1.
   };
+
+  # Source the nwg-displays output. Guarded on existence so a machine that
+  # has never run nwg-displays still starts; a syntax error in a generated
+  # file is left to fail loudly rather than being swallowed by pcall.
+  wayland.windowManager.hyprland.extraConfig = ''
+    local monitors = "/home/max/.config/hypr/monitors.lua"
+    local handle = io.open(monitors)
+    if handle then
+      handle:close()
+      dofile(monitors)
+    end
+  '';
 
   wayland.windowManager.hyprland.systemd.variables = [ "--all" ];
   home.packages = with pkgs; [
