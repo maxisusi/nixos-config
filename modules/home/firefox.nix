@@ -271,6 +271,10 @@ in
                 name = "Printables";
                 url = "https://www.printables.com/";
               }
+              {
+                name = "Me di cuenta de — SpanishStep";
+                url = "https://spanishstep.com/archives/34925";
+              }
             ];
           }
         ];
