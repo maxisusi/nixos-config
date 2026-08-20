@@ -116,6 +116,8 @@ in
     $DRY_RUN_CMD install -D -m 0644 ${settingsFile} "$target"
   '';
 
+  home.file.".claude/CLAUDE.md".source = ./claude-guidelines.md;
+
   # claude-hud reads its config from this path. Install as mutable so
   # /claude-hud:configure can still write to it at runtime.
   home.activation.claudeHudConfig = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
