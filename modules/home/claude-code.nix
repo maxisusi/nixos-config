@@ -25,45 +25,6 @@ let
     exec ${pkgs.nodejs}/bin/node ${claude-hud-src}/dist/index.js
   '';
 
-  hooks-log = "$HOME/.cache/claude-code/hooks.log";
-
-  # Notification hook: fires for many things including end-of-turn bell.
-  # Only show dunstify popup when the message indicates the user is actually needed.
-  hook-notification = pkgs.writeShellScript "claude-hook-notification" ''
-    mkdir -p "$(dirname "${hooks-log}")"
-    payload=$(${pkgs.coreutils}/bin/cat)
-    printf '%s [Notification] %s\n' "$(${pkgs.coreutils}/bin/date -Iseconds)" "$payload" >> "${hooks-log}"
-
-    msg=$(printf '%s' "$payload" | ${pkgs.jq}/bin/jq -r '.message // ""')
-    case "$msg" in
-      *permission*|*Permission*|*waiting*|*Waiting*|*needs*|*Needs*) ;;
-      *) exit 0 ;;
-    esac
-
-    dir=$(printf '%s' "$payload" | ${pkgs.jq}/bin/jq -r '.cwd // ""')
-    [ -z "$dir" ] && dir="$PWD"
-    project=$(${pkgs.coreutils}/bin/basename "$dir")
-
-    ${pkgs.dunst}/bin/dunstify -a 'Claude Code' -u critical 'Claude needs you' "$project · $msg" 2>/dev/null || true
-  '';
-
-  # PermissionRequest hook: fires when a real permission prompt is about to show.
-  hook-permission = pkgs.writeShellScript "claude-hook-permission" ''
-    mkdir -p "$(dirname "${hooks-log}")"
-    payload=$(${pkgs.coreutils}/bin/cat)
-    printf '%s [PermissionRequest] %s\n' "$(${pkgs.coreutils}/bin/date -Iseconds)" "$payload" >> "${hooks-log}"
-
-    dir=$(printf '%s' "$payload" | ${pkgs.jq}/bin/jq -r '.cwd // ""')
-    [ -z "$dir" ] && dir="$PWD"
-    project=$(${pkgs.coreutils}/bin/basename "$dir")
-
-    action=$(printf '%s' "$payload" \
-      | ${pkgs.jq}/bin/jq -r '[.tool_name, (.tool_input.command // .tool_input.file_path // .tool_input.url // .tool_input.pattern // "")] | join(": ")' \
-      | ${pkgs.coreutils}/bin/head -c 120)
-
-    ${pkgs.dunst}/bin/dunstify -a 'Claude Code' -u critical 'Claude needs you' "$project · $action" 2>/dev/null || true
-  '';
-
   settingsFile = (pkgs.formats.json { }).generate "claude-settings.json" settings;
 
   claudeHudConfigFile = (pkgs.formats.json { }).generate "claude-hud-config.json" claudeHudConfig;
@@ -99,10 +60,6 @@ let
     };
     enabledPlugins = {
       "ponytail@ponytail" = true;
-    };
-    hooks = {
-      Notification = [{ hooks = [{ type = "command"; command = "${hook-notification}"; }]; }];
-      PermissionRequest = [{ hooks = [{ type = "command"; command = "${hook-permission}"; }]; }];
     };
   };
 in
