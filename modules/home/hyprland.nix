@@ -252,7 +252,8 @@ in
     hyprutils
     hyprpolkitagent
     hyprshot
-    wf-recorder
+    # 0.6.0 uses AVCodec fields dropped in ffmpeg 8; upstream has no fix yet.
+    (wf-recorder.override { ffmpeg = ffmpeg_7; })
     slurp
     hyprsunset
     webappLauncherScript
