@@ -25,7 +25,8 @@
     };
 
     colibri = {
-      url = "github:JustVugg/colibri";
+      # Pinned: later revisions install a qwen36 binary the Makefile never builds.
+      url = "github:JustVugg/colibri/2d623816eecbf740b1fc06eb422974bda0af8931";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
