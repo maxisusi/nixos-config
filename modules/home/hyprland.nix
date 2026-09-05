@@ -146,6 +146,7 @@ in
       (mkBind "${mod} + T" (exec terminal))
       (mkBind "${mod} + E" (exec fileManager))
       (mkBind "${mod} + V" "hl.dsp.window.float()")
+      (mkBind "${mod} + F" "hl.dsp.window.fullscreen()")
       (mkBind "${mod} + L" (exec lock))
       (mkBind "${mod} + left" ''hl.dsp.focus({ direction = "l" })'')
       (mkBind "${mod} + right" ''hl.dsp.focus({ direction = "r" })'')
